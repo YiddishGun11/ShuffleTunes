@@ -1,0 +1,86 @@
+name: User Stories
+description: Permet de créer une nouvelle US
+title: "[US X] : En tant que [...] je souhaite [...] afin de [...] "
+labels: ["US"]
+body:
+
+- type: dropdown
+  id: priorite
+  attributes:
+    label: Quel est la valeur de la US pour le client
+    options: 
+      - Prioriatire
+      - Important
+      - Minoritaire
+  validations:
+    required: true
+    
+- type: textarea
+  id: description
+  attributes:
+    label: Description et objectif
+    description: Explication détaillée de la fonctionnalité
+  validations:
+    required: true
+     
+- type: textarea
+  id: maquette
+  attributes:
+    label: Maquette
+    description: Poster ici la(les) maquette(s) de la US 
+  validations:
+    required: false
+  
+- type: textarea
+  id: acceptation-specifique
+  attributes:
+    label: Critères d'acceptation spécifiques à la US 
+    description: Les éléments qui doivent être validés pour que la US soit considérée comme terminée. Respecter la sythaxe - [ ] XXXX
+    value: "- [ ] XXXX"
+  validations:
+    required: true
+      
+    
+- type: checkboxes
+  id: acceptation-generique
+  attributes:
+    label: Critères d'acceptation générique
+    options:
+      - label: Manger
+      - label: ... 
+        
+- type: textarea
+  id: taches
+  attributes:
+    label: Tâches techniques qui composent la US
+    description: Liste des trucs à faire pour avoir une US fonctionnel (!= critère acceptation). Respecter la sythaxe - [ ] XXXX
+    value: "- [ ] XXXX"
+  validations:
+    required: true
+
+- type: dropdown
+  id: complexite
+  attributes:
+    label: Quel est la complexité de la US
+    description: 1 étant le plus simple et 10 le plus difficile
+    options: 
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+  validations:
+    required: true
+
+- type: textarea
+  id: temps
+  attributes:
+    label: Estimation du temps necessaire pour faire la US 
+    placeholder: "1h30"
+  validations:
+    required: false
