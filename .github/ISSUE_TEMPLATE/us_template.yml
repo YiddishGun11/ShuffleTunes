@@ -39,15 +39,6 @@ body:
     value: "- [ ] XXXX"
   validations:
     required: true
-      
-    
-- type: checkboxes
-  id: acceptation-generique
-  attributes:
-    label: Critères d'acceptation générique
-    options:
-      - label: Manger
-      - label: ... 
         
 - type: textarea
   id: taches
