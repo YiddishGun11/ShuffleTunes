@@ -1,9 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import Image from '../../assets/landing-page-girl.png'
 import "./Home.css"
 
 function Home(){
     return(
-        <div>Home page</div>
+        <div>
+            <div className='home-menu'>
+                <p className='home-menu-logo'>ShuffleTunes</p>
+                <Link to="/connexion" className='home-menu-link'><p>Login</p></Link>
+            </div>
+
+            <div className='home-section'>
+                <img src={Image} alt="" ></img>
+                <div className='home-section-div'>
+                    <h1>Share Your Music</h1>
+                    <p>Listen to your music on several speakers</p>
+                    <Link to="/connexion"><button>Join Our App</button></Link>
+                </div>
+            </div>
+
+        </div>
     );
 }
 

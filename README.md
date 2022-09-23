@@ -21,7 +21,9 @@ Interconnected speakers with Raspberry Pi &amp; WebApp 🎵
 `cd /WebApp`
 
 - Installer les packages une fois arrivé dans le dossier `WebApp` : <br>
-`npm install`
+`cd WebApp/client` --> `npm install`
+`cd WebApp/server` --> `npm install`
+
 
 - Lancer le serveur NodeJs : <br>
 `cd WebApp/server` et lancer la commande `npm run dev`
