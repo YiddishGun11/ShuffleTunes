@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+input[type=text] {
+    text-indent: 15px;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 14px;
+}
+
+.login-section-background{
+    background-color: #262121;
+    height: 100%;
+}
+
+.login-section{
+    background-color: #322C2C;
+    border: none;
+    border-radius: 20px;
+    height: 500px;
+    width: 600px;
+    margin-top: 50px;
+    padding: 50px 60px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-family: 'Poppins';
+
+    display: flex;
+    flex-direction: column;
+}
+
+.login-section h1{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    background-color: #322C2C;
+}
+
+.login-section input{
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0px;
+    background-color: #262121;
+    font-size: 14px;
+}
+
+.login-section button{
+    margin: 30px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    background-color: #913099;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 16px;
+}
+
+.login-section button:hover{
+    transform: scale(1.1);
+    transition-duration: 0.7s;
+}
+
+::placeholder{
+    font-family: 'Poppins';
+    color: white;
+}
+
+.login-section-subtitle{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    font-size: 18px ;
+    background-color: #322C2C;
+}
+
+.switch-connect{
+    display: flex;
+    justify-content: center;
+    background-color: #322C2C;
+
+}
+
+.switch-connect p{
+    background-color: #322C2C;
+    font-size: 12px;
+    padding: 0px 5px;
+}
+
+.switch-connect-link:hover{
+    color: #9f2daa;
+}
+

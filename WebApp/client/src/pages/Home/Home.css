@@ -3,10 +3,9 @@
 .home-menu{
     display: flex;
     justify-content: space-between;
-    padding: 40px 150px;
+    padding: 30px 150px;
     font-family: 'Poppins';
     background-color: #262121;
-    color: white;
 }
 
 .home-menu-link{
@@ -20,6 +19,8 @@
 }
 
 .home-menu-logo{
+    text-decoration: none;
+    color: white;
     font-size: 25px;
     font-weight: semi-bold;
 }
@@ -27,7 +28,8 @@
 .home-section{
     display: flex;
     justify-content: space-between;
-    padding: 60px 15% ;
+    padding: 0px 15% ;
+    padding-top: 60px;
     background-color: #262121;
 }
 

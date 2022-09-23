@@ -7,7 +7,7 @@ function Home(){
     return(
         <div>
             <div className='home-menu'>
-                <p className='home-menu-logo'>ShuffleTunes</p>
+                <Link to="/" className='home-menu-logo'><p>ShuffleTunes</p></Link>
                 <Link to="/connexion" className='home-menu-link'><p>Login</p></Link>
             </div>
 
