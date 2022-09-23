@@ -1,9 +1,13 @@
 import React from 'react'
+import NavBar from '../../components/NavBar/NavBar';
+import './DashBoard.css';
+
 
 function DashBoard(){
     return(
         <div>
-            <h1>DashBoard</h1>
+            <NavBar />
+            <h1 className='test'>DashBoard</h1>
         </div>
     );
 }
