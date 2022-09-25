@@ -75,6 +75,7 @@
 
 @media screen and (max-width: 1150px) {
     .home-section{
-        padding: 60px 10%;
+        padding: 0px 10%;
+        padding-top: 60px;
     }
 }
