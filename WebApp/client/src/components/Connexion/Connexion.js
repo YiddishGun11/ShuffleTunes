@@ -7,7 +7,7 @@ function Connexion({display, setDisplay}){
             <div className='login-section'>
                 <h1>ShuffleTunes</h1>
                 <p className='login-section-subtitle'>Augmenter votre expérience musicale</p>
-                <input type="text" placeholder='pseudo'></input>
+                <input type="text" placeholder='Pseudo'></input>
                 <input type="text" placeholder='Mot de passe'></input>
                 <button>Se connecter</button>
                 <div className='switch-connect'>

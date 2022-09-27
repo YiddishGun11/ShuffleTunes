@@ -1,7 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.test{
-    margin-left: 60px;
-    font-family: 'Poppins';
+.dashboard-section{
+    height: 625px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar{
+    height: 100%;
+    width: 320px;
     color: white;
+    font-family: 'Poppins';
+}
+
+.sidebar-item3{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 80px;
+}
+
+.sidebar-item3 div{
+    display: flex;
+    padding-left: 25px;
+    padding-top: 20px;
+}
+
+.sidebar-item3 div p {
+    padding-right: 10px;
+}
+
+.sidebar-item3 img{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+
+.sidebar-item1{
+    display: flex;
+    height: 50px;
+    padding: 10px 60px;
+    margin-top: 50px;
+}
+
+.sidebar-item1 p{
+    padding-left: 10px;
+}
+
+
+.sidebar-item2{
+    display: flex;
+    height: 50px;
+    padding: 10px 60px;
+    margin: 15px 0px;
+}
+
+.sidebar-item2 p{
+    padding-left: 10px;
+}
+
+.main-content{
+    background-color: lightcoral;
+    height: 100%;
+    width: 80%;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.main-content p {
+    text-align: center;
+    margin-top: 300px;
+    margin-left: 450px;
+    width: 300px;
 }

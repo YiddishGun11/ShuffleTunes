@@ -5,7 +5,7 @@
     justify-content: space-between;
     padding: 30px 150px;
     font-family: 'Poppins';
-    background-color: #262121;
+    background-color: #1B1919;
 }
 
 .home-menu-link{
@@ -28,9 +28,9 @@
 .home-section{
     display: flex;
     justify-content: space-between;
-    padding: 0px 15% ;
+    padding: 0px 16% ;
     padding-top: 60px;
-    background-color: #262121;
+    background-color: #1B1919;
 }
 
 .home-section img{
@@ -39,7 +39,7 @@
 }
 
 .home-section-div{
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     padding: 150px 50px;
@@ -79,3 +79,12 @@
         padding-top: 60px;
     }
 }
+
+@media all and (display-mode: fullscreen) {
+    .home-menu{
+        padding: 60px 150px;
+    }
+    .home-section{
+        padding-top: 8%;
+    }
+  }
