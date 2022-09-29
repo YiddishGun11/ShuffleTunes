@@ -54,7 +54,7 @@ input[type=text] {
     height: 45px;
     border: none;
     border-radius: 10px;
-    background-color: #913099;
+    background-color: #10c6d3;
     color: white;
     font-family: 'Poppins';
     font-size: 16px;
@@ -92,6 +92,6 @@ input[type=text] {
 }
 
 .switch-connect-link:hover{
-    color: #9f2daa;
+    color: #10c6d3;
 }
 

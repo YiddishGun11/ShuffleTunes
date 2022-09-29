@@ -63,9 +63,10 @@
     color: white;
     border: none;
     border-radius: 10px;
-    background-color: #913099;
+    background-color: #10c6d3;
     font-size: 16px;
     font-family: 'Poppins';
+    font-weight: bold;
 }
 
 .home-section-div button:hover{

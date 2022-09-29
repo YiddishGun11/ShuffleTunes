@@ -8,8 +8,6 @@ function NavBar(){
         <div className='navbar-section'>
             <div className='navbar-section-items'>
                 <h1>ShuffleTunes</h1>
-                <p>Favoris</p>
-                <p>Playlist</p>
             </div>
             <div className='navbar-section-icons'>
                 <div className='navbar-section-icons-childs'>
