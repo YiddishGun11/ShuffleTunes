@@ -10,6 +10,7 @@ import PlayList from '../../components/PlayList/Playlist';
 
 //redux
 import {useSelector} from 'react-redux'
+import UploadMusic from '../../components/UploadMusic/UploadMusic'
 
 
 function DashBoard(){
@@ -47,10 +48,22 @@ function DashBoard(){
                                     <FavSongs />
                                 )
 
+                            case(3):
+                                return(
+                                    <UploadMusic />
+                                )
+
                             case(4):
                                 return(
                                     <PlayList />
                                 )
+
+                         
+
+                            case(3):
+                            return(
+                                <UploadMusic />
+                            )
 
                             default: 
                                 return(

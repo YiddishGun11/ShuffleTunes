@@ -8,6 +8,8 @@ const router = express.Router();
 //importer les requetes POST & GET
 const data = require('../controllers/data');
 
+// Midelwar
+const upload = require('../controllers/multer');
 const dataDelete = require('../controllers/delete');
 
 // validation midelware
@@ -43,6 +45,8 @@ router.get('/songs/:id', data.getSongs);
 // send the music we want to upload to the server
 router.post('/createplaylist', data.createPlaylist);
 
+router.post('/uploadMusic', upload.array('musicFiles', 20), data.uploadMusic);
+
 router.post('/newsong', data.insertSong);
 
 
@@ -53,8 +57,7 @@ router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 // register
 router.post('/register', registerValidation.registerValidation, data.register);
 
-// register
-router.post('/register', registerValidation.registerValidation, data.register);
+
 
 
 

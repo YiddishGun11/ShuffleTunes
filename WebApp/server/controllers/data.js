@@ -109,6 +109,17 @@ const register = (request, response, next) => {
     }
 }
 
+const uploadMusic = (request, response) => {
+    // Array which contain all the music
+   console.log(request.files)
+
+
+
+
+    // Envoyer music sur serveur FTP
+    // Enregister nom musique du serveur FTP sur DB ?
+}
+
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -155,5 +166,6 @@ module.exports = {
     insertSong,
     getSongsByPlaylist,
     getSongs,
-    register
+    register,
+    uploadMusic
 }

@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins");
+
+form {
+    font-family: Poppins, sans-serif;
+    margin: auto;
+    margin-top: 3rem;
+    width: 50rem;
+}
+
+.music-file-input {
+    opacity: 0;
+}
+
+.music-file-input-content {
+    background-color: #322c2c;
+    height: 300px;
+    border-radius: 2rem;
+    border: 0.09rem dashed rgb(255 255 255 / 0.4);
+    padding: 2rem;
+    overflow-y: scroll;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.drop-div-text p {
+    text-align: center;
+    background-color: #322c2c;
+    font-size: 22px;
+    padding-left: 4rem;
+
+.form-control-button {
+    text-align: center;
+}
+
+.form-control-button {
+    text-align: center;
+}
+
+.drop-div-music {
+    background-color: #322c2c;
+    padding: 0.1rem;
+}
+
+.drop-div-music-cancel {
+    background-color: #322c2c;
+    color: red;
+    display: inline;
+    height: 1.2rem;
+    width: 1.5rem;
+    border: none;
+    margin-left: 0.7rem;
+}
+
+.drop-div-music-cancel:hover {
+    color: darkred;
+}
+
+.drop-control-button {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 200px;
+    height: 150px;
+}
+
+.drop-control-button button {
+    width: 150px;
+    height: 45px;
+.form-control-button button {
+    width: 12rem;
+    height: 4rem;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    background-color: #10c6d3;
+    font-size: 1.5rem;
+    font-family: Poppins, sans-serif;
+    margin: 2rem 5rem;
+}
+
+.form-control-button button:hover {
+    transform: scale(1.1);
+    transition-duration: 0.7s;
+}
+
+.delete-music-from-queue {
+    display: inline;
+    color: red;
+    height: 1.5rem;
+    width: 2.1rem;
+    text-align: left;
+    margin-left: 1.5rem;
+    border: none;
+}
+
+.delete-music-from-queue:hover {
+    color: darkred;
+}
+
+.form-control-button button:hover {
+    transform: scale(1.1);
+    transition-duration: 0.7s;
+}
