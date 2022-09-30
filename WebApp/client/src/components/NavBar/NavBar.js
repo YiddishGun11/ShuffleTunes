@@ -3,11 +3,11 @@ import './NavBar.css';
 import {BsPersonLinesFill, BsGear} from 'react-icons/bs'
 import {BiLogOut} from 'react-icons/bi'
 
-function NavBar(){
+function NavBar({contentDisplay, setContentDisplay}){
     return(
         <div className='navbar-section'>
             <div className='navbar-section-items'>
-                <h1>ShuffleTunes</h1>
+                <h1 onClick={()=>setContentDisplay(0)}  >ShuffleTunes</h1>
             </div>
             <div className='navbar-section-icons'>
                 <div className='navbar-section-icons-childs'>

@@ -1,12 +1,18 @@
+'use strict'
+
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
-app.get('/api',(req, res)=>{
-    res.json({'users': ["userOne", "userTwo","userThree"]})
-})
+const Route = require('./routes/routes');
 
-app.get('/', (req, res)=>{
-    res.json("hello bitches")
-})
 
+app.use(express.json());
+
+app.use(cors());
+
+//utiliser le router nodejs
+app.use('/',Route);
+
+//port serveur nodejs
 app.listen(5000, ()=>{console.log("server running on port 5000")})
