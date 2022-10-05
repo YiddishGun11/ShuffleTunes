@@ -2,9 +2,7 @@
 
 const fs = require('fs');
 
-//path dynamique à venir en fonction du compte utilisateur
-const directoryPath = 'C:/Users/edoua/Desktop/ShuffleTunes/WebApp/server/musicFiles'
-
+const directoryPath = '/users/HASHED_DIR/'
 
 const getFiles = (request, response) =>{
 
