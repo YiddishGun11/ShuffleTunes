@@ -3,6 +3,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import './DashBoard.css';
 import {BsFolderPlus, BsFolder} from 'react-icons/bs'
 import ProfileImage from '../../assets/profil.png'
+import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
 
 
 function DashBoard(){
@@ -30,7 +31,7 @@ function DashBoard(){
                 </div>
 
                 <div className='main-content'>
-                    <p>espace ou placer des components en fonction des choix disponibles</p>
+                        <SoundPlayer/>
                 </div>
             </div>
         </div>
