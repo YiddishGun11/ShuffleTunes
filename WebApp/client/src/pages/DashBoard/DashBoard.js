@@ -4,6 +4,7 @@ import './DashBoard.css';
 import SideBar from '../../components/SideBar/SideBar';
 import FileList from '../../components/FileList/FileList';
 import FavSongs from '../../components/FavSongs/FavSongs';
+import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
 
 
 function DashBoard(){

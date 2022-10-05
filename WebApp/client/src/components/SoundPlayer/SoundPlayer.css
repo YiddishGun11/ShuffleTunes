@@ -1,0 +1,7 @@
+.sound-player{
+    padding: 0px 300px;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+}
