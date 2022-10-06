@@ -4,7 +4,7 @@ import './FileList.css'
 
 const baseURL = 'http://localhost:5000/userFiles'
 
-function FileList(){
+function FileList({Musicbar, setMusicBar}){
 
     const [data, setData] = useState([]);
 
@@ -25,17 +25,22 @@ function FileList(){
             ):(
                 <div>
                     <h1>Your File List</h1>
-                    <div className='test123'>
-                        {data.map((item) => (
-                        <p key={item}>{item}</p>
-                        ))}
-                    </div>
+                        <p onClick={() =>setMusicBar(true)}>MUSIC ITEM</p>
+                        <p onClick={() =>setMusicBar(false)}>HIDE BAR</p>
                 </div>
             )}
         </div>
 
     );
 }
+
+/*
+    <div className='test123'>
+        {data.map((item) => (
+        <p key={item}>{item}</p>
+        ))}
+    </div>
+*/
 
 
 export default FileList;
