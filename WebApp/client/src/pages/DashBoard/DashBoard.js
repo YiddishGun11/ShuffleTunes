@@ -11,41 +11,52 @@ function DashBoard(){
 
     const[contentDisplay, setContentDisplay] = useState(0);
 
+    const[MusicBar, setMusicBar] = useState(false);
+
     return(
         <div>
             <NavBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay} />
             <div className='dashboard-section'>
 
                 <SideBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay}/>
-                <div className='main-content'>
+                <div className='test1'>
+                    <div className='main-content'>
 
-                    {( ()=>{
-                        switch(contentDisplay){
-                            case(0):
-                            return(
-                                <div className='dashboard-main-component'>
-                                    <h1>Welcome to ShuffleTunes !</h1>
-                                    <p>Use our different options to optimize your experience on our App</p>
-                                    <button>Try it now</button>
-                                </div>
-                            )
-                            case(1):
-                            return(
-                                <FileList />
-                            )
+                        {( ()=>{
+                            switch(contentDisplay){
+                                case(0):
+                                return(
+                                    <div className='dashboard-main-component'>
+                                        <h1>Welcome to ShuffleTunes !</h1>
+                                        <p>Use our different options to optimize your experience on our App</p>
+                                        <button>Try it now</button>
+                                    </div>
+                                )
+                                case(1):
+                                return(
+                                    <FileList MusicBar={MusicBar} setMusicBar={setMusicBar} />
+                                )
 
-                            case(2):
-                            return(
-                                <FavSongs />
-                            )
+                                case(2):
+                                return(
+                                    <FavSongs />
+                                )
 
-                            default: 
-                            return(
-                                <div></div>
-                            )
-                        }
+                                default: 
+                                return(
+                                    <div></div>
+                                )
+                            }
 
-                    })()}
+                        })()}
+                    </div>
+                    <div>
+                        {MusicBar ?(
+                            <SoundPlayer />
+                        ):(
+                            <p></p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
