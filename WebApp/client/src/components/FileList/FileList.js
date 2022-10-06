@@ -6,7 +6,7 @@ import FileListItem from './FileListItem'
 
 const baseURL = 'http://localhost:5000/userFiles'
 
-function FileList(){
+function FileList({Musicbar, setMusicBar}){
 
     const [data, setData] = useState([]);
 
@@ -51,8 +51,14 @@ function FileList(){
             )}
         </div>
 
-    );
-}
+
+/*
+    <div className='test123'>
+        {data.map((item) => (
+        <p key={item}>{item}</p>
+        ))}
+    </div>
+*/
 
 
 
