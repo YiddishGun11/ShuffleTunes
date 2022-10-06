@@ -16,12 +16,34 @@
 }
 
 .filelist-section p{
-    font-size: 20px;
-    margin-top: 20px;
     background-color: #322C2C;
 }
 
-.test123{
+.file-list-child{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 150px;
+    margin: 26px 0px;
+    font-size: 20px;
+    background-color:  #322C2C;
+}
+
+.file-list-child p{
+    background-color:  #322C2C;
+}
+
+.file-list-child button{
+    color: white;
+    border: none;
+    background-color:  #322C2C;
+}
+
+.file-list-child-icon{
+    background-color:  #322C2C;
+    color: #ed2143;
+}
+
+.music-list-items{
     overflow-y: scroll;
     height: 250px;
 }

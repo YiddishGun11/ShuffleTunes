@@ -1,11 +1,16 @@
-'use strict'
-
 const cors = require('cors');
+
 const express = require('express');
-const app = express();
 
 const Route = require('./routes/routes');
 
+const http = require('http');
+
+//connexion to db
+const db = require('./database/database');
+db.connect();
+
+const app = express();
 
 app.use(express.json());
 

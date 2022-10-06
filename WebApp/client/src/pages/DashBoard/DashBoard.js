@@ -10,6 +10,7 @@ function DashBoard(){
 
     const[contentDisplay, setContentDisplay] = useState(0);
 
+
     return(
         <div>
             <NavBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay} />
