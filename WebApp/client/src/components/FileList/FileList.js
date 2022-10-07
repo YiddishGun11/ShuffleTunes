@@ -6,23 +6,9 @@ import FileListItem from './FileListItem'
 
 const baseURL = 'http://localhost:5000/userFiles'
 
-function FileList({Musicbar, setMusicBar}){
+function FileList(){
 
     const [data, setData] = useState([]);
-
-    //temporaire : test de passage de données entre les 2 composants
-    const [test, setTest] = useState([]);
-
-    const Additem = (item, liked) =>{
-        if(liked === false){
-            test.push(item);
-            console.log(test);
-        }
-        else{
-            test.pop(item);
-            console.log(test);
-        }
-    }
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
@@ -44,21 +30,14 @@ function FileList({Musicbar, setMusicBar}){
                     <h1>Your File List</h1>
                     <div className='music-list-items'>
                         {data.map((item) => (
-                        <FileListItem item={item} key={item} Additem={Additem} />
+                        <FileListItem item={item} key={item}/>
                         ))}
                     </div>
                 </div>
             )}
         </div>
-
-
-/*
-    <div className='test123'>
-        {data.map((item) => (
-        <p key={item}>{item}</p>
-        ))}
-    </div>
-*/
+    );
+}
 
 
 

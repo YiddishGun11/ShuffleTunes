@@ -17,7 +17,7 @@ function SideBar({contentDisplay, setContentDisplay}){
         </div>
         <div className='sidebar-item2'>
             <MdOutlinePlaylistAdd size={25}/>
-            <p>Your PlayList</p>
+            <p onClick={() => setContentDisplay(4)}>Your PlayLists</p>
         </div>
         <div className='sidebar-item2'>
             <AiOutlineHeart size={25}/>

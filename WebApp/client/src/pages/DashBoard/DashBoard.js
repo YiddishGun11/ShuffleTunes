@@ -4,13 +4,19 @@ import './DashBoard.css';
 import SideBar from '../../components/SideBar/SideBar';
 import FileList from '../../components/FileList/FileList';
 import FavSongs from '../../components/FavSongs/FavSongs';
-//import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
+import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
+import PlayList from '../../components/PlayList/Playlist';
+
+
+//redux
+import {useSelector} from 'react-redux'
 
 
 function DashBoard(){
 
     const[contentDisplay, setContentDisplay] = useState(0);
 
+    const display = useSelector((state)=>state.musicReducer.display);
 
     return(
         <div>
@@ -18,7 +24,7 @@ function DashBoard(){
             <div className='dashboard-section'>
 
                 <SideBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay}/>
-                <div className='test1'>
+                <div className='components-container'>
                     <div className='main-content'>
 
                         {( ()=>{
@@ -33,12 +39,17 @@ function DashBoard(){
                                 )
                                 case(1):
                                 return(
-                                    <FileList />
+                                    <FileList/>
                                 )
 
                                 case(2):
                                 return(
                                     <FavSongs />
+                                )
+
+                                case(4):
+                                return(
+                                    <PlayList />
                                 )
 
                                 default: 
@@ -50,6 +61,12 @@ function DashBoard(){
                         })()}
                     </div>
                     <div>
+                        {display ?(
+                            <SoundPlayer />
+                        ):
+                        (
+                            <div></div>
+                        )}
                     </div>
                 </div>
             </div>

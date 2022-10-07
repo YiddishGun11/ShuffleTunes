@@ -1,0 +1,12 @@
+.playlists-section{
+    margin : 20px 10%;
+    background-color: #322C2C;
+    border-radius: 15px;
+    padding: 30px 80px;
+    height: 400px;
+    font-family: 'Poppins';
+}
+
+.playlists-section h1{
+    background-color: #322C2C;
+}

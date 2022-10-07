@@ -7,16 +7,21 @@ import { useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
+//redux
+import {useSelector} from 'react-redux'
+
 
 function SoundPlayer() {
 
-    function getMusicName(path){
+    const song = useSelector((state) => state.musicReducer.song)
+
+    /*function getMusicName(path){
       return (path.split('/').pop()).split('.')[0];
-    }
+    }*/
 
     const musicTracks = [
       {
-        name: "MusicSample",
+        name: song,
         src: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3"
       }
       /*{
@@ -44,7 +49,7 @@ function SoundPlayer() {
     };
   
     return (
-      <div className="sound-player">
+      <div className="sound-player" onClick={()=>console.log(musicTracks)}>
         <AudioPlayer
           style={{ borderRadius: "1rem", backgroundColor: "#1B1919", padding: "10px 0px", boxShadow: "0 0 0px 0"}}
           src={musicTracks[trackIndex].src}
