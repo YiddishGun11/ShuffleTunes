@@ -19,7 +19,7 @@ function DashBoard(){
             <div className='dashboard-section'>
 
                 <SideBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay}/>
-                <div className='test1'>
+                <div className='components-container'>
                     <div className='main-content'>
 
                         {( ()=>{

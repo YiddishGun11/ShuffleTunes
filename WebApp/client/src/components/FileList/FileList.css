@@ -2,7 +2,7 @@
     margin: 50px 20%;
     background-color: #322c2c;
     border-radius: 15px;
-    padding: 35px 80px;
+    padding: 30px 80px;
     height: 400px;
     font-family: Poppins, sans-serif;
 }
@@ -23,5 +23,5 @@
 
 .test123 {
     overflow-y: scroll;
-    height: 250px;
+    height: 255px;
 }

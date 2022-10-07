@@ -10,20 +10,6 @@ function FileList({setMusicBar}){
 
     const [data, setData] = useState([]);
 
-    //temporaire : test de passage de données entre les 2 composants
-    const [test, setTest] = useState([]);
-
-    const Additem = (item, liked) =>{
-        if(liked === false){
-            test.push(item);
-            console.log(test);
-        }
-        else{
-            test.pop(item);
-            console.log(test);
-        }
-    }
-
     useEffect(() => {
         axios.get(baseURL).then((response) => {
             setData(response.data);
