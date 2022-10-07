@@ -11,7 +11,7 @@
 - cloner le répertoire sur votre machine : <br>
 `git clone https://github.com/YiddishGun11/ShuffleTunes.git`
 
-- se rendre dans le dossier `WebbApp` : <br>
+- se rendre dans le dossier `WebApp` : <br>
 `cd /WebApp`
 
 - Installer les packages une fois arrivé dans le dossier `WebApp` : <br>
