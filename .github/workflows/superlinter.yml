@@ -14,4 +14,5 @@ jobs:
         uses: github/super-linter@v4.9.5
         env:
           DEFAULT_BRANCH: main
+          VALIDATE_JAVASCRIPT_STANDARD: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
