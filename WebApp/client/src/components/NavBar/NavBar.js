@@ -3,7 +3,7 @@ import './NavBar.css';
 import {BsPersonLinesFill, BsGear} from 'react-icons/bs'
 import {BiLogOut} from 'react-icons/bi'
 
-function NavBar({contentDisplay, setContentDisplay}){
+function NavBar({setContentDisplay}){
     return(
         <div className='navbar-section'>
             <div className='navbar-section-items'>

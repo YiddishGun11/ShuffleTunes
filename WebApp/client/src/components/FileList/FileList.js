@@ -4,7 +4,7 @@ import './FileList.css'
 
 const baseURL = 'http://localhost:5000/userFiles'
 
-function FileList({Musicbar, setMusicBar}){
+function FileList({setMusicBar}){
 
     const [data, setData] = useState([]);
 

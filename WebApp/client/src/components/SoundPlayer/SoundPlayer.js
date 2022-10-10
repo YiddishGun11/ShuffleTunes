@@ -10,14 +10,14 @@ import "react-h5-audio-player/lib/styles.css";
 
 function SoundPlayer() {
 
-    function getMusicName(path){
+    /*function getMusicName(path){
         return (path.split('/').pop()).split('.')[0];
-    }
+    }*/
 
     const musicTracks = [
         {
-          name: "MusicSample",
-          src: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3"
+            name: "MusicSample",
+            src: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3"
         }
         /*{
           name: getMusicName(musicSample1),
@@ -33,28 +33,28 @@ function SoundPlayer() {
   
     const handleClickPrevious = () => {
         setTrackIndex((currentTrack) =>
-          currentTrack === 0 ? musicTracks.length - 1 : currentTrack - 1
+            currentTrack === 0 ? musicTracks.length - 1 : currentTrack - 1
         );
     };
   
     const handleClickNext = () => {
         setTrackIndex((currentTrack) =>
-          currentTrack < musicTracks.length - 1 ? currentTrack + 1 : 0
+            currentTrack < musicTracks.length - 1 ? currentTrack + 1 : 0
         );
     };
   
     return (
         <div className="sound-player">
-          <AudioPlayer
-            style={{ borderRadius: "1rem", backgroundColor: "#1B1919", padding: "10px 0px", boxShadow: "0 0 0px 0"}}
-            src={musicTracks[trackIndex].src}
-            showSkipControls={true}
-            showJumpControls={false}
-            header={` ${musicTracks[trackIndex].name}`}
-            onClickPrevious={handleClickPrevious}
-            onClickNext={handleClickNext}
-            onEnded={handleClickNext}
-          />
+            <AudioPlayer
+              style={{ borderRadius: "1rem", backgroundColor: "#1B1919", padding: "10px 0px", boxShadow: "0 0 0px 0"}}
+              src={musicTracks[trackIndex].src}
+              showSkipControls={true}
+              showJumpControls={false}
+              header={` ${musicTracks[trackIndex].name}`}
+              onClickPrevious={handleClickPrevious}
+              onClickNext={handleClickNext}
+              onEnded={handleClickNext}
+            />
         </div>
     );
 }

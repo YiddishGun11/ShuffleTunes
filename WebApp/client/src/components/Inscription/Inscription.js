@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Inscription({display, setDisplay}){
+function Inscription({setDisplay}){
     return(
         <div className='login-section-background'>
             <div className='login-section'>

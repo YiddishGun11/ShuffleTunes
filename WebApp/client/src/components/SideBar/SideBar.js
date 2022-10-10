@@ -4,7 +4,7 @@ import {BsFolderPlus, BsFolder} from 'react-icons/bs'
 import {AiOutlineHeart} from 'react-icons/ai'
 import {MdOutlinePlaylistAdd} from 'react-icons/md'
 
-function SideBar({contentDisplay, setContentDisplay}){
+function SideBar({setContentDisplay}){
     return(
         <div className='sidebar'>
             <div className='sidebar-item1'>

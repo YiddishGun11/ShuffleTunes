@@ -1,6 +1,6 @@
 import './Connexion.css'
 
-function Connexion({display, setDisplay}){
+function Connexion({setDisplay}){
 
     return(
         <div className='login-section-background'>
