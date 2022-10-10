@@ -2,6 +2,6 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "indentation": 4,
-    "no-missing-end-of-source-newline": false
+    "no-missing-end-of-source-newline": null
   }
 }
