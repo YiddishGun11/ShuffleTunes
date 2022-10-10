@@ -1,12 +1,12 @@
-.favorite-section{
-    margin : 50px 20%;
-    background-color: #322C2C;
+.favorite-section {
+    margin: 50px 20%;
+    background-color: #322c2c;
     border-radius: 15px;
     padding: 40px 80px;
     height: 400px;
-    font-family: 'Poppins';
+    font-family: Poppins, sans-serif;
 }
 
-.favorite-section h1{
-    background-color: #322C2C;
+.favorite-section h1 {
+    background-color: #322c2c;
 }

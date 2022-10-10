@@ -4,16 +4,16 @@ import './FileList.css'
 
 const baseURL = 'http://localhost:5000/userFiles'
 
-function FileList({Musicbar, setMusicBar}){
+function FileList({setMusicBar}){
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
-          setData(response.data);
+            setData(response.data);
         });
 
-      }, []);
+    }, []);
 
     return(
         <div className='filelist-section'>
@@ -25,8 +25,8 @@ function FileList({Musicbar, setMusicBar}){
             ):(
                 <div>
                     <h1>Your File List</h1>
-                        <p onClick={() =>setMusicBar(true)}>MUSIC ITEM</p>
-                        <p onClick={() =>setMusicBar(false)}>HIDE BAR</p>
+                    <p onClick={() =>setMusicBar(true)}>MUSIC ITEM</p>
+                    <p onClick={() =>setMusicBar(false)}>HIDE BAR</p>
                 </div>
             )}
         </div>

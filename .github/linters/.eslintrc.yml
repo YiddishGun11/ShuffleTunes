@@ -12,6 +12,7 @@ env:
   browser: true
   es6: true
   jest: true
+  node: true
 
 ###############
 # Global Vars #
@@ -33,6 +34,12 @@ parserOptions:
 ###########
 plugins:
   - '@typescript-eslint'
+  
+###########
+# Extends #
+###########
+extends: 
+  - eslint:recommended
 
 #########
 # Rules #
