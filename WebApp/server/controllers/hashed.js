@@ -12,5 +12,5 @@ function hash512String(username)
 }
 
 module.exports = {
-    hashUserName
+    hash512String
 }
