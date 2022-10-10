@@ -7,13 +7,13 @@
 }
 
 .main-content {
-    background-color:#1b1919;
+    background-color: #1b1919;
     color: white;
     font-family: Poppins, sans-serif;
 }
 
 .dashboard-main-component {
-    margin : 50px 20%;
+    margin: 50px 20%;
     display: flex;
     background-color: #322c2c;
     border-radius: 15px;

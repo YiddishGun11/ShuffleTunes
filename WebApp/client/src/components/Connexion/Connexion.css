@@ -3,7 +3,7 @@
 input[type="text"] {
     text-indent: 15px;
     color: white;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     font-size: 14px;
 }
 
@@ -23,7 +23,7 @@ input[type="text"] {
     margin-left: auto;
     margin-right: auto;
     color: white;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -55,7 +55,7 @@ input[type="text"] {
     border-radius: 10px;
     background-color: #10c6d3;
     color: white;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     font-size: 16px;
 }
 
@@ -65,7 +65,7 @@ input[type="text"] {
 }
 
 ::placeholder {
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     color: white;
 }
 
@@ -73,7 +73,7 @@ input[type="text"] {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
-    font-size: 18px ;
+    font-size: 18px;
     background-color: #322c2c;
 }
 
@@ -81,7 +81,6 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     background-color: #322c2c;
-
 }
 
 .switch-connect p {
@@ -93,4 +92,3 @@ input[type="text"] {
 .switch-connect-link:hover {
     color: #10c6d3;
 }
-

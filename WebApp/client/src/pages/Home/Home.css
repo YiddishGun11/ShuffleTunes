@@ -28,7 +28,7 @@
 .home-section {
     display: flex;
     justify-content: space-between;
-    padding: 0 16% ;
+    padding: 0 16%;
     padding-top: 60px;
     background-color: #1b1919;
 }
@@ -86,7 +86,7 @@
         padding: 60px 150px;
     }
 
-    .home-section{
+    .home-section {
         padding-top: 8%;
     }
-  }
+}

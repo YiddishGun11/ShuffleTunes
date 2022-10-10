@@ -2,9 +2,8 @@
     height: 100%;
     width: 300px;
     color: white;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
 }
-
 
 .sidebar-item1 {
     display: flex;
