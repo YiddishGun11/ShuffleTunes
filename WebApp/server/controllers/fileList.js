@@ -18,6 +18,4 @@ const getFiles = (request, response) =>{
 }
 
 
-module.exports = {
-    getFiles
-}
+module.exports = getFiles

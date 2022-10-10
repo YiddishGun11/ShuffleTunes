@@ -15,8 +15,7 @@ function ConnexionPage(){
             </div>
             {display?(
                 <Connexion display={display} setDisplay={setDisplay}/>
-            ):
-            (
+            ):(
                 <Inscription display={display} setDisplay={setDisplay} />
             )}
         </div>

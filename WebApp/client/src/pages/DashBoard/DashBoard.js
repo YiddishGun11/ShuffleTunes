@@ -24,7 +24,7 @@ function DashBoard(){
 
                         {( ()=>{
                             switch(contentDisplay){
-                                case(0):
+                            case(0):
                                 return(
                                     <div className='dashboard-main-component'>
                                         <h1>Welcome to ShuffleTunes !</h1>
@@ -32,17 +32,17 @@ function DashBoard(){
                                         <button>Try it now</button>
                                     </div>
                                 )
-                                case(1):
+                            case(1):
                                 return(
                                     <FileList MusicBar={MusicBar} setMusicBar={setMusicBar} />
                                 )
 
-                                case(2):
+                            case(2):
                                 return(
                                     <FavSongs />
                                 )
 
-                                default: 
+                            default: 
                                 return(
                                     <div></div>
                                 )

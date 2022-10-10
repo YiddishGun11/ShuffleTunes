@@ -7,23 +7,23 @@ import {MdOutlinePlaylistAdd} from 'react-icons/md'
 function SideBar({contentDisplay, setContentDisplay}){
     return(
         <div className='sidebar'>
-        <div className='sidebar-item1'>
-            <BsFolder size={25} />
-            <p onClick={()=>setContentDisplay(1)} >Your Files</p>
+            <div className='sidebar-item1'>
+                <BsFolder size={25} />
+                <p onClick={()=>setContentDisplay(1)} >Your Files</p>
+            </div>
+            <div className='sidebar-item2'>
+                <BsFolderPlus size={25}/>
+                <p>Upload new files</p>
+            </div>
+            <div className='sidebar-item2'>
+                <MdOutlinePlaylistAdd size={25}/>
+                <p>Your PlayList</p>
+            </div>
+            <div className='sidebar-item2'>
+                <AiOutlineHeart size={25}/>
+                <p onClick={()=>setContentDisplay(2)} >Favorites Songs</p>
+            </div>
         </div>
-        <div className='sidebar-item2'>
-            <BsFolderPlus size={25}/>
-            <p>Upload new files</p>
-        </div>
-        <div className='sidebar-item2'>
-            <MdOutlinePlaylistAdd size={25}/>
-            <p>Your PlayList</p>
-        </div>
-        <div className='sidebar-item2'>
-            <AiOutlineHeart size={25}/>
-            <p onClick={()=>setContentDisplay(2)} >Favorites Songs</p>
-        </div>
-    </div>
     );
 }
 
