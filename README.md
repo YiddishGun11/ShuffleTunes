@@ -1,5 +1,5 @@
 # ShuffleTunes
-Interconnected speakers with Raspberry Pi &amp; WebApp 🎵
+Interconnected speakers with Raspberry Pi &amp; WebApp 🎵 
 <br>
 
 ----
