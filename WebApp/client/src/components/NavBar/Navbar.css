@@ -1,40 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.navbar-section{
+.navbar-section {
     display: flex;
     justify-content: space-between;
     padding: 40px 60px;
     color: white;
-    font-family: 'Poppins';
+    font-family: "Poppins", sans-serif;
 
 }
 
-.navbar-section-items{
+.navbar-section-items {
     display: flex;
     justify-content: space-between;
 }
 
-.navbar-section-items p{
+.navbar-section-items p {
     padding-top: 18px;
     padding-left: 80px;
 }
 
-.navbar-section-items p:hover{
+.navbar-section-items p:hover {
     text-decoration: underline;
 }
 
-.navbar-section-icons{
+.navbar-section-icons {
     display: flex;
     justify-content: space-between;
 
 }
 
-.navbar-section-icons-childs{
+.navbar-section-icons-childs {
     padding-top: 18px;
     padding-right: 50px;
 }
 
-.navbar-section-icons-childs:hover{
+.navbar-section-icons-childs:hover {
     color: #10c6d3;
     transition-duration: 0.7;
 }

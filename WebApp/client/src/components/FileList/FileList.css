@@ -1,27 +1,27 @@
-.filelist-section{
-    margin : 50px 20%;
-    background-color: #322C2C;
+.filelist-section {
+    margin: 50px 20%;
+    background-color: #322c2c;
     border-radius: 15px;
     padding: 35px 80px;
     height: 400px;
-    font-family: 'Poppins';
+    font-family: "Poppins", sans-serif;
 }
 
-.filelist-section h1{
-    background-color: #322C2C;
+.filelist-section h1 {
+    background-color: #322c2c;
 }
 
-.filelist-section div{
-    background-color: #322C2C;
+.filelist-section div {
+    background-color: #322c2c;
 }
 
-.filelist-section p{
+.filelist-section p {
     font-size: 20px;
     margin-top: 20px;
-    background-color: #322C2C;
+    background-color: #322c2c;
 }
 
-.test123{
+.test123 {
     overflow-y: scroll;
     height: 250px;
 }
