@@ -6,11 +6,12 @@ const fs = require('fs');
 
 const directoryPath = 'C:/Users/edoua/Desktop/ShuffleTunes/WebApp/server/musicFiles'
 
+
 const getFiles = (request, response) =>{
 
     fs.readdir( directoryPath, (error, files)=>{
         if(error){
-            throw(error);
+            console.log(error);
             
         }
         else{
@@ -20,4 +21,6 @@ const getFiles = (request, response) =>{
 }
 
 
-module.exports = getFiles
+module.exports = {
+    getFiles
+}
