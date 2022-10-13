@@ -1,37 +1,68 @@
 import React, { useState } from 'react'
-import {AiOutlineHeart,AiTwotoneHeart} from 'react-icons/ai'
+import axios from 'axios'
+import { URL } from '../../scripts/url'
+
+import {BiAddToQueue} from 'react-icons/bi'
+import {BsArrowRightShort} from 'react-icons/bs'
 
 //redux
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {setDisplay, setSong} from '../../reducers/musicReducer'
+
+import {miniListDisplay} from '../../reducers/playlistReducer'
 
 
 function FileListItem({item}){
 
-    /*
-    - Faire une requete axios pour envoyer le son en DB dans la bonne table (like)
-    - enlever le son de la table avec une requete lors d'un (dislike) (TbMusic : (id, name, path))
-    - conserver l'état des coeur grace aux sons renvoyés lors de la requete dans (Filelist)
-    - utiliser Redux ?
-    */
+    //DB data
+    const [data, setData] = useState([]);
 
+    //redux variables
     const dispatch = useDispatch();
+    const listDisplay = useSelector((state)=> state.playlistReducer.listDisplay);
 
-    const [liked, setLiked] = useState(false)
+    //toggle display playlist songs
+    const handleDisplay = () =>{
+        if(listDisplay === item){
+            dispatch(miniListDisplay(''))
+        }
+        else{
+            dispatch(miniListDisplay(item))
+        }
+    }
 
-    const handleClick = () =>{
-        liked? setLiked(false) : setLiked(true)
+    //get playlists names 
+    const loadPlaylists = () =>{
+        axios.get(URL + '/playlists').then((response) =>{
+            setData(response.data)
+        })
     }
 
     return(
         <div className='file-list-child'> 
-            <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item))}}>{item}</p>
-            {liked?(
-                <button onClick={() => {handleClick()}}> <AiTwotoneHeart className='file-list-child-icon' size={23}/> </button>
-            ):
-            (
-                <button onClick={() => {handleClick()}}> <AiOutlineHeart className='file-list-child-icon' size={23}/> </button>
-            )}
+            <div className='file-list-songs'>
+                <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item))}}>{item}</p>
+                {listDisplay === item ?(
+                    <button onClick={()=>{dispatch(miniListDisplay(item)); handleDisplay()}}><BsArrowRightShort size={28} className="file-list-child-icon"/></button> 
+                ):(
+                    <button onClick={()=>{dispatch(miniListDisplay(item)); handleDisplay(); loadPlaylists()}}><BiAddToQueue size={23} className="file-list-child-icon"/></button> 
+                )}
+            </div>
+            
+            <div className='file-list-dropmenu'>
+                {listDisplay === item ?(
+                    <div >
+                        {data.map((playlist) =>{
+                            return(
+                                <p id={playlist.playlistId} key={playlist.playlistId}>{playlist.playlistName}</p>
+                            );
+                        })}
+                    </div>
+                ):(
+                    <p></p>
+                )}
+
+            </div>
         </div>
     );
 }

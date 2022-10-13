@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './FileList.css'
 
+import { URL } from '../../scripts/url'
+
 import FileListItem from './FileListItem'
 
-const baseURL = 'http://localhost:5000/userFiles'
+const baseURL = URL + '/userFiles';
 
 function FileList({setMusicBar}){
 

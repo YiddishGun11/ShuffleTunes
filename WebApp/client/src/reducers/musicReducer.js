@@ -17,6 +17,12 @@ const musicReducer = createSlice({
             state.song = action.payload;
         },
 
+        //implémenter un systeme de fermeture de musique
+        closeSong : (state) =>{
+            state.song = "";
+            state.display = false;
+        }
+
     }
 })
 

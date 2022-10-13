@@ -29,7 +29,7 @@ function DashBoard(){
                                     <div className='dashboard-main-component'>
                                         <h1>Welcome to ShuffleTunes !</h1>
                                         <p>Use our different options to optimize your experience on our App</p>
-                                        <button>Try it now</button>
+                                        <button onClick={() => setContentDisplay(3)}>Try it now</button>
                                     </div>
                                 )
                             case(1):

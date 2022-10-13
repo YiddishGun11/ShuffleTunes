@@ -35,3 +35,8 @@
     font-family: 'Poppins';
     font-weight: bold;
 }
+
+.fav-songs-list{
+    margin: 26px 0px;
+    font-size: 20px;
+}
