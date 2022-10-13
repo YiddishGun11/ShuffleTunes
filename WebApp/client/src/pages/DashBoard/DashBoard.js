@@ -5,13 +5,18 @@ import SideBar from '../../components/SideBar/SideBar';
 import FileList from '../../components/FileList/FileList';
 import FavSongs from '../../components/FavSongs/FavSongs';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
+import PlayList from '../../components/PlayList/Playlist';
+
+
+//redux
+import {useSelector} from 'react-redux'
 
 
 function DashBoard(){
 
     const[contentDisplay, setContentDisplay] = useState(0);
 
-    const[MusicBar, setMusicBar] = useState(false);
+    const display = useSelector((state)=>state.musicReducer.display);
 
     return(
         <div>
@@ -34,7 +39,7 @@ function DashBoard(){
                                 )
                             case(1):
                                 return(
-                                    <FileList MusicBar={MusicBar} setMusicBar={setMusicBar} />
+                                    <FileList/>
                                 )
 
                             case(2):
@@ -42,7 +47,12 @@ function DashBoard(){
                                     <FavSongs />
                                 )
 
-                            default: 
+                                case(4):
+                                return(
+                                    <PlayList />
+                                )
+
+                                default: 
                                 return(
                                     <div></div>
                                 )
@@ -51,10 +61,11 @@ function DashBoard(){
                         })()}
                     </div>
                     <div>
-                        {MusicBar ?(
+                        {display ?(
                             <SoundPlayer />
-                        ):(
-                            <p></p>
+                        ):
+                        (
+                            <div></div>
                         )}
                     </div>
                 </div>

@@ -8,7 +8,7 @@ import FileListItem from './FileListItem'
 
 const baseURL = URL + '/userFiles';
 
-function FileList({setMusicBar}){
+function FileList(){
 
     const [data, setData] = useState([]);
 
@@ -29,22 +29,17 @@ function FileList({setMusicBar}){
             ):(
                 <div>
                     <h1>Your File List</h1>
-                    <p onClick={() =>setMusicBar(true)}>MUSIC ITEM</p>
-                    <p onClick={() =>setMusicBar(false)}>HIDE BAR</p>
+                    <div className='music-list-items'>
+                        {data.map((item) => (
+                        <FileListItem item={item} key={item}/>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
-
     );
 }
 
-/*
-    <div className='test123'>
-        {data.map((item) => (
-        <p key={item}>{item}</p>
-        ))}
-    </div>
-*/
 
 
 
