@@ -3,7 +3,7 @@
     background-color: #322C2C;
     border-radius: 15px;
     padding: 30px 80px;
-    height: 400px;
+    height: 450px;
     font-family: 'Poppins';
 }
 
@@ -21,8 +21,7 @@
 
 .file-list-child{
     display: flex;
-    justify-content: space-between;
-    padding-right: 150px;
+    gap: 30px;
     margin: 26px 0px;
     font-size: 20px;
     background-color:  #322C2C;
@@ -32,21 +31,48 @@
     background-color:  #322C2C;
 }
 
+.file-list-child p:hover{
+    color : #10c6d3;
+}
+
 .file-list-child button{
     color: white;
     border: none;
     background-color:  #322C2C;
-    padding: 0px 10px;
+    height: 30px;
+    width: 30px;
+    padding-top: 2px;
 }
 
 .file-list-child-icon{
     background-color:  #322C2C;
-    color: #ed2143;
+    color: white;
 }
 
+.file-list-songs{
+    display: flex;
+    gap: 30px;
+}
+
+.file-list-dropmenu{
+    background-color: red;
+    max-width: 50%;
+    overflow-y: scroll;
+    padding: 0px 10px;
+}
+
+.file-list-dropmenu div{
+    height: 100px;
+    overflow: scroll;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 20px;
+    width: 130px;
+}
 
 .music-list-items{
     margin-top: 15px;
+    margin-left: 20px;
     overflow-y: scroll;
-    height: 255px;
+    height: 280px;
 }

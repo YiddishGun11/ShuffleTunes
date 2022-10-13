@@ -3,9 +3,10 @@ const mysql = require('mysql2')
 //mysql connexion
 //using DOTENV to avoid sensible data in github repo
 const connexion = mysql.createConnection({
-    host: '8eed0a04ab55.sn.mynetname.net',
+    host: '78.129.32.10',
     password: 'Bv87VuDDj|fD',
-    database: 'ShuffleTunes'
+    database: 'ShuffleTunes',
+    user : 'ShuffleTunes'
 })
 
 connexion.connect(function(err) {

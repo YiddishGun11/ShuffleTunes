@@ -1,12 +1,99 @@
-.playlists-section{
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+input[type=text] {
+    text-indent: 10%;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 14px;
+}
+
+::placeholder{
+    font-family: 'Poppins';
+    color: white;
+    opacity: 0.5;
+}
+
+.playlists-container{
     margin : 20px 10%;
     background-color: #322C2C;
     border-radius: 15px;
     padding: 30px 80px;
-    height: 400px;
+    height: 480px;
     font-family: 'Poppins';
 }
 
-.playlists-section h1{
+.playlist-container-menu{
     background-color: #322C2C;
+    display: flex;
+    gap : 25px;
+}
+
+.playlist-container-menu h1{
+    background-color: #322C2C;
+}
+
+.playlist-container-menu-icon{
+    background-color: #322C2C;
+}
+
+.playlist-container-menu-icon:hover{
+    transform: rotate(90deg);
+    transition-duration: 1s;
+}
+
+.playlist-container-menu button{
+    background-color: #322C2C;
+    padding-top: 8px;
+    border: none;
+    color: white;
+}
+
+.playlist-dropdowns{
+    overflow-y : scroll;
+    padding-right: 40px;
+    background-color: #322C2C;
+    height: 280px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.playlist-message{
+    background-color: #322C2C;
+    font-size: 22px;
+    margin-top: 25px;
+}
+
+.add-playlist input{
+    border: none;
+    border-bottom: 1px solid white;
+    margin: 10px 0px;
+    background-color: #322C2C;
+    font-size: 14px;
+    width: 200px;
+}
+
+.add-playlist input:focus{
+    outline: none;
+}
+
+.add-playlist button{
+    margin-top: 7px;
+    height: 35px;
+    width: 120px;
+    border: none;
+    border-radius: 10px;
+    background-color: #10c6d3;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.add-playlist{
+    background-color: #322C2C;
+    margin-top: 15px;
+    height: 50px;
+    display: flex;
+    gap: 30px;
 }
