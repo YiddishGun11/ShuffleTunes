@@ -34,14 +34,14 @@ function PlayList(){
 
         axios.post(URL + '/createplaylist', {
             "playlistName" : formData
-        })
-            .then(function (response) {
+            })
+            .then(function () {
             //à définir
-          })
+            })
 
             .catch(function (error) {
-            console.log(error);
-        });
+                console.log(error);
+            });
           
     }
 

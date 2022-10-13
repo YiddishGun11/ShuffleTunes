@@ -1,5 +1,5 @@
 .filelist-section {
-    margin : 20px 15%;
+    margin: 20px 15%;
     background-color: #322c2c;
     border-radius: 15px;
     padding: 30px 80px;
@@ -32,7 +32,7 @@
 }
 
 .file-list-child p:hover {
-    color : #10c6d3;
+    color: #10c6d3;
 }
 
 .file-list-child button {
@@ -65,7 +65,7 @@
     height: 100px;
     overflow: scroll;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 5px 20px;
     width: 130px;
 }

@@ -8,14 +8,14 @@ input[type=text] {
     font-size: 14px;
 }
 
-::placeholder{
+::placeholder {
     font-family: Poppins, sans-serif;
     color: white;
     opacity: 0.5;
 }
 
-.playlists-container{
-    margin : 20px 10%;
+.playlists-container {
+    margin: 20px 10%;
     background-color: #322C2C;
     border-radius: 15px;
     padding: 30px 80px;
@@ -26,7 +26,7 @@ input[type=text] {
 .playlist-container-menu {
     background-color: #322c2c;
     display: flex;
-    gap : 25px;
+    gap: 25px;
 }
 
 .playlist-container-menu h1 {
@@ -50,7 +50,7 @@ input[type=text] {
 }
 
 .playlist-dropdowns {
-    overflow-y : scroll;
+    overflow-y: scroll;
     padding-right: 40px;
     background-color: #322c2c;
     height: 280px;

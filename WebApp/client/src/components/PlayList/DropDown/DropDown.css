@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.dropdown{
+.dropdown {
     font-family: Poppins, sans-serif;
     padding: 5px 10px;
     margin-top: 10px;
@@ -10,31 +10,31 @@
     width: 100%;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     display: flex;
     justify-content: space-between;
     background-color: #322c2c;
 }
 
-.dropdown-menu div{
+.dropdown-menu div {
     display: flex;
     justify-content: flex-end;
     gap: 5px;
     width: 80px;
-    padding:0px 10px;
+    padding: 0px 10px;
     text-align: center;
     background-color: #322c2c;
 
 }
 
-.playlist-name{
+.playlist-name {
     font-size: 20px;
     background-color: #322c2c;
 }
 
-.dropdown-button{
+.dropdown-button {
     background-color: #322c2c;
-    padding: 0px ;
+    padding: 0 ;
     border: none;
     color: white;
     font-family: Poppins, sans-serif;
@@ -46,7 +46,7 @@
 
 .gear-button {
     background-color: #322C2C;
-    padding: 0px ;
+    padding: 0 ;
     border: none;
     color: white;
     font-family: Poppins, sans-serif;
@@ -89,5 +89,5 @@
 }
 
 .dropdown-songs p {
-    padding : 3px 0px;
+    padding : 3px 0;
 }

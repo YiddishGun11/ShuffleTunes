@@ -61,12 +61,14 @@ function DashBoard(){
                         })()}
                     </div>
                     <div>
-                        {display ?(
+                        {display ?
+                            (
                             <SoundPlayer />
-                        ):
-                        (
+                            ):
+                            (
                             <div></div>
-                        )}
+                            )
+                        }
                     </div>
                 </div>
             </div>
