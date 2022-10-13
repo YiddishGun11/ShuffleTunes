@@ -17,13 +17,13 @@ function SideBar({setContentDisplay}){
             </div>
             <div className='sidebar-item2'>
                 <MdOutlinePlaylistAdd size={25}/>
-                <p>Your PlayList</p>
+                <p onClick={() => setContentDisplay(4)}>Your PlayLists</p>
             </div>
             <div className='sidebar-item2'>
                 <AiOutlineHeart size={25}/>
                 <p onClick={()=>setContentDisplay(2)} >Favorites Songs</p>
             </div>
-        </div>
+    </div>
     );
 }
 

@@ -1,9 +1,9 @@
 .filelist-section {
-    margin: 50px 20%;
+    margin: 20px 15%;
     background-color: #322c2c;
     border-radius: 15px;
-    padding: 35px 80px;
-    height: 400px;
+    padding: 30px 80px;
+    height: 450px;
     font-family: Poppins, sans-serif;
 }
 
@@ -16,12 +16,63 @@
 }
 
 .filelist-section p {
-    font-size: 20px;
-    margin-top: 20px;
     background-color: #322c2c;
 }
 
-.test123 {
+.file-list-child {
+    display: flex;
+    gap: 30px;
+    margin: 26px 0px;
+    font-size: 20px;
+    background-color:  #322c2c;
+}
+
+.file-list-child p {
+    background-color:  #322c2c;
+}
+
+.file-list-child p:hover {
+    color: #10c6d3;
+}
+
+.file-list-child button {
+    color: white;
+    border: none;
+    background-color:  #322c2c;
+    height: 30px;
+    width: 30px;
+    padding-top: 2px;
+}
+
+.file-list-child-icon {
+    background-color:  #322c2c;
+    color: white;
+}
+
+.file-list-songs{
+    display: flex;
+    gap: 30px;
+}
+
+.file-list-dropmenu {
+    background-color: red;
+    max-width: 50%;
+    overflow-y: scroll;
+    padding: 0px 10px;
+}
+
+.file-list-dropmenu div {
+    height: 100px;
+    overflow: scroll;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 5px 20px;
+    width: 130px;
+}
+
+.music-list-items {
+    margin-top: 15px;
+    margin-left: 20px;
     overflow-y: scroll;
     height: 250px;
 }

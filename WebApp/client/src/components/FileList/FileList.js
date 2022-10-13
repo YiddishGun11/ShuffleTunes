@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './FileList.css'
 
-const baseURL = 'http://localhost:5000/userFiles'
+import { URL } from '../../scripts/url'
 
-function FileList({setMusicBar}){
+import FileListItem from './FileListItem'
+
+const baseURL = URL + '/userFiles';
+
+function FileList(){
 
     const [data, setData] = useState([]);
 
@@ -17,7 +21,7 @@ function FileList({setMusicBar}){
 
     return(
         <div className='filelist-section'>
-            {data === [] ?(
+            {data.length === 0 ?(
                 <div>
                     <h1>Your File List</h1>
                     <p>Your music list is empty</p>
@@ -25,22 +29,18 @@ function FileList({setMusicBar}){
             ):(
                 <div>
                     <h1>Your File List</h1>
-                    <p onClick={() =>setMusicBar(true)}>MUSIC ITEM</p>
-                    <p onClick={() =>setMusicBar(false)}>HIDE BAR</p>
+                    <div className='music-list-items'>
+                        {data.map((item) => (
+                            <FileListItem item={item} key={item}/>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
-
     );
 }
 
-/*
-    <div className='test123'>
-        {data.map((item) => (
-        <p key={item}>{item}</p>
-        ))}
-    </div>
-*/
+
 
 
 export default FileList;

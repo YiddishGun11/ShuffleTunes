@@ -5,13 +5,18 @@ import SideBar from '../../components/SideBar/SideBar';
 import FileList from '../../components/FileList/FileList';
 import FavSongs from '../../components/FavSongs/FavSongs';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
+import PlayList from '../../components/PlayList/Playlist';
+
+
+//redux
+import {useSelector} from 'react-redux'
 
 
 function DashBoard(){
 
     const[contentDisplay, setContentDisplay] = useState(0);
 
-    const[MusicBar, setMusicBar] = useState(false);
+    const display = useSelector((state)=>state.musicReducer.display);
 
     return(
         <div>
@@ -19,7 +24,7 @@ function DashBoard(){
             <div className='dashboard-section'>
 
                 <SideBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay}/>
-                <div className='test1'>
+                <div className='components-container'>
                     <div className='main-content'>
 
                         {( ()=>{
@@ -29,17 +34,22 @@ function DashBoard(){
                                     <div className='dashboard-main-component'>
                                         <h1>Welcome to ShuffleTunes !</h1>
                                         <p>Use our different options to optimize your experience on our App</p>
-                                        <button>Try it now</button>
+                                        <button onClick={() => setContentDisplay(3)}>Try it now</button>
                                     </div>
                                 )
                             case(1):
                                 return(
-                                    <FileList MusicBar={MusicBar} setMusicBar={setMusicBar} />
+                                    <FileList/>
                                 )
 
                             case(2):
                                 return(
                                     <FavSongs />
+                                )
+
+                            case(4):
+                                return(
+                                    <PlayList />
                                 )
 
                             default: 
@@ -51,11 +61,14 @@ function DashBoard(){
                         })()}
                     </div>
                     <div>
-                        {MusicBar ?(
+                        {display ?
+                            (
                             <SoundPlayer />
-                        ):(
-                            <p></p>
-                        )}
+                            ):
+                            (
+                            <div></div>
+                            )
+                        }
                     </div>
                 </div>
             </div>
