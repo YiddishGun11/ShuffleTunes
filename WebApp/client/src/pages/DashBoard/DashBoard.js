@@ -47,12 +47,12 @@ function DashBoard(){
                                     <FavSongs />
                                 )
 
-                                case(4):
+                            case(4):
                                 return(
                                     <PlayList />
                                 )
 
-                                default: 
+                            default: 
                                 return(
                                     <div></div>
                                 )

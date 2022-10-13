@@ -4,12 +4,12 @@
 input[type=text] {
     text-indent: 10%;
     color: white;
-    font-family: 'Poppins';
+    font-family: Poppins, sans-serif;
     font-size: 14px;
 }
 
 ::placeholder{
-    font-family: 'Poppins';
+    font-family: Poppins, sans-serif;
     color: white;
     opacity: 0.5;
 }
@@ -20,64 +20,64 @@ input[type=text] {
     border-radius: 15px;
     padding: 30px 80px;
     height: 480px;
-    font-family: 'Poppins';
+    font-family: Poppins, sans-serif;
 }
 
-.playlist-container-menu{
-    background-color: #322C2C;
+.playlist-container-menu {
+    background-color: #322c2c;
     display: flex;
     gap : 25px;
 }
 
-.playlist-container-menu h1{
-    background-color: #322C2C;
+.playlist-container-menu h1 {
+    background-color: #322c2c;
 }
 
-.playlist-container-menu-icon{
-    background-color: #322C2C;
+.playlist-container-menu-icon {
+    background-color: #322c2c;
 }
 
-.playlist-container-menu-icon:hover{
+.playlist-container-menu-icon:hover {
     transform: rotate(90deg);
     transition-duration: 1s;
 }
 
-.playlist-container-menu button{
-    background-color: #322C2C;
+.playlist-container-menu button {
+    background-color: #322c2c;
     padding-top: 8px;
     border: none;
     color: white;
 }
 
-.playlist-dropdowns{
+.playlist-dropdowns {
     overflow-y : scroll;
     padding-right: 40px;
-    background-color: #322C2C;
+    background-color: #322c2c;
     height: 280px;
     width: 100%;
     margin-top: 25px;
 }
 
-.playlist-message{
-    background-color: #322C2C;
+.playlist-message {
+    background-color: #322c2c;
     font-size: 22px;
     margin-top: 25px;
 }
 
-.add-playlist input{
+.add-playlist input {
     border: none;
     border-bottom: 1px solid white;
     margin: 10px 0px;
-    background-color: #322C2C;
+    background-color: #322c2c;
     font-size: 14px;
     width: 200px;
 }
 
-.add-playlist input:focus{
+.add-playlist input:focus {
     outline: none;
 }
 
-.add-playlist button{
+.add-playlist button {
     margin-top: 7px;
     height: 35px;
     width: 120px;
@@ -85,13 +85,13 @@ input[type=text] {
     border-radius: 10px;
     background-color: #10c6d3;
     color: white;
-    font-family: 'Poppins';
+    font-family: Poppins, sans-serif;
     font-size: 16px;
     font-weight: 500;
 }
 
-.add-playlist{
-    background-color: #322C2C;
+.add-playlist {
+    background-color: #322c2c;
     margin-top: 15px;
     height: 50px;
     display: flex;

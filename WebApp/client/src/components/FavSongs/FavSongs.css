@@ -1,6 +1,6 @@
-.favorite-section{
-    margin : 20px 15%;
-    background-color: #322C2C;
+.favorite-section {
+    margin: 20px 15%;
+    background-color: #322c2c;
     border-radius: 15px;
     padding: 40px 80px;
     height: 400px;
@@ -11,20 +11,20 @@
     background-color: #322c2c;
 }
 
-.favorite-section p{
-    background-color: #322C2C;
+.favorite-section p {
+    background-color: #322c2c;
 }
 
-.reducer-test{
-    background-color: #322C2C;
+.reducer-test {
+    background-color: #322c2c;
     height: 100px;
     display: flex;
     gap: 100px;
-    padding: 5px 0px;
+    padding: 5px 0;
     margin-top: 20px;
 }
 
-.reducer-test button{
+.reducer-test button {
     width: 100px;
     height: 30px;
     color: white;
@@ -32,41 +32,18 @@
     border-radius: 10px;
     background-color: #10c6d3;
     font-size: 14px;
-    font-family: 'Poppins';
+    font-family: Poppins, sans-serif;
     font-weight: bold;
 }
 
-.fav-songs-list{
-    margin: 26px 0px;
+.fav-songs-list {
+    margin: 26px 0;
     font-size: 20px;
 }
 
-.favorite-section p{
-    background-color: #322C2C;
-}
 
-.reducer-test{
-    background-color: #322C2C;
-    height: 100px;
-    display: flex;
-    gap: 100px;
-    padding: 5px 0px;
-    margin-top: 20px;
-}
 
-.reducer-test button{
-    width: 100px;
-    height: 30px;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    background-color: #10c6d3;
-    font-size: 14px;
-    font-family: 'Poppins';
-    font-weight: bold;
-}
-
-.fav-songs-list{
-    margin: 26px 0px;
+.fav-songs-list {
+    margin: 26px 0;
     font-size: 20px;
 }

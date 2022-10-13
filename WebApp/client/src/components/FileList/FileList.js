@@ -31,7 +31,7 @@ function FileList(){
                     <h1>Your File List</h1>
                     <div className='music-list-items'>
                         {data.map((item) => (
-                        <FileListItem item={item} key={item}/>
+                            <FileListItem item={item} key={item}/>
                         ))}
                     </div>
                 </div>
