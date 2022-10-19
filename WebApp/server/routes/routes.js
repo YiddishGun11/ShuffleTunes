@@ -13,6 +13,8 @@ const data = require('../controllers/data');
 
 const dataDelete = require('../controllers/delete');
 
+const dataDelete = require('../controllers/delete');
+
 // validation midelware
 const registerAndLoginValidation = require('../validation/registerAndLoginValidation.js');
 const createPlaylistValidation = require('../validation/createPlaylistValidation.js');
@@ -34,6 +36,11 @@ router.get('/', (req,res) =>
     res.json("hello bitches");
 });
 
+//get all user music files
+//router.get('/userFiles', files.getFiles);
+
+//get all user favorites musics
+router.get('/favsongs', data.getFavSongs);
 
 //get all playlists
 router.get('/playlists', data.getPlaylists);
@@ -79,7 +86,8 @@ router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 // register
 router.post('/register',registerAndLoginValidation.registerAndLoginValidation, data.register);
 
-
+//DELETE REQUESTS
+router.delete('/deletesong/:id', dataDelete.deleteSongById);
 
 
 module.exports = router;
