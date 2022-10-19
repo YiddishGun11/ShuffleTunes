@@ -44,6 +44,22 @@ const createPlaylist = (request, response) =>{
 
 }
 
+
+const insertSong = (request, response) =>{
+    let data = request.body;
+    console.log(data);
+
+    db.query("INSERT INTO tb_Musics SET ?", [data], (error,results)=>{
+        if(error){
+            response.send(error);
+        }
+        else{
+            response.status(200).json(results);
+        }
+    });
+
+}
+
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -87,5 +103,6 @@ const insertStudent = (request,response,next)=>{
 module.exports = {
     getFavSongs,
     getPlaylists,
-    createPlaylist
+    createPlaylist,
+    insertSong
 }
