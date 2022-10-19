@@ -38,3 +38,69 @@
     color: #10c6d3;
     transition-duration: 0.7;
 }
+.Profil{
+    height: 150px;
+    width: 270px;
+    border-radius: 20px;
+    position:fixed;
+    top: 9%;
+    right: 2%;
+    border: solid grey 6px;
+    visibility:hidden
+}
+.Profil div{
+    border-radius: 50%;
+}
+label {
+    border-radius: 50%;
+    margin-left: 10px;
+
+}
+
+.ProfileImg{
+    position: absolute;
+    margin-left: 32%;
+    max-width:30%;
+    border-radius:50%;
+    display: block;
+    margin-top: 5%;
+
+}
+.ModifImg{
+    position: absolute;
+    border-top-right-radius: 50%;
+    max-width:20px;
+    display: block;
+    rotate: 90deg;
+    background-color: rgb(255, 255, 255);
+}
+.ModifButton{
+    border: solid 0px rgb(255, 255, 255);
+    position: absolute;
+    margin-left: 48%;
+    margin-top: 27%;
+
+
+}
+button:hover{
+    cursor:pointer;
+}
+
+
+.Password{
+    max-height:20px;
+
+}
+.PasswordVisibility{
+    display: inline;
+    border-radius: 50%;
+    background-color: rgb(168, 167, 167);
+    max-width:20px;
+}
+.PasswordButton{
+    border: none;
+    margin-left: 5%;
+
+}
+
+
