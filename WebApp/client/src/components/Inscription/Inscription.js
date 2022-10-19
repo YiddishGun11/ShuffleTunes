@@ -11,8 +11,8 @@ function Inscription({setDisplay}){
                 <input type="text" placeholder='Confirmer le mot de passe'></input>
                 <button>S'inscrire</button>
                 <div className='switch-connect'>
-                    <p>Déja membre ?</p>
-                    <p onClick={()=>setDisplay(true)}className="switch-connect-link">Se connecter</p>
+                    <p>deja membre ?</p>
+                    <p onClick={()=>setDisplay(true)}className="switch-connect-link">se connecter</p>
                 </div>
             </div>
         </div>
