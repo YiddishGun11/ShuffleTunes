@@ -27,6 +27,9 @@ router.get('/favsongs', data.getFavSongs);
 //get all playlists
 router.get('/playlists', data.getPlaylists);
 
+//get songs by playlists
+router.get('/songs/:id', data.getSongsByPlaylist);
+
 
 //POST REQUESTS
 

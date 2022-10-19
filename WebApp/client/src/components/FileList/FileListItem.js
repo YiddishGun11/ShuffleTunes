@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { URL } from '../../scripts/url'
 
+import './FileList.scss'
+
+//react-icons
 import {BiAddToQueue} from 'react-icons/bi'
 import {BsArrowRightShort} from 'react-icons/bs'
 
@@ -29,6 +32,7 @@ function FileListItem({item}){
     //add song display (addsong-container)
     const addSongDisplay = useSelector((state)=>state.addSongReducer.display);
 
+    //states
     const musicTitle = useSelector((state)=>state.addSongReducer.musicTitle);
     const playlistId = useSelector((state)=>state.addSongReducer.playlistId);
 

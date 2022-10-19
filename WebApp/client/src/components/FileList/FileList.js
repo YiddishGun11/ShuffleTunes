@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './FileList.css'
+import './FileList.scss'
 
 import { URL } from '../../scripts/url'
 

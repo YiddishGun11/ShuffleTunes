@@ -27,6 +27,21 @@ const getPlaylists = (request, response) =>{
     })
 }
 
+const getSongsByPlaylist = (request, response) =>{
+
+    let sql = "CALL get_songs_by_playlistId(?)"
+
+    db.query(sql, request.params.id, (error, results)=>{
+        if(error){
+            throw error
+        }
+        else{
+            response.status(200).json(results)
+        }
+    })
+}
+
+
 
 //POST
 
@@ -104,5 +119,6 @@ module.exports = {
     getFavSongs,
     getPlaylists,
     createPlaylist,
-    insertSong
+    insertSong,
+    getSongsByPlaylist
 }
