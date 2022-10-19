@@ -11,8 +11,8 @@ function Connexion({setDisplay}){
                 <input type="text" placeholder='Mot de passe'></input>
                 <button>Se connecter</button>
                 <div className='switch-connect'>
-                    <p>pas encore membre ?</p>
-                    <p onClick={()=>setDisplay(false)} className="switch-connect-link">s'inscrire</p>
+                    <p>Pas encore membre ?</p>
+                    <p onClick={()=>setDisplay(false)} className="switch-connect-link">S'inscrire</p>
                 </div>
             </div>
         </div>
