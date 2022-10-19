@@ -1,22 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import {MdArrowDropDown} from 'react-icons/md'
 import {BsGear} from 'react-icons/bs'
+import {TiDelete} from 'react-icons/ti'
 
-
+//redux
 import { useSelector, useDispatch } from 'react-redux';
 import { playlistDisplay } from '../../../reducers/playlistReducer';
 
-//import {setDisplay, setSong} from '../../../reducers/musicReducer'
+import {URL} from '../../../scripts/url'
 
-import './DropDown.css'
+import './DropDown.scss'
 
-/*
-A FAIRE :
-
-fenetre modale pour la playlist selectionnée
-*/
 
 function DropDown({id, title}){
+
+    const [data, setData] = useState([]);
+ 
+    //load songs by playlists
+    useEffect(() =>{
+        axios.get(URL + '/songs/' + id).then((response) =>{
+            setData(response.data[0])
+        })
+    });
 
     //redux variables
     const playlistId = useSelector((state) => state.playlistReducer.display)
@@ -44,10 +50,20 @@ function DropDown({id, title}){
             <div className='dropdown-content'>
                 {playlistId === id?(
                     <div className='dropdown-songs'>
-                        <p>test</p>
-                        <p>test</p>
-                        <p>test</p>
-                        <p>test</p>
+                        {data.length === 0? (
+                            <p>Aucune musique dans cette playlist...</p>
+                        ):(
+                            <div>
+                                {data.map((item)=>{
+                                    return(
+                                        <div className='songs-items' key={item.musicId}>
+                                            <button><TiDelete size={24} className='songs-items-icons'/></button>
+                                            <p >{item.musicTitle}</p>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )}
                     </div>
                 ):(
                     <div></div>

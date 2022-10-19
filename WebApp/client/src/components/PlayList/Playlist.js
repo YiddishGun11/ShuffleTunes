@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './Playlist.css'
+import './Playlist.scss'
 import axios from 'axios'
 
 import {RiAddFill, RiCloseFill} from 'react-icons/ri'
