@@ -14,6 +14,7 @@
 
 .sidebar-item1:hover {
     color: #10c6d3;
+    cursor: pointer;
 }
 
 .sidebar-item1 p {
@@ -33,4 +34,5 @@
 
 .sidebar-item2:hover {
     color: #10c6d3;
+    cursor: pointer ;
 }

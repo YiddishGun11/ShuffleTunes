@@ -6,6 +6,7 @@ const playlistReducer = createSlice({
         display : 0,
 
         listDisplay : '',
+        
     },
     reducers : {
 

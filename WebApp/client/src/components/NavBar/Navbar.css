@@ -13,6 +13,10 @@
     justify-content: space-between;
 }
 
+.navbar-section-items h1 {
+    cursor: pointer;
+}
+
 .navbar-section-items p {
     padding-top: 18px;
     padding-left: 80px;

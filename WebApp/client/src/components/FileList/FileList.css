@@ -33,6 +33,7 @@
 
 .file-list-child p:hover {
     color: #10c6d3;
+    cursor: pointer;
 }
 
 .file-list-child button {
@@ -61,18 +62,38 @@
     padding: 0px 10px;
 }
 
-.file-list-dropmenu div {
-    height: 100px;
+.file-list-dropmenu .dropmenu-box{
+    height: auto;
     overflow: scroll;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 5px 20px;
-    width: 130px;
+    width: auto;
 }
 
 .music-list-items {
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: 20px;
     overflow-y: scroll;
-    height: 250px;
+    height: 280px;
+}
+
+
+.add-song-container p:hover {
+    color: white;
+}
+
+.add-song-container div {
+    margin-top: 10px;
+    display: flex;
+    gap: 25px;
+}
+
+.add-song-container div button {
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+}
+
+.add-song-container div button:hover {
+    color : #10c6d3;
 }

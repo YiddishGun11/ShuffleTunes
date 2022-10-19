@@ -32,6 +32,8 @@ router.get('/playlists', data.getPlaylists);
 
 router.post('/createplaylist', data.createPlaylist);
 
+router.post('/newsong', data.insertSong);
+
 
 
 module.exports = router;

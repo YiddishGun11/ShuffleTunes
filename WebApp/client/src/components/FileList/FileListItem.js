@@ -7,9 +7,12 @@ import {BsArrowRightShort} from 'react-icons/bs'
 
 //redux
 import {useDispatch, useSelector} from 'react-redux'
+
 import {setDisplay, setSong} from '../../reducers/musicReducer'
 
 import {miniListDisplay} from '../../reducers/playlistReducer'
+
+import {getDisplay, setMusicTitle, setPlaylistId} from '../../reducers/addSongReducer'
 
 
 function FileListItem({item}){
@@ -19,10 +22,18 @@ function FileListItem({item}){
 
     //redux variables
     const dispatch = useDispatch();
+
+    //playlist list display (dropmenu)
     const listDisplay = useSelector((state)=> state.playlistReducer.listDisplay);
 
+    //add song display (addsong-container)
+    const addSongDisplay = useSelector((state)=>state.addSongReducer.display);
+
+    const musicTitle = useSelector((state)=>state.addSongReducer.musicTitle);
+    const playlistId = useSelector((state)=>state.addSongReducer.playlistId);
+
     //toggle display playlist songs
-    const handleDisplay = () =>{
+    const dropMenuDisplay = () =>{
         if(listDisplay === item){
             dispatch(miniListDisplay(''))
         }
@@ -30,6 +41,24 @@ function FileListItem({item}){
             dispatch(miniListDisplay(item))
         }
     }
+
+    //sendata for creating new playlist
+    const sendData = () =>{
+
+        axios.post(URL + '/newsong', {
+            "musicTitle" : musicTitle,
+            "playlistId" : playlistId
+            })
+            .then(function () {
+                dispatch(getDisplay(false));
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            });
+            
+    }
+
 
     //get playlists names 
     const loadPlaylists = () =>{
@@ -43,25 +72,34 @@ function FileListItem({item}){
             <div className='file-list-songs'>
                 <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item))}}>{item}</p>
                 {listDisplay === item ?(
-                    <button onClick={()=>{dispatch(miniListDisplay(item)); handleDisplay()}}><BsArrowRightShort size={28} className="file-list-child-icon"/></button> 
+                    <button onClick={()=>{dispatch(miniListDisplay(item)); dropMenuDisplay(); dispatch(getDisplay(false))}}><BsArrowRightShort size={28} className="file-list-child-icon"/></button> 
                 ):(
-                    <button onClick={()=>{dispatch(miniListDisplay(item)); handleDisplay(); loadPlaylists()}}><BiAddToQueue size={23} className="file-list-child-icon"/></button> 
+                    <button onClick={()=>{dispatch(miniListDisplay(item)); dropMenuDisplay(); loadPlaylists(); dispatch(getDisplay(false))}}><BiAddToQueue size={23} className="file-list-child-icon"/></button> 
                 )}
             </div>
-            
+
             <div className='file-list-dropmenu'>
                 {listDisplay === item ?(
-                    <div >
-                        {data.map((playlist) =>{
-                            return(
-                                <p id={playlist.playlistId} key={playlist.playlistId}>{playlist.playlistName}</p>
-                            );
-                        })}
+                    <div className='dropmenu-box'>
+                        { addSongDisplay ?(
+                            <div className='add-song-container'>
+                                <p>Add this song to this playlist ?</p>
+                                <div>
+                                    <button onClick={()=>dispatch(getDisplay(false))}>Cancel</button>
+                                    <button onClick={()=>sendData()}>Yes</button>
+                                </div>
+                            </div>
+                        ):(
+                            data.map((playlist) =>{
+                                return(
+                                    <p id={playlist.playlistId} key={playlist.playlistId} onClick={()=>{dispatch(getDisplay(true)); dispatch(setMusicTitle(item)); dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
+                                );
+                            })
+                        )}
                     </div>
                 ):(
                     <p></p>
                 )}
-
             </div>
         </div>
     );
