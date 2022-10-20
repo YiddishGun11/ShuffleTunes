@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss' ;
+@import "../../../styles/variables.scss" ;
 
 .filelist-section {
     margin: 20px 15%;
@@ -11,53 +11,46 @@
     & h1 {
         background-color: $main-background;
     }
-    
     & div {
         background-color: $main-background;
     }
-    
     & p {
         background-color: $main-background;
     }
 }
-
 
 .file-list-child {
     display: flex;
     gap: 30px;
     margin: 26px 0px;
     font-size: 20px;
-    background-color:  $main-background;
+    background-color: $main-background;
 
     & p:hover {
         color: #10c6d3;
         cursor: pointer;
     }
-
-    
     & p {
-        background-color:  $main-background;
+        background-color: $main-background;
     }
-
     & button {
         color: white;
         border: none;
-        background-color:  $main-background;
+        background-color: $main-background;
         height: 30px;
         width: 30px;
         padding-top: 2px;
     }
 
-    .file-list-songs{
+    .file-list-songs {
         display: flex;
         gap: 30px;
     
         .file-list-child-icon {
-            background-color:  $main-background;
+            background-color: $main-background;
             color: white;
         }
-    }   
-    
+    }     
 }
 
 
@@ -67,7 +60,7 @@
     overflow-y: scroll;
     padding: 0px 10px;
 
-    & .dropmenu-box{
+    & .dropmenu-box {
         height: auto;
         overflow: scroll;
         border-radius: 10px;
@@ -77,16 +70,12 @@
     }
 }
 
-
-
-
 .music-list-items {
     margin-top: 20px;
     margin-left: 20px;
     overflow-y: scroll;
     height: 280px;
 }
-
 
 .add-song-container p:hover {
     color: white;
@@ -102,7 +91,6 @@
         font-family: $police;
         font-size: 16px;
     }
-
     & button:hover {
         color : $main-color;
     }

@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss' ;
+@import "../../../styles/variables.scss" ;
 
 input[type=text] {
     text-indent: 10%;
@@ -26,17 +26,15 @@ input[type=text] {
         display: flex;
         gap: 25px;
 
-        & h1{
+        & h1 {
             background-color: $main-background ;
         }
-
         & button {
             background-color: $main-background;
             padding-top: 8px;
             border: none;
             color: white;
         }
-
         .playlist-container-menu-icon {
             background-color: $main-background;
 
@@ -74,7 +72,7 @@ input[type=text] {
     & input {
         border: none;
         border-bottom: 1px solid white;
-        margin: 10px 0px;
+        margin: 10px 0;
         background-color: $main-background;
         font-size: 14px;
         width: 200px;
@@ -83,7 +81,6 @@ input[type=text] {
             outline: none;
         }
     }
-
     & button {
         margin-top: 7px;
         height: 35px;
@@ -96,5 +93,4 @@ input[type=text] {
         font-size: 16px;
         font-weight: 500;
     }
-
 }

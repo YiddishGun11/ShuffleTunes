@@ -24,6 +24,16 @@ function DropDown({id, title}){
         })
     });
 
+    const deleteSong = (songId) =>{
+        axios.delete(URL + '/deletesongplaylist/' + songId)
+            .then(()=>{
+                //à venir
+            })
+            .catch(()=>{
+                //à venir
+            })
+    }
+
     //redux variables
     const playlistId = useSelector((state) => state.playlistReducer.display)
     const dispatch = useDispatch();
@@ -57,8 +67,8 @@ function DropDown({id, title}){
                                 {data.map((item)=>{
                                     return(
                                         <div className='songs-items' key={item.musicId}>
-                                            <button><TiDelete size={24} className='songs-items-icons'/></button>
-                                            <p >{item.musicTitle}</p>
+                                            <button onClick={()=>deleteSong(item.musicId)} ><TiDelete size={24} className='songs-items-icons'/></button>
+                                            <p>{item.musicTitle}</p>
                                         </div>
                                     )
                                 })}
