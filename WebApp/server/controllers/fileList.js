@@ -4,7 +4,7 @@ const fs = require('fs');
 
 //const directoryPath = '/users/HASHED_DIR/'
 
-const directoryPath = 'C:/Users/User/Desktop/Documents/ShuffleTunes/WebApp/server/musicFiles'
+const directoryPath = 'C:/Users/edoua/Desktop/ShuffleTunes/WebApp/server/musicFiles'
 
 
 const getFiles = (request, response) =>{

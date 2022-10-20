@@ -87,6 +87,7 @@ input[type="text"] {
     background-color: #322c2c;
     font-size: 12px;
     padding: 0 5px;
+    cursor: pointer;
 }
 
 .switch-connect-link:hover {

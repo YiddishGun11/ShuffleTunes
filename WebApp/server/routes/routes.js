@@ -10,6 +10,8 @@ const files = require('../controllers/fileList');
 //importer les requetes POST & GET
 const data = require('../controllers/data');
 
+const dataDelete = require('../controllers/delete');
+
 
 //GET REQUESTS
 
@@ -36,6 +38,11 @@ router.get('/songs/:id', data.getSongsByPlaylist);
 router.post('/createplaylist', data.createPlaylist);
 
 router.post('/newsong', data.insertSong);
+
+
+//DELETE 
+
+router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 
 
 
