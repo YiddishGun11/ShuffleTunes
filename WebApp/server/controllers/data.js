@@ -1,7 +1,9 @@
 'use strict'
 
 const { response } = require('express');
-const db = require('../database/database')
+const hashed = require('./hashed.js');
+const db = require('../database/database');
+const { validationResult } = require('express-validator');
 
 //GET 
 
@@ -41,7 +43,37 @@ const createPlaylist = (request, response) =>{
             response.status(200).json(results);
         }
     });
+}
 
+const register = (request, response, next) => {
+    try {
+        const errors = validationResult(request);
+
+        if (!errors.isEmpty()) {
+            return response.status(400).json({
+                success : false,
+                errors : errors.array()
+            })
+        }
+
+        db.query(`CALL register(?, ?)`, [request.body.pseudo, hashed.hash512String(request.body.password)], (error, results) => {
+            if (error) {
+                response.send(error);
+            } 
+            else {
+                results.forEach(element => {
+                    if (element.constructor == Array){
+                        response.status(200).json(element[0]);
+                    }
+                })
+            }
+        })
+    }
+
+    catch (error) {
+        console.log(error);
+        next(error);
+    }
 }
 
 /*
@@ -87,5 +119,6 @@ const insertStudent = (request,response,next)=>{
 module.exports = {
     getFavSongs,
     getPlaylists,
-    createPlaylist
+    createPlaylist,
+    register
 }
