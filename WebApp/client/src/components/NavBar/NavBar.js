@@ -12,7 +12,7 @@ function NavBar({contentDisplay, setContentDisplay}){
             <div className='navbar-section-icons'>
                 
                 <div className='navbar-section-icons-childs'>
-                    <BsPersonLinesFill size={20} onClick={()=>affichage()}/>
+                    <BsPersonLinesFill size={20} onClick={()=>setContentDisplay(5)} />
                 </div>
                 <div className='Profil'>
 
