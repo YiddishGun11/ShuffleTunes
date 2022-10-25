@@ -84,8 +84,12 @@
     width: 2em;
     height: 2em;
 }
-button:hover{
+button:hover {
     cursor:pointer;
+}
+.Retour label:hover{
+    color: #10c6d3;
+    cursor: pointer;
 }
 .Pseudo{
     font-size: 150%;
