@@ -13,7 +13,12 @@
     "react-icons": "^4.4.0",
     "react-player": "^2.11.0",
     "react-router-dom": "^6.4.1",
+<<<<<<< Updated upstream
     "react-scripts": "5.0.1"
+=======
+    "react-scripts": "^5.0.1",
+    "sass": "^1.55.0"
+>>>>>>> Stashed changes
   },
   "scripts": {
     "start": "react-scripts start",

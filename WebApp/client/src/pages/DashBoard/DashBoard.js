@@ -5,6 +5,12 @@ import SideBar from '../../components/SideBar/SideBar';
 import FileList from '../../components/FileList/FileList';
 import FavSongs from '../../components/FavSongs/FavSongs';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
+import PlayList from '../../components/PlayList/Playlist';
+
+
+
+//redux
+import {useSelector} from 'react-redux'
 
 
 function DashBoard(){
@@ -42,7 +48,28 @@ function DashBoard(){
                                     <FavSongs />
                                 )
 
-                                default: 
+                            case(4):
+                                return(
+                                    <PlayList />
+                                )
+                            case(5):
+                                return(
+                                <div className='Profil'>
+                                    <div className='Retour'>
+                                        <label className='Retour' onClick={() => setContentDisplay(0)}>Cliquez ici pour retourner au menu</label>
+                                    </div>
+                                    <div className='Pseudo'>
+                                        <label className='Pseudo'>Pseudo : Someone</label>
+                                    </div>
+                                    <div>
+                                        <img className='ProfileImg' alt='' src='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg'></img>
+                                        <button className='ModifButton' type="button"> <img className='ModifImg' alt='' src="https://cdn-icons-png.flaticon.com/512/45/45250.png"/></button>
+                                    </div>
+                                </div>
+                                
+                                )
+
+                            default: 
                                 return(
                                     <div></div>
                                 )
