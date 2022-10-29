@@ -23,7 +23,6 @@ function NavBar({setContentDisplay}){
         </div>
     );
 }
-
 export default NavBar;
 
 
