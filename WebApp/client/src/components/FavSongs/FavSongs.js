@@ -9,26 +9,22 @@ import {URL} from '../../scripts/url';
 
 function FavSongs(){
 
-    function refreshPage() {
-        window.location.reload(false);
-      }
-
     const [data, setData] = useState([]);
 
     useEffect(() =>{
-        axios.get(URL + '/favsongs').then((response) =>{
+        axios.get(URL + '/favsongs/' + 1).then((response) =>{
             setData(response.data[0])
         })
     }, []);
-
+    //user id manquant
     const deleteSong = (songId) =>{
-        axios.delete(URL + '/deletesong/' + songId)
+        axios.delete(URL + '/deletesong/' + 1 +  "/" + songId)
             .then(()=>{
-                refreshPage();
+                window.location.reload();
             })
-            .catch(()=>{
-                refreshPage();
-            })
+            .catch((error)=>{
+                console.log(error);
+            });
     }
 
 

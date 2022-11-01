@@ -40,7 +40,7 @@ router.get('/', (req,res) =>
 //router.get('/userFiles', files.getFiles);
 
 //get all user favorites musics
-router.get('/favsongs', data.getFavSongs);
+router.get('/favsongs/:id', data.getFavSongs);
 
 //get all playlists
 router.get('/playlists', data.getPlaylists);
@@ -87,7 +87,7 @@ router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 router.post('/register',registerAndLoginValidation.registerAndLoginValidation, data.register);
 
 //DELETE REQUESTS
-router.delete('/deletesong/:id', dataDelete.deleteSongById);
+router.delete('/deletesong/:userid/:musicid', dataDelete.deleteSongById);
 
 
 module.exports = router;
