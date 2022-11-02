@@ -19,7 +19,7 @@ function DropDown({id, title}){
  
     //load songs by playlists
     useEffect(() =>{
-        axios.get(URL + '/songs/' + id).then((response) =>{
+        axios.get(URL + '/playlistsongs/' + id).then((response) =>{
             setData(response.data[0])
         })
     });
@@ -84,5 +84,3 @@ function DropDown({id, title}){
 }
 
 export default DropDown;
-
-//<p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(title))}}>Songs1</p>

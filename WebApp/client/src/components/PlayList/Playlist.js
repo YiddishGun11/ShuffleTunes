@@ -25,7 +25,7 @@ function PlayList(){
     //load playlists
     useEffect(() =>{
         axios.get(URL + '/playlists').then((response) =>{
-            setData(response.data)
+            setData(response.data[0])
         })
     }, []);
 
@@ -33,7 +33,8 @@ function PlayList(){
     const sendData = () =>{
 
         axios.post(URL + '/createplaylist', {
-            "playlistName" : formData
+            "playlistName" : formData,
+            "userId" : 1
             })
             .then(function () {
             //à définir

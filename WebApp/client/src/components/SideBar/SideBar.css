@@ -3,6 +3,8 @@
     width: 300px;
     color: white;
     font-family: Poppins, sans-serif;
+    animation : slidein-bar 2s;
+    animation-iteration-count: 1;
 }
 
 .sidebar-item1 {
@@ -15,6 +17,8 @@
 .sidebar-item1:hover {
     color: #10c6d3;
     cursor: pointer;
+    transform: translateX(15px);
+    transition-duration: 0.5s;
 }
 
 .sidebar-item1 p {
@@ -35,4 +39,16 @@
 .sidebar-item2:hover {
     color: #10c6d3;
     cursor: pointer ;
+    transform: translateX(15px);
+    transition-duration: 0.5s;
+}
+
+@keyframes slidein-bar {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }

@@ -6,6 +6,8 @@
     padding: 40px 60px;
     color: white;
     font-family: Poppins, sans-serif;
+    animation: from-top 2s;
+    animation-iteration-count: 1;
 }
 
 .navbar-section-items {
@@ -39,4 +41,14 @@
 .navbar-section-icons-childs:hover {
     color: #10c6d3;
     transition-duration: 0.7;
+}
+
+@keyframes from-top {
+    from {
+        transform: translateY(-100%);
+      }
+    
+      to {
+        transform: translateY(0%);
+      }
 }

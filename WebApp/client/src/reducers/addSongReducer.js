@@ -7,8 +7,7 @@ const addSongReducer = createSlice({
     initialState : {
         display : false,
 
-        playlistId : '',
-        musicTitle : '',
+        playlistId : ''
     },
     reducers : {
 
@@ -19,10 +18,6 @@ const addSongReducer = createSlice({
         setPlaylistId : (state, action) =>{
             state.playlistId = action.payload
         },
-
-        setMusicTitle : (state, action) =>{
-            state.musicTitle = action.payload
-        }
     }
 })
 
