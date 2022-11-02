@@ -77,12 +77,12 @@ input[type="text"] {
         background-color: $main-background;
         font-size: 14px;
         width: 200px;
-    
+
         &:focus {
             outline: none;
         }
     }
-    
+
     & button {
         margin-top: 7px;
         height: 35px;

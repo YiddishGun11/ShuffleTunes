@@ -27,9 +27,9 @@
         .playlist-name {
             font-size: 20px;
             background-color: $main-background;
-        } 
-            
+        }
     }
+
 }
 
 .dropdown-button {
@@ -75,7 +75,7 @@
         transition-duration: all 0.7s ease;
         max-height: 150px;
         overflow-y: scroll;
-    
+
         & p {
             padding: 3px 0;
         }
