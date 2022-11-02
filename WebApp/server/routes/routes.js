@@ -46,6 +46,9 @@ router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 // register
 router.post('/register', registerValidation.registerValidation, data.register);
 
+// register
+router.post('/register', registerValidation.registerValidation, data.register);
+
 
 
 module.exports = router;
