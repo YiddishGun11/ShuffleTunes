@@ -54,9 +54,9 @@
             background-color: $main-background;
             color: white;
         }
-    }     
-}
 
+    }   
+}
 
 .file-list-dropmenu {
     background-color: red;
@@ -95,10 +95,11 @@
         font-family: $police;
         font-size: 16px;
     }
-    
+
     & button:hover {
-        color : $main-color;
+        color: $main-color;
     }
+    
 }
 
 #error-file-list {
