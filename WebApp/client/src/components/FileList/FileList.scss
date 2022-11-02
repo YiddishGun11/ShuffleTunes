@@ -54,8 +54,8 @@
             background-color: $main-background;
             color: white;
         }
+    }
 
-    }   
 }
 
 .file-list-dropmenu {
@@ -98,8 +98,7 @@
 
     & button:hover {
         color: $main-color;
-    }
-    
+    }      
 }
 
 #error-file-list {
@@ -107,4 +106,3 @@
     font-size: 22px;
     margin-top: 25px;
 }
-
