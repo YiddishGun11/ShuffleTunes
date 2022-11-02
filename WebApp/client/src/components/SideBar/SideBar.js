@@ -23,7 +23,7 @@ function SideBar({setContentDisplay}){
                 <AiOutlineHeart size={25}/>
                 <p onClick={()=>setContentDisplay(2)} >Favorites Songs</p>
             </div>
-    </div>
+        </div>
     );
 }
 

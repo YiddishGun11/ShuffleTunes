@@ -1,6 +1,6 @@
 @import "../../../styles/variables.scss" ;
 
-input[type=text] {
+input[type="text"] {
     text-indent: 10%;
     color: white;
     font-family: $police;
@@ -27,14 +27,16 @@ input[type=text] {
         gap: 25px;
 
         & h1 {
-            background-color: $main-background ;
+            background-color: $main-background;
         }
+
         & button {
             background-color: $main-background;
             padding-top: 8px;
             border: none;
             color: white;
         }
+
         .playlist-container-menu-icon {
             background-color: $main-background;
 
@@ -45,7 +47,6 @@ input[type=text] {
         }
     }
 }
-
 
 .playlist-dropdowns {
     overflow-y: scroll;
@@ -81,6 +82,7 @@ input[type=text] {
             outline: none;
         }
     }
+    
     & button {
         margin-top: 7px;
         height: 35px;

@@ -11,9 +11,11 @@
     & h1 {
         background-color: $main-background;
     }
+
     & div {
         background-color: $main-background;
     }
+
     & p {
         background-color: $main-background;
     }
@@ -22,17 +24,19 @@
 .file-list-child {
     display: flex;
     gap: 30px;
-    margin: 26px 0px;
+    margin: 26px 0;
     font-size: 20px;
     background-color: $main-background;
+
+    & p {
+        background-color: $main-background;
+    }
 
     & p:hover {
         color: #10c6d3;
         cursor: pointer;
     }
-    & p {
-        background-color: $main-background;
-    }
+
     & button {
         color: white;
         border: none;
@@ -45,7 +49,7 @@
     .file-list-songs {
         display: flex;
         gap: 30px;
-    
+
         .file-list-child-icon {
             background-color: $main-background;
             color: white;
@@ -58,13 +62,13 @@
     background-color: red;
     max-width: 50%;
     overflow-y: scroll;
-    padding: 0px 10px;
+    padding: 0 10px;
 
     & .dropmenu-box {
         height: auto;
         overflow: scroll;
         border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid $file-list-background;
         padding: 5px 20px;
         width: auto;
     }
@@ -91,9 +95,15 @@
         font-family: $police;
         font-size: 16px;
     }
+    
     & button:hover {
         color : $main-color;
     }
 }
 
+#error-file-list {
+    background-color: $main-background;
+    font-size: 22px;
+    margin-top: 25px;
+}
 

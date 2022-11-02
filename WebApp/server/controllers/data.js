@@ -1,6 +1,5 @@
 'use strict'
 
-const { response } = require('express');
 const db = require('../database/database')
 
 //GET 
