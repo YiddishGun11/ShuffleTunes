@@ -51,15 +51,14 @@ function FileListItem({item,itemId}){
         axios.post(URL + '/newsong', {
             "musicId" : itemId,
             "playlistId" : playlistId,
-        })
-        .then(function () {
-            dispatch(getDisplay(false));
-        })
+            })
+            .then(function () {
+                dispatch(getDisplay(false));
+            })
 
-        .catch(function (error) {
-            console.log(error);
-        });
-            
+            .catch(function (error) {
+                console.log(error);
+            });  
     }
 
 
