@@ -24,7 +24,7 @@ function FileList(){
             {data.length === 0 ?(
                 <div>
                     <h1>Your File List</h1>
-                    <p>Your music list is empty</p>
+                    <p id='error-file-list'>Your music list is empty...</p>
                 </div>
             ):(
                 <div>

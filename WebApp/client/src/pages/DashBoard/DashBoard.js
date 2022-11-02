@@ -63,10 +63,10 @@ function DashBoard(){
                     <div>
                         {display ?
                             (
-                            <SoundPlayer />
+                                <SoundPlayer />
                             ):
                             (
-                            <div></div>
+                                <div></div>
                             )
                         }
                     </div>

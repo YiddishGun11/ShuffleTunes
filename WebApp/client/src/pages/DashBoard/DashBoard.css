@@ -65,9 +65,9 @@
 @keyframes slidein {
     from {
         transform: translateX(+200%);
-      }
+    }
     
-      to {
+    to {
         transform: translateX(0%);
-      }
+    }
 }

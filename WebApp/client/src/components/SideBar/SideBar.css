@@ -3,7 +3,7 @@
     width: 300px;
     color: white;
     font-family: Poppins, sans-serif;
-    animation : slidein-bar 2s;
+    animation: slidein-bar 2s;
     animation-iteration-count: 1;
 }
 
@@ -38,7 +38,7 @@
 
 .sidebar-item2:hover {
     color: #10c6d3;
-    cursor: pointer ;
+    cursor: pointer;
     transform: translateX(15px);
     transition-duration: 0.5s;
 }

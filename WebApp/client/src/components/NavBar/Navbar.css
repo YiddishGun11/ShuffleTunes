@@ -46,9 +46,9 @@
 @keyframes from-top {
     from {
         transform: translateY(-100%);
-      }
+    }
     
-      to {
+    to {
         transform: translateY(0%);
-      }
+    }
 }

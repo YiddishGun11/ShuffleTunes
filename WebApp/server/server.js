@@ -4,8 +4,6 @@ const express = require('express');
 
 const Route = require('./routes/routes');
 
-const http = require('http');
-
 //connexion to db
 const db = require('./database/database');
 db.connect();
