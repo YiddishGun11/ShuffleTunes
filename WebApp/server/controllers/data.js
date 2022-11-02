@@ -5,21 +5,10 @@ const db = require('../database/database')
 
 //GET 
 
-const getFavSongs = (request, response) =>{
-    db.query('SELECT * FROM tb_Favoris', (error, results)=>{
-        if(error){
-            throw error;
-        }
-        else{
-            response.status(200).json(results);
-        }
-    })
-}
-
 const getPlaylists = (request, response) =>{
-    db.query('SELECT * FROM tb_Playlists', (error, results)=>{
+    db.query('CALL get_playlists_list', (error, results)=>{
         if(error){
-            throw error
+            console.log(error);
         }
         else{
             response.status(200).json(results)
@@ -42,13 +31,26 @@ const getSongsByPlaylist = (request, response) =>{
 }
 
 
+const getSongs = (request, response) =>{
+    
+    db.query("CALL get_songs_user(?)", request.params.id, (error, results)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            response.status(200).json(results);
+        }
+    })
+}
+
+
 
 //POST
 
 const createPlaylist = (request, response) =>{
     let data = request.body;
 
-    db.query("INSERT INTO tb_Playlists SET ?", [data], (error,results)=>{
+    db.query("INSERT INTO tb_playlists SET ?", [data], (error,results)=>{
         if(error){
             response.send(error);
         }
@@ -63,7 +65,7 @@ const createPlaylist = (request, response) =>{
 const insertSong = (request, response) =>{
     let data = request.body;
 
-    db.query("INSERT INTO tb_Musics SET ?", [data], (error,results)=>{
+    db.query("INSERT INTO tb_musics_playlists SET ?", [data], (error,results)=>{
         if(error){
             response.send(error);
         }
@@ -115,9 +117,9 @@ const insertStudent = (request,response,next)=>{
 
 
 module.exports = {
-    getFavSongs,
     getPlaylists,
     createPlaylist,
     insertSong,
-    getSongsByPlaylist
+    getSongsByPlaylist,
+    getSongs
 }

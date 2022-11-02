@@ -15,10 +15,10 @@ import {setDisplay, setSong} from '../../reducers/musicReducer'
 
 import {miniListDisplay} from '../../reducers/playlistReducer'
 
-import {getDisplay, setMusicTitle, setPlaylistId} from '../../reducers/addSongReducer'
+import {getDisplay, setPlaylistId} from '../../reducers/addSongReducer'
 
 
-function FileListItem({item}){
+function FileListItem({item,itemId}){
 
     //DB data
     const [data, setData] = useState([]);
@@ -33,7 +33,6 @@ function FileListItem({item}){
     const addSongDisplay = useSelector((state)=>state.addSongReducer.display);
 
     //states
-    const musicTitle = useSelector((state)=>state.addSongReducer.musicTitle);
     const playlistId = useSelector((state)=>state.addSongReducer.playlistId);
 
     //toggle display playlist songs
@@ -50,8 +49,8 @@ function FileListItem({item}){
     const sendData = () =>{
 
         axios.post(URL + '/newsong', {
-            "musicTitle" : musicTitle,
-            "playlistId" : playlistId
+            "musicId" : itemId,
+            "playlistId" : playlistId,
             })
             .then(function () {
                 dispatch(getDisplay(false));
@@ -67,7 +66,7 @@ function FileListItem({item}){
     //get playlists names 
     const loadPlaylists = () =>{
         axios.get(URL + '/playlists').then((response) =>{
-            setData(response.data)
+            setData(response.data[0]);
         })
     }
 
@@ -96,7 +95,7 @@ function FileListItem({item}){
                         ):(
                             data.map((playlist) =>{
                                 return(
-                                    <p id={playlist.playlistId} key={playlist.playlistId} onClick={()=>{dispatch(getDisplay(true)); dispatch(setMusicTitle(item)); dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
+                                    <p id={playlist.playlistId} key={playlist.playlistId} onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
                                 );
                             })
                         )}

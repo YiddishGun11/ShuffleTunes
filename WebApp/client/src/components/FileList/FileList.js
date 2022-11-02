@@ -6,15 +6,15 @@ import { URL } from '../../scripts/url'
 
 import FileListItem from './FileListItem'
 
-const baseURL = URL + '/userFiles';
+const baseURL = URL + '/songs';
 
 function FileList(){
 
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get(baseURL).then((response) => {
-            setData(response.data);
+        axios.get(baseURL + '/1').then((response) => {
+            setData(response.data[0]);
         });
 
     }, []);
@@ -31,7 +31,7 @@ function FileList(){
                     <h1>Your File List</h1>
                     <div className='music-list-items'>
                         {data.map((item) => (
-                            <FileListItem item={item} key={item}/>
+                            <FileListItem item={item.musicTitle} key={item.musicId} itemId={item.musicId}/>
                         ))}
                     </div>
                 </div>

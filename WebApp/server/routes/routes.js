@@ -5,8 +5,6 @@ const express = require('express');
 //initialiser le router express
 const router = express.Router();
 
-const files = require('../controllers/fileList');
-
 //importer les requetes POST & GET
 const data = require('../controllers/data');
 
@@ -20,17 +18,15 @@ router.get('/', (req,res) =>
     res.json("hello bitches");
 });
 
-//get all user music files
-router.get('/userFiles', files.getFiles);
-
-//get all user favorites musics
-router.get('/favsongs', data.getFavSongs);
 
 //get all playlists
 router.get('/playlists', data.getPlaylists);
 
 //get songs by playlists
-router.get('/songs/:id', data.getSongsByPlaylist);
+router.get('/playlistsongs/:id', data.getSongsByPlaylist);
+
+//get user musics
+router.get('/songs/:id', data.getSongs);
 
 
 //POST REQUESTS
