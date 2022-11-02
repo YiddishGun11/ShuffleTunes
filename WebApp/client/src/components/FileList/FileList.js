@@ -12,6 +12,7 @@ function FileList(){
 
     const [data, setData] = useState([]);
 
+    //get data on DOM loading
     useEffect(() => {
         axios.get(baseURL + '/1').then((response) => {
             setData(response.data[0]);
