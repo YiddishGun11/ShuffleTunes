@@ -88,6 +88,11 @@ input[type="password"]:invalid {
     background-color: #322c2c;
 }
 
+.passwordReview {
+    background-color: #322c2c;
+    color: #eb3a1f;
+}
+
 .switch-connect {
     display: flex;
     justify-content: center;

@@ -1,42 +1,41 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import axios from 'axios';
 import {URL} from '../../scripts/url'
 
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
-
-// At least one number and one character + lenght between 5 and 20 + allow _ @ .
-const regexPseudo = new RegExp('^(?=.*[A-Za-z])[A-Za-z0-9_@]{5,20}$');
-// At least one number, one maj, on min, on special character + lenght between 10 and 20
-const regexPassword = new RegExp('^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])[A-Za-z0-9@<>!-_%]{10,20}$');
+import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core'
+import zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
+import zxcvbnEnPackage from '@zxcvbn-ts/language-en'
 
 function Inscription ({setDisplay}) {
 
-    const [pseudo, setPseudo] = useState("");
-    const [password, setPassword] = useState("");
+    // Save form input
+    const pseudo = useRef(null);
+    const password = useRef(null);
+    const confirmPassword = useRef(null);
+    const [warningMessage, setWarningMessage] = useState(null);
 
-    // Check if pseudo match the regexp
-    function onPseudoInputChange (event) {
-        setPseudo(() => {return event.target.value});
-        if (regexPseudo.test(pseudo) || pseudo === "") {
-            return event.target.setCustomValidity("");
+    // Setup password review
+    const passwordReviewOptions = {
+        translations: zxcvbnEnPackage.translations,
+        graphs: zxcvbnCommonPackage.adjacencyGraphs,
+        dictionary: {
+          ...zxcvbnCommonPackage.dictionary,
+          ...zxcvbnEnPackage.dictionary,
         }
-        event.target.setCustomValidity("Your pseudo must have a lenght between 5 and 20 characters and can only have _ and @ as special character");
     }
 
-    // Check if password match the regexp
-    function onPasswordInputChange (event) {
-        setPassword(() => {return event.target.value});
-        if (regexPassword.test(password) || password === "") {
-            return event.target.setCustomValidity("");
-        }
-        event.target.setCustomValidity("Lenght between 10 and 20 characters, require 1 number, 1 maj and 1 special character");
+    zxcvbnOptions.setOptions(passwordReviewOptions);
+
+    function reviewPassword () {
+        setWarningMessage(zxcvbn(password.current.value).feedback.warning);
     }
 
     // Check if password and confirm password match
     function onConfirmPasswordInputChange (event) {
-        if (event.target.value === password) {
+        if (confirmPassword.current.value === password.current.value) {
             return event.target.setCustomValidity("");
         }
         return event.target.setCustomValidity("Password and confirm password don't match");
@@ -63,8 +62,8 @@ function Inscription ({setDisplay}) {
         
         if(pseudo.length && password.length) {
             const data = {
-                'pseudo' : pseudo,
-                'password' : password
+                'pseudo' : pseudo.current.value,
+                'password' : password.current.value
             }
             axios.post(`${URL}/register`, data)
             .then(event => {
@@ -97,9 +96,10 @@ function Inscription ({setDisplay}) {
                     <h1>ShuffleTunes</h1>
                     <p className='login-section-subtitle'>Enhance your musical experience</p>
                     <form onSubmit={onSubmit}>
-                        <input type="text" placeholder='Pseudo' onChange={onPseudoInputChange} required minLength={5} maxLength={20}></input>
-                        <input type="password" placeholder='Password' onChange={onPasswordInputChange} required minLength={10} maxLength={20}></input>
-                        <input type="password" placeholder='Confirm password' onChange={onConfirmPasswordInputChange} required minLength={10} maxLength={20}></input>
+                        <input type="text" placeholder='Pseudo' ref={pseudo} required minLength={5} maxLength={20}></input>
+                        <input type="password" placeholder='Password' ref={password} onChange={reviewPassword} required minLength={8} maxLength={64}></input>
+                        <p className='passwordReview'>{warningMessage}</p>
+                        <input type="password" placeholder='Confirm password' ref={confirmPassword} onChange={onConfirmPasswordInputChange} required minLength={8} maxLength={64}></input>
                         <button type='sumbit'>Register</button>
                     </form>
                     <div className='switch-connect'>

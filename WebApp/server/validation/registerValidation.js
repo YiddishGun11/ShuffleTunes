@@ -7,19 +7,15 @@ const registerValidation = [
         .isString({ checkFalsy : true})
         .withMessage('Pseudo must be a string of characters')
         .isLength({ min : 5, max : 20})
-        .withMessage('Pseudo must be between 5 and 20 characters')
-        .matches('^(?=.*[A-Za-z])[A-Za-z0-9_@]{5,20}$')
-        .withMessage('Pseudo doesn\'t respect the norm'),
+        .withMessage('Pseudo must be between 5 and 20 characters'),
 
     body('password')
         .exists({ checkFalsy : true})
         .withMessage('Pseudo is required')
         .isString({ checkFalsy : true})
         .withMessage('Pseudo must be a string of characters')
-        .isLength({ min : 10, max : 20})
-        .withMessage('Pseudo must be between 10 and 20 characters')
-        .matches('^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])[A-Za-z0-9@<>!-_%]{10,20}$')
-        .withMessage('Pseudo doesn\'t respect the norm')
+        .isLength({ min : 8, max : 64})
+        .withMessage('Pseudo must be between 8 and 64 characters')
 ];
 
 module.exports = {

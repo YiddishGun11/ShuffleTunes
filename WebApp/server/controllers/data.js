@@ -1,7 +1,7 @@
 'use strict'
 
 const { response } = require('express');
-const hashed = require('./hashed.js');
+const argon2 = require('./argon2id.js');
 const db = require('../database/database');
 const { validationResult } = require('express-validator');
 
@@ -88,7 +88,7 @@ const register = (request, response, next) => {
             })
         }
 
-        db.query(`CALL register(?, ?)`, [request.body.pseudo, hashed.hash512String(request.body.password)], (error, results) => {
+        db.query(`CALL register(?, ?)`, [request.body.pseudo, argon2.hashSting(request.body.password)], (error, results) => {
             if (error) {
                 response.send(error);
             } 
