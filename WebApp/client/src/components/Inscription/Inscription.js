@@ -18,8 +18,8 @@ function Inscription ({setDisplay}) {
 
     // Check if pseudo match the regexp
     function onPseudoInputChange (event) {
-        setPseudo(event.target.value);
-        if (regexPseudo.test(event.target.value) || event.target.value === "") {
+        setPseudo(() => {return event.target.value});
+        if (regexPseudo.test(pseudo) || pseudo === "") {
             return event.target.setCustomValidity("");
         }
         event.target.setCustomValidity("Your pseudo must have a lenght between 5 and 20 characters and can only have _ and @ as special character");
@@ -27,8 +27,8 @@ function Inscription ({setDisplay}) {
 
     // Check if password match the regexp
     function onPasswordInputChange (event) {
-        setPassword(event.target.value);
-        if (regexPassword.test(event.target.value) || event.target.value === "") {
+        setPassword(() => {return event.target.value});
+        if (regexPassword.test(password) || password === "") {
             return event.target.setCustomValidity("");
         }
         event.target.setCustomValidity("Lenght between 10 and 20 characters, require 1 number, 1 maj and 1 special character");
