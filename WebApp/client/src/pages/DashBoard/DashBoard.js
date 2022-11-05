@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import './DashBoard.scss';
+
 import NavBar from '../../components/NavBar/NavBar';
-import './DashBoard.css';
 import SideBar from '../../components/SideBar/SideBar';
 import FileList from '../../components/FileList/FileList';
 import FavSongs from '../../components/FavSongs/FavSongs';
