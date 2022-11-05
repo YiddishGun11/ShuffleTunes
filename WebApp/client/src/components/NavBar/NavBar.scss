@@ -1,7 +1,9 @@
 @import '../../../styles/variables.scss' ;
 
-.navbar-section {
+.navbar-section-dark {
     display: flex;
+    position: fixed;
+    width: 100%;
     justify-content: space-between;
     padding: 40px 60px;
     color: white;
@@ -36,15 +38,69 @@
     .navbar-section-icons-childs {
         padding-top: 18px;
         padding-right: 50px;
+
+        #navbar-icon {
+            color: white;
+
+            &:hover {
+                color: $main-color;
+                transition-duration: 0.7;
+                cursor: pointer;
+            }
+        }
     }
 }
 
+.navbar-section-light {
+    @extend .navbar-section-dark;
+    background-color: $light-background;
 
-#icon-hover:hover {
-    color: $main-color;
-    transition-duration: 0.7;
-    cursor: pointer;
+    .navbar-section-items {
+        display: flex;
+        justify-content: space-between;
+        background-color: $light-background;
+
+        & h1 {
+            cursor: pointer;
+            color: black;
+            background-color: $light-background;
+        }
+        
+        & p {
+            padding-top: 18px;
+            padding-left: 80px; 
+            background-color: $light-background;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    .navbar-section-icons {
+        display: flex;
+        justify-content: space-between;
+        background-color: $light-background;
+    }
+    
+    .navbar-section-icons-childs {
+        padding-top: 18px;
+        padding-right: 50px;
+        background-color: $light-background;
+
+        #navbar-icon {
+            color: black;
+            background-color: $light-background;
+
+            &:hover {
+                color: $main-color;
+                transition-duration: 0.7;
+                cursor: pointer;
+            }
+        }
+    }
 }
+
 
 @keyframes from-top {
     from {

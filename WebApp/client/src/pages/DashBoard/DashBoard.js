@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './DashBoard.scss';
 
 import NavBar from '../../components/NavBar/NavBar';
@@ -7,13 +7,15 @@ import FileList from '../../components/FileList/FileList';
 import FavSongs from '../../components/FavSongs/FavSongs';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
 import PlayList from '../../components/PlayList/Playlist';
-
+import { ThemeContext } from '../../components/Context/ThemeContext';
 
 //redux
 import {useSelector} from 'react-redux'
 
 
 function DashBoard(){
+
+    const {theme} = useContext(ThemeContext);
 
     const[contentDisplay, setContentDisplay] = useState(0);
 
@@ -22,7 +24,7 @@ function DashBoard(){
     return(
         <div>
             <NavBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay} />
-            <div className='dashboard-section'>
+            <div className={theme ? 'dashboard-section-dark' : 'dashboard-section-light'}>
 
                 <SideBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay}/>
                 <div className='components-container'>
