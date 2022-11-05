@@ -1,9 +1,11 @@
 @import '../../../styles/variables.scss';
 
 .dashboard-section {
-    height: 625px;
+    height: 100vh;
+    padding-top: 25px;
     display: flex;
     justify-content: space-between;
+    background-color: #1b1919;
 
     .components-container {
         background-color: #1b1919;

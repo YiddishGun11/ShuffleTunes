@@ -3,9 +3,37 @@ import './Settings.scss'
 
 import DropSettings from './DropSettings/DropSettings'
 
-import {BsFillGearFill,BsFillMoonFill} from 'react-icons/bs'
+import {BsFillGearFill,BsFillMoonFill, BsFillSunFill} from 'react-icons/bs'
 import {FaInfo} from 'react-icons/fa'
 
+function Switch(){
+
+    const [theme, setTheme] = useState('dark');
+
+    const handleClick = () =>{
+        theme === 'dark' ? setTheme('light') : setTheme('dark')
+    }
+
+    return(
+        <div>
+            {theme === 'dark' ? (
+                <div className='settings-items' onClick={()=>handleClick()}>
+                    <div>
+                        <BsFillMoonFill size={22} className="settings-icons"/>
+                    </div>
+                    <p>DARK THEME</p>
+                </div>
+            ):(
+                <div className='settings-items' onClick={()=>handleClick()}>
+                    <div>
+                        <BsFillSunFill size={22} className="settings-icons"/>
+                    </div>
+                    <p>LIGHT THEME</p>
+                </div>
+            )}
+        </div>
+    )
+}
 
 function Settings(){
 
@@ -21,12 +49,7 @@ function Settings(){
                         </div>
                         <p>Settings</p>
                     </div>
-                    <div className='settings-items'>
-                        <div>
-                            <BsFillMoonFill size={22} className="settings-icons"/>
-                        </div>
-                        <p>Display</p>
-                        </div>
+                    <Switch />
                     <div className='settings-items'>
                         <div>
                             <FaInfo size={22} className="settings-icons"/>
