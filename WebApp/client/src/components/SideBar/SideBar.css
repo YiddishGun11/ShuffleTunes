@@ -39,7 +39,7 @@
 .sidebar-item2:hover {
     color: #10c6d3;
     cursor: pointer;
-    transform: translateX(15px);
+    transform: translateX(15px) ;
     transition-duration: 0.5s;
 }
 

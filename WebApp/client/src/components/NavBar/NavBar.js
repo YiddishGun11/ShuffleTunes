@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './NavBar.css';
 import {BsPersonLinesFill, BsGear} from 'react-icons/bs'
 import {BiLogOut} from 'react-icons/bi'
 
+import Settings from '../Settings/Settings';
+
 function NavBar({setContentDisplay}){
+
+    const [display, setDisplay] = useState(false);
+
+    const handleDisplay = () =>{
+        display ? setDisplay(false) : setDisplay(true);
+    }
+
     return(
         <div className='navbar-section'>
             <div className='navbar-section-items'>
@@ -11,13 +20,18 @@ function NavBar({setContentDisplay}){
             </div>
             <div className='navbar-section-icons'>
                 <div className='navbar-section-icons-childs'>
-                    <BsPersonLinesFill size={20} />
+                    <BsPersonLinesFill size={20} id="icon-hover"/>
                 </div>
                 <div className='navbar-section-icons-childs'>      
-                    <BsGear size={20} />
+                    <BsGear size={20} onClick={()=>handleDisplay()} id="icon-hover"/>
+                    {display ?(
+                        <Settings />
+                    ):(
+                        <div></div>
+                    )}
                 </div>
                 <div className='navbar-section-icons-childs'>
-                    <BiLogOut size={20}/>
+                    <BiLogOut size={20} id="icon-hover"/>
                 </div>
             </div>
         </div>
