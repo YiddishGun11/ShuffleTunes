@@ -25,9 +25,8 @@ function DropSettings({setDropdown}){
                     <MdLanguage size={22} className="settings-icons"/>
                 </div>
                 <select name="cars" id="cars">
-                    <option value="volvo" selected>Language</option>
-                    <option value="saab">French</option>
                     <option value="saab">English</option>
+                    <option value="saab">French</option>
                 </select>
             </div>
         </section>

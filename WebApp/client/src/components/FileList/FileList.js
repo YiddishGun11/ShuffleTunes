@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './FileList.scss'
-
 import { URL } from '../../scripts/url'
+import './FileList.scss'
 
 import FileListItem from './FileListItem'
 
+//import dynamic URL avoiding static "localhost" in code
 const baseURL = URL + '/songs';
+
+function NoFiles(){
+    return(
+        <div>
+            <h1>Your File List</h1>
+            <p id='error-file-list'>Your music list is empty...</p>
+        </div>
+    )
+}
 
 function FileList(){
 
@@ -23,10 +32,7 @@ function FileList(){
     return(
         <div className='filelist-section'>
             {data.length === 0 ?(
-                <div>
-                    <h1>Your File List</h1>
-                    <p id='error-file-list'>Your music list is empty...</p>
-                </div>
+                <NoFiles />
             ):(
                 <div>
                     <h1>Your File List</h1>

@@ -1,0 +1,56 @@
+@import '../../../styles/variables.scss' ;
+
+.navbar-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 60px;
+    color: white;
+    font-family: $police;
+    animation: from-top 2s;
+    animation-iteration-count: 1;
+
+    .navbar-section-items {
+        display: flex;
+        justify-content: space-between;
+
+        & h1 {
+            cursor: pointer;
+        }
+        
+        & p {
+            padding-top: 18px;
+            padding-left: 80px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    .navbar-section-icons {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .navbar-section-icons-childs {
+        padding-top: 18px;
+        padding-right: 50px;
+    }
+}
+
+
+#icon-hover:hover {
+    color: $main-color;
+    transition-duration: 0.7;
+    cursor: pointer;
+}
+
+@keyframes from-top {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}

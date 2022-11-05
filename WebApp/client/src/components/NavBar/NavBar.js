@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import './NavBar.css';
+import './NavBar.scss';
+
+//react icons
 import {BsPersonLinesFill, BsGear} from 'react-icons/bs'
 import {BiLogOut} from 'react-icons/bi'
 
