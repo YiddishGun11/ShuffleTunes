@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import './Settings.scss'
 
+import { ThemeContext } from '../Context/ThemeContext'
 import DropSettings from './DropSettings/DropSettings'
 
 import {BsFillGearFill,BsFillMoonFill, BsFillSunFill} from 'react-icons/bs'
@@ -8,27 +9,23 @@ import {FaInfo} from 'react-icons/fa'
 
 function Switch(){
 
-    const [theme, setTheme] = useState('dark');
-
-    const handleClick = () =>{
-        theme === 'dark' ? setTheme('light') : setTheme('dark')
-    }
+    const {theme, toggleTheme} = useContext(ThemeContext);
 
     return(
         <div>
-            {theme === 'dark' ? (
-                <div className='settings-items' onClick={()=>handleClick()}>
-                    <div>
-                        <BsFillMoonFill size={22} className="settings-icons"/>
-                    </div>
-                    <p>DARK THEME</p>
-                </div>
-            ):(
-                <div className='settings-items' onClick={()=>handleClick()}>
+            {theme ? (
+                <div className='settings-items' onClick={toggleTheme}>
                     <div>
                         <BsFillSunFill size={22} className="settings-icons"/>
                     </div>
                     <p>LIGHT THEME</p>
+                </div>
+            ):(
+                <div className='settings-items' onClick={toggleTheme}>
+                    <div>
+                        <BsFillMoonFill size={22} className="settings-icons"/>
+                    </div>
+                    <p>DARK THEME</p>
                 </div>
             )}
         </div>
