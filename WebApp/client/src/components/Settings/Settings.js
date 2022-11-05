@@ -6,6 +6,7 @@ import DropSettings from './DropSettings/DropSettings'
 import {BsFillGearFill,BsFillMoonFill} from 'react-icons/bs'
 import {FaInfo} from 'react-icons/fa'
 
+
 function Settings(){
 
     const [dropdown, setDropdown] = useState(true);
