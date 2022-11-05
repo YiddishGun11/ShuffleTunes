@@ -6,6 +6,12 @@
     scrollbar-width: none;
 }
 
+.loading-message {
+    text-align: center;
+    margin-top: 200px;
+    color: white;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

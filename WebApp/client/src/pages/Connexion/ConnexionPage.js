@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './ConnexionPage.scss'
 import {Link} from 'react-router-dom'
 import Connexion from '../../components/Connexion/Connexion'
 import Inscription from '../../components/Inscription/Inscription';
