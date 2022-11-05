@@ -9,7 +9,7 @@ function ConnexionPage(){
     const[display, setDisplay] = useState(true);
 
     return(
-        <div>
+        <div className='connexion-section'>
             <div className='home-menu'>
                 <Link to="/" className='home-menu-logo'><p>ShuffleTunes</p></Link>
                 <Link to="/connexion" className='home-menu-link'><p>Login</p></Link>
