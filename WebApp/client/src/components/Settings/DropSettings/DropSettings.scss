@@ -1,0 +1,58 @@
+@import '../../../../styles/variables.scss';
+
+.drop-settings-container {
+    border-radius: 10px;
+    background-color: $settings-background;
+
+    .drop-settings-items {
+        display: flex;
+        gap: 15px;
+        padding: 10px 0;
+        padding-right: 25px;
+        padding-left: 10px;
+        margin : 20px 0;
+        border-radius: 10px;
+        background-color: $settings-background;
+        cursor: pointer;
+
+        p {
+            padding-top: 10px;
+            font-size: 18px;
+            background-color: $settings-background;
+            font-weight: 500;
+        }
+
+        & div {
+            background-color: $settings-items ;
+            width: 45px;
+            height: 45px;
+            border-radius: 100%;
+            padding: 12px 12px;
+
+            .settings-icons {
+                background-color: $settings-items ;
+            }
+        }
+
+        select {
+            border: none;
+            background-color: $settings-background;
+            outline: none;
+            font-family: $police;
+            font-size: 18px;
+            color: white;
+        }
+    }
+
+    .drop-settings-items:hover {
+        background-color: #292929;
+
+        p {
+            background-color: #292929;
+        }
+
+        select {
+            background-color: #292929;
+        }
+    }
+}

@@ -38,7 +38,7 @@
     padding-right: 50px;
 }
 
-.navbar-section-icons-childs:hover {
+#icon-hover:hover {
     color: #10c6d3;
     transition-duration: 0.7;
 }

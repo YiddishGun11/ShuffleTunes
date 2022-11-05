@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import './Playlist.scss'
 import axios from 'axios'
 
@@ -15,7 +15,7 @@ function PlayList(){
     const [createPlaylist, setCreatePlaylist] = useState(false);
 
     //send data for creating new playlist
-    const [formData, setFormData] = useState('');
+    const input = useRef(null);
 
     //change display for creating new playlist
     const changeDisplay = () =>{
@@ -33,7 +33,7 @@ function PlayList(){
     const sendData = () =>{
 
         axios.post(URL + '/createplaylist', {
-            "playlistName" : formData,
+            "playlistName" : input.current.value,
             "userId" : 1
             })
             .then(function () {
@@ -43,11 +43,6 @@ function PlayList(){
             .catch(function (error) {
                 console.log(error);
             });
-    }
-
-    //change input value
-    const changeData = (event) =>{
-        setFormData(event.target.value)
     }
 
 
@@ -64,7 +59,7 @@ function PlayList(){
             <div>
                 {createPlaylist?(
                     <form className='add-playlist' onSubmit={sendData}>
-                        <input type="text" placeholder='Create a new playlist' value={formData} onChange={changeData}></input>
+                        <input type="text" placeholder='Create a new playlist' ref={input}></input>
                         <button type="submit">Add Playlist</button>
                     </form>
                 ):(
