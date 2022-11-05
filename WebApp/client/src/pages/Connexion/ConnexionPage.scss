@@ -1,0 +1,26 @@
+@import '../../../styles/variables.scss' ;
+
+.home-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 150px;
+    font-family: Poppins, sans-serif;
+    background-color: #1b1919;
+
+    .home-menu-link {
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    
+    .home-menu-logo {
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+        font-weight: semi-bold;
+    }
+}
