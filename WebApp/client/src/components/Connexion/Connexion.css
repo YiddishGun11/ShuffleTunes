@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-input[type="text"] {
-    text-indent: 15px;
+input[type="text"],
+input[type="password"] {
+    text-indent: 50px;
     color: white;
     font-family: Poppins, sans-serif;
     font-size: 14px;
+}
+
+input[type="text"]:invalid,
+input[type="password"]:invalid {
+    color: #eb3a1f;
 }
 
 .login-section-background {
@@ -33,6 +39,11 @@ input[type="text"] {
     margin-right: auto;
     margin-bottom: 15px;
     background-color: #322c2c;
+}
+
+.login-section form {
+    background-color: #322c2c;
+    text-align: center;
 }
 
 .login-section input {
@@ -77,6 +88,11 @@ input[type="text"] {
     background-color: #322c2c;
 }
 
+.passwordReview {
+    background-color: #322c2c;
+    color: #eb3a1f;
+}
+
 .switch-connect {
     display: flex;
     justify-content: center;
@@ -92,4 +108,17 @@ input[type="text"] {
 
 .switch-connect-link:hover {
     color: #10c6d3;
+}
+
+.notification-error .title,
+.notification-error .message {
+    background-color: #bd362f;
+    font-family: Poppins, sans-serif;
+
+}
+
+.notification-success .title,
+.notification-success .message {
+    background-color: #51a351;
+    font-family: Poppins, sans-serif;
 }

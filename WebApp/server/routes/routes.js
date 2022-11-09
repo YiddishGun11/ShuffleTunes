@@ -10,6 +10,8 @@ const data = require('../controllers/data');
 
 const dataDelete = require('../controllers/delete');
 
+// validation midelware
+const registerValidation = require('../validation/registerValidation.js');
 
 //GET REQUESTS
 
@@ -31,6 +33,7 @@ router.get('/songs/:id', data.getSongs);
 
 //POST REQUESTS
 
+// send the music we want to upload to the server
 router.post('/createplaylist', data.createPlaylist);
 
 router.post('/newsong', data.insertSong);
@@ -39,6 +42,12 @@ router.post('/newsong', data.insertSong);
 //DELETE 
 
 router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
+
+// register
+router.post('/register', registerValidation.registerValidation, data.register);
+
+// register
+router.post('/register', registerValidation.registerValidation, data.register);
 
 
 
