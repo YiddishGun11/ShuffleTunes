@@ -1,2 +1,3 @@
 #ignoring node_modules code
 node_modules/
+.env

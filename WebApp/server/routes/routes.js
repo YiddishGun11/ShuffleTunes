@@ -13,6 +13,13 @@ const dataDelete = require('../controllers/delete');
 // validation midelware
 const registerValidation = require('../validation/registerValidation.js');
 
+// secutity ùidelware
+const rateLimit = require('../controllers/rateLimiter.js');
+
+
+// ROUTER USE
+router.use(rateLimit.limiter)
+
 //GET REQUESTS
 
 router.get('/', (req,res) =>
