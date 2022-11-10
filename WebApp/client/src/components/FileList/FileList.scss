@@ -53,6 +53,10 @@
         .file-list-child-icon {
             background-color: $main-background;
             color: white;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 
@@ -65,12 +69,16 @@
     padding: 0 10px;
 
     & .dropmenu-box {
-        height: auto;
-        overflow: scroll;
+        height: 120px;
+        overflow-y: scroll;
         border-radius: 10px;
         border: 1px solid $file-list-background;
-        padding: 5px 20px;
+        padding: 8px 20px;
         width: auto;
+
+        .playlist-items {
+            margin-bottom: 8px;
+        }
     }
 }
 
@@ -85,20 +93,24 @@
     color: white;
 }
 
-.add-song-container div {
-    margin-top: 10px;
-    display: flex;
-    gap: 35px;
+.add-song-container {
+    height: auto;
 
-    & button {
-        cursor: pointer;
-        font-family: $police;
-        font-size: 16px;
+    & div {
+        margin-top: 10px;
+        display: flex;
+        gap: 35px;
+    
+        & button {
+            cursor: pointer;
+            font-family: $police;
+            font-size: 16px;
+        }
+    
+        & button:hover {
+            color: $main-color;
+        }      
     }
-
-    & button:hover {
-        color: $main-color;
-    }      
 }
 
 #error-file-list {
