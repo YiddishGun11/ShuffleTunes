@@ -94,7 +94,7 @@ function FileListItem({item,itemId}){
                         ):(
                             data.map((playlist) =>{
                                 return(
-                                    <p id={playlist.playlistId} key={playlist.playlistId} onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
+                                    <p id={playlist.playlistId} key={playlist.playlistId} className="playlist-items" onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
                                 );
                             })
                         )}
