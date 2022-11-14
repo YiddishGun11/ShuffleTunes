@@ -4,6 +4,7 @@ const { response } = require('express');
 const argon2 = require('./argon2id.js');
 const db = require('../database/database');
 const { validationResult } = require('express-validator');
+const ESAPI = require('node-esapi');
 
 //GET 
 
@@ -54,7 +55,7 @@ const createPlaylist = (request, response) =>{
 
     db.query("INSERT INTO tb_playlists SET ?", [data], (error,results)=>{
         if(error){
-            response.send(error);
+            response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
         }
         else{
             response.status(200).json(results);
@@ -69,7 +70,7 @@ const insertSong = (request, response) =>{
 
     db.query("INSERT INTO tb_musics_playlists SET ?", [data], (error,results)=>{
         if(error){
-            response.send(error);
+            response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
         }
         else{
             response.status(200).json(results);
@@ -90,7 +91,7 @@ const register = (request, response, next) => {
 
         db.query(`CALL register(?, ?)`, [request.body.pseudo, argon2.hashSting(request.body.password)], (error, results) => {
             if (error) {
-                response.send(error);
+                response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
             } 
             else {
                 results.forEach(element => {
