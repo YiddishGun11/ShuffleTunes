@@ -6,8 +6,20 @@ const { validationResult } = require('express-validator');
 const ESAPI = require('node-esapi');
 const sftpClient = require('ssh2-sftp-client');
 const configFtp = require('../ftp/ftp');
-
+const crypto = require('crypto');
 //GET 
+
+const whoIsConnected = async (cookie) => {
+    if (Object.keys(cookie).length === 0){    //cookie is empty
+        return false
+    }
+    const results = await db.query(`CALL who_is_sessionUser (?)`, [cookie.sessionId])
+    if (results[0][0][0].pseudo === null){
+            return false
+        }
+    return results[0][0][0].pseudo
+        
+}
 
 const getPlaylists = (request, response) =>{
     db.query('CALL get_playlists_list', (error, results)=>{
@@ -154,7 +166,6 @@ const uploadMusic = async (request, response) => {
     
                         await db.query(`CALL post_new_music(? ,?)`, [userName, musicfile.originalname]) // add the newly added file into the DB
                         .catch(async error => {// if DB error, delete file and cancel upload
-                            console.log(error)
                             await sftp.delete(`/home/pi/Music/${userName}/${musicfile.originalname}`); 
                             sftp.end()
                             return response.status(500).send();
@@ -180,6 +191,50 @@ const uploadMusic = async (request, response) => {
     
 }
 
+const login = async (request, response, next) => {
+    try {
+        if (await whoIsConnected(request.signedCookies)){
+            return response.status(200).send()
+        }
+        const validationErrors = validationResult(request);
+        if (!validationErrors.isEmpty()) {
+            return response.status(400).send(validationErrors.array())
+        }
+
+        db.query(`CALL login(?)`, [request.body.pseudo])
+        .then (async results => {
+            if (await argon.verifyString(results[0][0][0].password, request.body.password)){
+                const sessionId = crypto.randomUUID();
+                await db.query(`CALL post_new_session (?, ?)`, [sessionId, results[0][0][0].pseudo])
+                .then(() => {
+                    return response.status(200).cookie("sessionId", sessionId, {
+                        
+                        secure: true,
+                        httpOnly : true,
+                        sameSite : "none", //Should be "strict" in prod
+                        maxAge : 1 * 60 * 60 * 2 * 1000, //2 hours
+                        signed: true
+                    }).send()
+                }) 
+                .catch(() => {
+                    return response.status(500).send("Error while login in. Please retry later");
+                })          
+            } else {
+                return response.status(401).send('Invalid Pseudo or Password!');
+            }
+        })
+        .catch(error => {
+            if (error.sqlState == 45000) {
+                return response.status(401).send('Invalid Pseudo or Password!');
+            }
+            return response.status(500).send();
+        })
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+}
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -227,6 +282,7 @@ module.exports = {
     getSongsByPlaylist,
     getSongs,
     register,
+    login,
     userInfos,
     uploadMusic
 }
