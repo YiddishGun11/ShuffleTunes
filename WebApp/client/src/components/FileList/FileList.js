@@ -8,12 +8,21 @@ import FileListItem from './FileListItem'
 //import dynamic URL avoiding static "localhost" in code
 const baseURL = URL + '/songs';
 
-function NoFiles(){
+function Error(props){
     return(
-        <div>
-            <h1>Your File List</h1>
-            <p id='error-file-list'>Your music list is empty...</p>
-        </div>
+        <React.Fragment>
+            {props.error === 'no-file' ?(
+                <div>
+                    <h1>Your File List</h1>
+                    <p id='no-file-list'>Your music list is empty...</p>
+                </div>
+            ):(
+                <div id='error-file-list'>
+                    <h1>Your File List</h1>
+                    <p>An error just occured...</p>
+                </div>
+            )}
+        </React.Fragment>
     )
 }
 
@@ -21,27 +30,47 @@ function FileList(){
 
     const [data, setData] = useState([]);
 
+    //catching errors into state for error managing in UI
+    const [error, setError] = useState([]);
+
     //get data on DOM loading
     useEffect(() => {
-        axios.get(baseURL + '/1').then((response) => {
-            setData(response.data[0]);
-        });
+        try {
+            axios.get(baseURL + '/1')
+
+                .then((response) => {
+                    setData(response.data[0]);
+                })
+                .catch((error)=>{
+                    setError(error)
+                });
+        }
+
+        catch(error) {
+            setError(error);
+        }
 
     }, []);
 
     return(
-        <div className='filelist-section'>
-            {data.length === 0 ?(
-                <NoFiles />
-            ):(
-                <div>
-                    <h1>Your File List</h1>
-                    <div className='music-list-items'>
-                        {data.map((item) => (
-                            <FileListItem item={item.musicTitle} key={item.musicId} itemId={item.musicId}/>
-                        ))}
-                    </div>
+        <div>
+            {error.length === 0 ?(
+                <div className='filelist-section'>
+                    {error.length === 0 ?(
+                        <Error error={'no-file'} />
+                    ):(
+                        <div>
+                            <h1>Your File List</h1>
+                            <div className='music-list-items'>
+                                {data.map((item) => (
+                                    <FileListItem item={item.musicTitle} key={item.musicId} itemId={item.musicId}/>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
+            ):(
+                <Error error={''} />
             )}
         </div>
     );

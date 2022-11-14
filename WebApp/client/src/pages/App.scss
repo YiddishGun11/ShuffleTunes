@@ -10,9 +10,16 @@
 
 .loading-message {
     text-align: center;
-    margin-top: 200px;
+    position: absolute;
     color: white;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
     font-family: $police;
+
+    & h1 {
+        margin-top: 200px;
+    }
 }
 
 ::-webkit-scrollbar {

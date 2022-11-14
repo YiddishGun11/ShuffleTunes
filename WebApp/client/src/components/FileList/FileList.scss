@@ -113,8 +113,28 @@
     }
 }
 
-#error-file-list {
+#no-file-list {
     background-color: $main-background;
     font-size: 22px;
     margin-top: 25px;
+
+}
+
+#error-file-list{
+    margin: 20px 15%;
+    background-color: $main-background;
+    border-radius: 15px;
+    padding: 30px 80px;
+    height: 450px;
+    font-family: $police;
+
+    & p {
+        background-color: $main-background;
+        margin-top: 20px;
+        font-size: 22px;
+    }
+
+    & h1 {
+        background-color: $main-background;
+    }
 }
