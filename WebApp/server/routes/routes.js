@@ -11,7 +11,7 @@ const data = require('../controllers/data');
 const dataDelete = require('../controllers/delete');
 
 // validation midelware
-const registerValidation = require('../validation/registerValidation.js');
+const registerAndLoginValidation = require('../validation/registerAndLoginValidation.js');
 const createPlaylistValidation = require('../validation/createPlaylistValidation.js');
 
 // multer midelware
@@ -52,6 +52,8 @@ router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation
 
 router.post('/newsong', data.insertSong);
 
+router.post('/login',registerAndLoginValidation.registerAndLoginValidation, data.login);
+
 router.post('/uploadMusic', multer, data.uploadMusic);
 
 
@@ -60,10 +62,8 @@ router.post('/uploadMusic', multer, data.uploadMusic);
 router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 
 // register
-router.post('/register', registerValidation.registerValidation, data.register);
+router.post('/register',registerAndLoginValidation.registerAndLoginValidation, data.register);
 
-// register
-router.post('/register', registerValidation.registerValidation, data.register);
 
 
 
