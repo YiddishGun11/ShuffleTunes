@@ -11,7 +11,7 @@ const DashBoard = lazy(()=> import ('./DashBoard/DashBoard'));
 function App() {
     return (
         <ThemeContextProvider>
-            <Suspense fallback={<h1 className='loading-message'>Loading...</h1>}>
+            <Suspense fallback={<div className='loading-message'><h1>Loading...</h1></div>}>
                 <Routes>
                     <Route path="/" element={ <Home /> } />
                     <Route path="/connexion" element={ <Login/> } />
