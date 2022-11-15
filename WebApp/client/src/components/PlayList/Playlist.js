@@ -8,11 +8,27 @@ import {URL} from '../../scripts/url'
 
 import DropDown from './DropDown/DropDown';
 
+//gestion des erreurs
+function PlaylistError(props){
+    return(
+        <React.Fragment>
+            {props.error === 'no-files' ? (
+                <p className='playlist-message'>You don't have any playlists for the moment...</p>
+            ):(
+                <p className='playlist-message'>An error just occured...</p>
+            )}
+        </React.Fragment>
+    )
+}
+
 function PlayList(){
 
     //states 
     const [data, setData] = useState([]);
     const [createPlaylist, setCreatePlaylist] = useState(false);
+
+    //catching errors
+    const [error, setError] = useState([]);
 
     //send data for creating new playlist
     const input = useRef(null);
@@ -24,9 +40,19 @@ function PlayList(){
 
     //load playlists
     useEffect(() =>{
-        axios.get(URL + '/playlists').then((response) =>{
-            setData(response.data[0])
-        })
+        try{
+            axios.get(URL + '/playlists')
+            .then((response) =>{
+                setData(response.data[0])
+            })
+            .catch((error) =>{
+                setError(error);
+            })
+        }
+        catch(error){
+            setError(error)
+            console.clear();
+        }
     }, []);
 
     //sendata for creating new playlist
@@ -41,7 +67,7 @@ function PlayList(){
             })
 
             .catch(function (error) {
-                console.log(error);
+                console.clear()
             });
     }
 
@@ -67,16 +93,22 @@ function PlayList(){
                 )}
             </div>
             <div> 
-                {data.length === 0?(
-                    <p className='playlist-message'>You don't have any playlists for the moment...</p>
+                {error.length === 0 ?(
+                    <React.Fragment>
+                        {data.length === 0?(
+                            <PlaylistError error={'no-files'}/>
+                        ):(
+                            <div className='playlist-dropdowns'>
+                                {data.map((item)=>{
+                                    return(
+                                        <DropDown id={item.playlistId} title={item.playlistName} key={item.playlistId}/>
+                                    );
+                                })}
+                            </div>
+                        )}
+                    </React.Fragment>
                 ):(
-                    <div className='playlist-dropdowns'>
-                        {data.map((item)=>{
-                            return(
-                                <DropDown id={item.playlistId} title={item.playlistName} key={item.playlistId}/>
-                            );
-                        })}
-                    </div>
+                    <PlaylistError error={''} />
                 )}
             </div>
         </div>

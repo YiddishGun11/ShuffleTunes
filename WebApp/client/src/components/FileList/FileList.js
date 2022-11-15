@@ -8,7 +8,7 @@ import FileListItem from './FileListItem'
 //import dynamic URL avoiding static "localhost" in code
 const baseURL = URL + '/songs';
 
-function Error(props){
+function FileListError(props){
     return(
         <React.Fragment>
             {props.error === 'no-file' ?(
@@ -43,11 +43,13 @@ function FileList(){
                 })
                 .catch((error)=>{
                     setError(error)
+                    console.clear();
                 });
         }
 
         catch(error) {
             setError(error);
+            console.clear()
         }
 
     }, []);
@@ -57,7 +59,7 @@ function FileList(){
             {error.length === 0 ?(
                 <div className='filelist-section'>
                     {data.length === 0 ?(
-                        <Error error={'no-file'} />
+                        <FileListError error={'no-file'} />
                     ):(
                         <div>
                             <h1>Your File List</h1>
@@ -70,7 +72,7 @@ function FileList(){
                     )}
                 </div>
             ):(
-                <Error error={''} />
+                <FileListError error={''} />
             )}
         </div>
     );
