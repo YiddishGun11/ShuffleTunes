@@ -35,7 +35,7 @@ function FileList(){
 
     //get data on DOM loading
     useEffect(() => {
-        try {
+        try{
             axios.get(baseURL + '/1')
 
                 .then((response) => {
@@ -56,7 +56,7 @@ function FileList(){
         <div>
             {error.length === 0 ?(
                 <div className='filelist-section'>
-                    {error.length === 0 ?(
+                    {data.length === 0 ?(
                         <Error error={'no-file'} />
                     ):(
                         <div>
