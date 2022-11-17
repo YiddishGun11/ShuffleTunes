@@ -14,7 +14,10 @@ const dataDelete = require('../controllers/delete');
 const registerValidation = require('../validation/registerValidation.js');
 const createPlaylistValidation = require('../validation/createPlaylistValidation.js');
 
-// secutity ùidelware
+// multer midelware
+const multer = require('../controllers/multer');
+
+// secutity midelware
 const rateLimit = require('../controllers/rateLimiter.js');
 
 
@@ -48,6 +51,8 @@ router.get('/user/:id',data.userInfos);
 router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation, data.createPlaylist);
 
 router.post('/newsong', data.insertSong);
+
+router.post('/uploadMusic', multer, data.uploadMusic);
 
 
 //DELETE 

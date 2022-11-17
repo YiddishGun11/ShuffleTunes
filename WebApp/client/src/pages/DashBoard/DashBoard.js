@@ -8,6 +8,7 @@ import FavSongs from '../../components/FavSongs/FavSongs';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer';
 import PlayList from '../../components/PlayList/Playlist';
 import { ThemeContext } from '../../components/Context/ThemeContext';
+import UploadMusic from '../../components/UploadMusic/UploadMusic';
 
 //redux
 import {useSelector} from 'react-redux'
@@ -48,6 +49,11 @@ function DashBoard(){
                             case(2):
                                 return(
                                     <FavSongs />
+                                )
+
+                                case(3):
+                                return(
+                                    <UploadMusic />
                                 )
 
                             case(4):

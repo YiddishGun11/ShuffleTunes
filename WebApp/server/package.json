@@ -17,8 +17,11 @@
     "express": "^4.18.1",
     "express-rate-limit": "^6.6.0",
     "express-validator": "^6.14.2",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
-    "node-esapi": "^0.0.1"
+    "node-esapi": "^0.0.1",
+    "queue": "^6.0.2",
+    "ssh2-sftp-client": "^9.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

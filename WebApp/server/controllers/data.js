@@ -4,6 +4,8 @@ const argon2 = require('./argon2id.js');
 const db = require('../database/database');
 const { validationResult } = require('express-validator');
 const ESAPI = require('node-esapi');
+const sftpClient = require('ssh2-sftp-client');
+const configFtp = require('../ftp/ftp');
 
 //GET 
 
@@ -141,6 +143,48 @@ const userInfos = (request, response) => {
 
 
 
+const uploadMusic = async (request, response) => {
+    // Array which contain all the music
+    const userName = 'ChaosArnhug' //request.user ; //DOIT ETRE DYNAMIQUE EN FONCTION DU USER CONNECTE CF token login
+
+    try {
+        const sftp = new sftpClient();
+
+        sftp.connect(configFtp)
+        .then(async () => {
+            if (await sftp.exists(`/home/pi/Music/${userName}`) === 'd'){ // Check si l'utilisateur a un dossier perso
+                for (const musicfile of request.files){
+                    if (! await sftp.exists(`/home/pi/Music/${userName}/${musicfile.originalname}`)) { // Skip if file already exist
+                        await sftp.put(musicfile.buffer, `/home/pi/Music/${userName}/${musicfile.originalname}`);
+    
+                        await db.query(`CALL post_new_music(? ,?)`, [userName, musicfile.originalname]) // add the newly added file into the DB
+                        .catch(async error => {// if DB error, delete file and cancel upload
+                            console.log(error)
+                            await sftp.delete(`/home/pi/Music/${userName}/${musicfile.originalname}`); 
+                            sftp.end()
+                            return response.status(500).send();
+                        })
+                    }
+                }
+                sftp.end()
+                return response.status(201).send('The music are now uploaded') 
+
+            } else {
+                return response.status(500).send()
+            }
+        })
+        .catch( error => {
+            console.log(error)
+            return response.status(500).send();
+        })
+   
+    }
+    catch (error) {
+        response.status(500).send()
+    }
+    
+}
+
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -189,4 +233,5 @@ module.exports = {
     getSongs,
     register,
     userInfos,
+    uploadMusic
 }
