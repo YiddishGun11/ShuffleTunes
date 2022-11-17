@@ -9,6 +9,8 @@ import {URL} from '../../scripts/url'
 import {BsPersonLinesFill, BsGear} from 'react-icons/bs'
 import {BiLogOut} from 'react-icons/bi'
 
+import Profil from '../Profil/Profil';
+
 import Settings from '../Settings/Settings';
 
 function NavBar({setContentDisplay}){
@@ -37,7 +39,12 @@ function NavBar({setContentDisplay}){
             </div>
             <div className='navbar-section-icons'>
                 <div className='navbar-section-icons-childs'>
-                    <BsPersonLinesFill size={20} id="navbar-icon"/>
+                    <BsPersonLinesFill size={20}  onClick={()=>handleDisplay()} id="navbar-icon"/>
+                    {display ?(
+                        <Profil />
+                    ):(
+                        <div></div>
+                    )}
                 </div>
                 <div className='navbar-section-icons-childs'>      
                     <BsGear size={20} onClick={()=>handleDisplay()} id="navbar-icon"/>
