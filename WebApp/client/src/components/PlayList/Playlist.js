@@ -75,7 +75,7 @@ function PlayList(){
     return(
         <div className='playlists-container'>   
             <div className='playlist-container-menu'>  
-                <h1 onClick={()=>console.log(data)}>Your PlayLists</h1>
+                <h1>Your PlayLists</h1>
                 {createPlaylist ?(
                     <button onClick={()=>changeDisplay()}><RiCloseFill  size={30} className='playlist-container-menu-icon' /></button>
                 ):(

@@ -37,6 +37,9 @@ router.get('/playlistsongs/:id', data.getSongsByPlaylist);
 //get user musics
 router.get('/songs/:id', data.getSongs);
 
+//get user infos
+router.get('/user/:id',data.userInfos);
+
 
 //POST REQUESTS
 
