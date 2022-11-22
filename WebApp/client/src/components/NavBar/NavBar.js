@@ -31,7 +31,7 @@ function NavBar({setContentDisplay}){
                 <div className='navbar-section-icons-childs'>      
                     <BsGear size={20} onClick={()=>handleDisplay()} id="navbar-icon"/>
                     {display ?(
-                        <Settings />
+                        <Settings/>
                     ):(
                         <div></div>
                     )}

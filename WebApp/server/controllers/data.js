@@ -109,6 +109,22 @@ const register = (request, response, next) => {
     }
 }
 
+
+const userInfos = (request, response) => {
+
+    db.query("CALL get_user_id(?)", request.params.id,(error, results)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            response.status(200).json(results);
+        }
+    })
+
+}
+
+
+
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -155,5 +171,6 @@ module.exports = {
     insertSong,
     getSongsByPlaylist,
     getSongs,
-    register
+    register,
+    userInfos,
 }
