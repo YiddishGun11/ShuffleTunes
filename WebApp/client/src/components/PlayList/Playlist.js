@@ -11,13 +11,13 @@ import DropDown from './DropDown/DropDown';
 //gestion des erreurs
 function PlaylistError(props){
     return(
-        <React.Fragment>
+        <>
             {props.error === 'no-files' ? (
                 <p className='playlist-message'>You don't have any playlists for the moment...</p>
             ):(
                 <p className='playlist-message'>An error just occured...</p>
             )}
-        </React.Fragment>
+        </>
     )
 }
 
@@ -30,10 +30,10 @@ function PlayList(){
     //catching errors
     const [error, setError] = useState([]);
 
-    //send data for creating new playlist
+    //input for creating a new playlist
     const input = useRef(null);
 
-    //change display for creating new playlist
+    //change display for creating new playlist (handling event between true and false)
     const changeDisplay = () =>{
         createPlaylist ? setCreatePlaylist(false) : setCreatePlaylist(true)
     }
@@ -57,7 +57,6 @@ function PlayList(){
 
     //sendata for creating new playlist
     const sendData = () =>{
-
         axios.post(URL + '/createplaylist', {
             "playlistName" : input.current.value,
             "userId" : 1
@@ -94,7 +93,7 @@ function PlayList(){
             </div>
             <div> 
                 {error.length === 0 ?(
-                    <React.Fragment>
+                    <>
                         {data.length === 0?(
                             <PlaylistError error={'no-files'}/>
                         ):(
@@ -106,7 +105,7 @@ function PlayList(){
                                 })}
                             </div>
                         )}
-                    </React.Fragment>
+                    </>
                 ):(
                     <PlaylistError error={''} />
                 )}
