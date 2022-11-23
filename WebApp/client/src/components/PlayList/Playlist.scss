@@ -39,6 +39,7 @@ input[type="text"] {
 
         .playlist-container-menu-icon {
             background-color: $main-background;
+            outline: none;
 
             &:hover {
                 transform: rotate(90deg);
@@ -94,5 +95,6 @@ input[type="text"] {
         font-family: $police;
         font-size: 16px;
         font-weight: 500;
+        cursor: pointer;
     }
 }
