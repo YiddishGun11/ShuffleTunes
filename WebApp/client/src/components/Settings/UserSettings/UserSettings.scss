@@ -7,6 +7,12 @@ input[type="password"] {
     font-size: 14px;
 }
 
+input[type="text"]:invalid,
+input[type="password"]:invalid {
+    color: #eb3a1f;
+}
+
+
 .user-settings-section {
     backdrop-filter: blur(50px);
     position: absolute;
@@ -143,6 +149,11 @@ input[type="password"] {
         cursor: pointer;
         color: dark;
     }
+}
+
+#modification-error-message {
+    color: rgba(240, 0, 0, 0.8);
+    margin-top: 10px;
 }
 
 #settings-pen:hover {
