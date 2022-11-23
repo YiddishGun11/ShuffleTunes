@@ -55,13 +55,13 @@ function FileListItem({item,itemId}){
                 "musicId" : itemId,
                 "playlistId" : playlistId,
                 })
-                .then(function () {
-                    dispatch(getDisplay(false));
-                })
-    
-                .catch(function (error) {
-                    setError(error);
-                });
+            .then(function () {
+                dispatch(getDisplay(false));
+            })
+
+            .catch(function (error) {
+                setError(error);
+            });
         }  
         catch(error){
             setError(error);
@@ -74,10 +74,10 @@ function FileListItem({item,itemId}){
         try{
             axios.get(URL + '/playlists')
                 .then((response) =>{
-                setData(response.data[0]);
+                    setData(response.data[0]);
                 })
                 .catch((error) =>{
-                setError(error);
+                    setError(error);
                 })
         }
         catch(error){

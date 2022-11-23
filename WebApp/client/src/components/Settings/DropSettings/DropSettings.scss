@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss';
+@import "../../../../styles/variables.scss";
 
 .drop-settings-container {
     border-radius: 10px;
@@ -23,14 +23,14 @@
         }
 
         & div {
-            background-color: $settings-items ;
+            background-color: $settings-items;
             width: 45px;
             height: 45px;
             border-radius: 100%;
-            padding: 12px 12px;
+            padding: 12px;
 
             .settings-icons {
-                background-color: $settings-items ;
+                background-color: $settings-items;
             }
         }
 

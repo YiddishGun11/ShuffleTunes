@@ -30,12 +30,12 @@ function UserSettings({setModal}){
     //load playlists
     useEffect(() =>{
         axios.get(URL + '/user/' + 2 )
-        .then((response) =>{
-            setData(response.data[0][0])
-        })
-        .catch((error) =>{
-            setError(error);
-        })
+            .then((response) =>{
+                setData(response.data[0][0])
+            })
+            .catch((error) =>{
+                setError(error);
+            })
     }, []);
 
     return createPortal(
@@ -55,7 +55,7 @@ function UserSettings({setModal}){
                         <div className='settings-user-infos'>
                             <div className='settings-user-infos-items'>
                                 <div className='change-informations'>
-                                {changePseudo ?(
+                                    {changePseudo ?(
                                         <ChangePseudo setChangePseudo={setChangePseudo} pseudo={data.pseudo}/>
                                     ):(
                                         <>

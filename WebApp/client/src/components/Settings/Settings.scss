@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss' ;
+@import "../../../styles/variables.scss" ;
 
 .settings-container {
     height: 280px;
@@ -38,10 +38,10 @@
             width: 45px;
             height: 45px;
             border-radius: 100%;
-            padding: 12px 12px;
+            padding: 12px;
 
             .settings-icons {
-                background-color: $settings-items ;
+                background-color: $settings-items;
             }
         }
     }
@@ -60,9 +60,6 @@
     background-color: red;
     padding: 0 10px;
 }
-
-
-
 
 @keyframes slide-settings {
     from {

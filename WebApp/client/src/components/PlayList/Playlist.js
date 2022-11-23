@@ -42,12 +42,12 @@ function PlayList(){
     useEffect(() =>{
         try{
             axios.get(URL + '/playlists')
-            .then((response) =>{
-                setData(response.data[0])
-            })
-            .catch((error) =>{
-                setError(error);
-            })
+                .then((response) =>{
+                    setData(response.data[0])
+                })
+                .catch((error) =>{
+                    setError(error);
+                })
         }
         catch(error){
             setError(error)
@@ -60,12 +60,12 @@ function PlayList(){
         axios.post(URL + '/createplaylist', {
             "playlistName" : input.current.value,
             "userId" : 1
-            })
-            .then(function () {
+        })
+            .then(()=>{
             //à définir
             })
 
-            .catch(function (error) {
+            .catch(()=>{
                 console.clear()
             });
     }

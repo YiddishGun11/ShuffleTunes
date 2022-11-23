@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import "../../../styles/variables.scss";
 
 .dashboard-section-dark {
     height: 100vh;
@@ -66,6 +66,7 @@
 
 .dashboard-section-light {
     @extend .dashboard-section-dark;
+
     background-color: $light-background;
 
     .components-container {
@@ -124,7 +125,6 @@
         }
     }
 }
-
 
 @keyframes slidein {
     from {

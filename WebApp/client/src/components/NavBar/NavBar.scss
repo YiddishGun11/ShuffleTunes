@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss' ;
+@import "../../../styles/variables.scss" ;
 
 .navbar-section-dark {
     display: flex;
@@ -19,7 +19,7 @@
         & h1 {
             cursor: pointer;
         }
-        
+
         & p {
             padding-top: 18px;
             padding-left: 80px;
@@ -29,12 +29,12 @@
             }
         }
     }
-    
+
     .navbar-section-icons {
         display: flex;
         justify-content: space-between;
     }
-    
+
     .navbar-section-icons-childs {
         padding-top: 18px;
         padding-right: 50px;
@@ -53,6 +53,7 @@
 
 .navbar-section-light {
     @extend .navbar-section-dark;
+
     background-color: $light-background;
 
     .navbar-section-items {
@@ -65,10 +66,10 @@
             color: black;
             background-color: $light-background;
         }
-        
+
         & p {
             padding-top: 18px;
-            padding-left: 80px; 
+            padding-left: 80px;
             background-color: $light-background;
 
             &:hover {
@@ -82,7 +83,7 @@
         justify-content: space-between;
         background-color: $light-background;
     }
-    
+
     .navbar-section-icons-childs {
         padding-top: 18px;
         padding-right: 50px;

@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss' ;
+@import "../../../../styles/variables.scss" ;
 
 input[type="password"] {
     text-indent: 25px;
@@ -11,7 +11,6 @@ input[type="text"]:invalid,
 input[type="password"]:invalid {
     color: #eb3a1f;
 }
-
 
 .user-settings-section {
     backdrop-filter: blur(50px);
@@ -88,6 +87,7 @@ input[type="password"]:invalid {
 
                         #confirm-pswd {
                             @extend #confirm-pseudo;
+
                             width: 100%;
                             margin-top: 15px;
                         }
@@ -130,7 +130,7 @@ input[type="password"]:invalid {
     padding: 0 5px;
 
     & button {
-        background-color: rgba(0,0,0,0);
+        background-color: rgba(0,0,0,0%);
         border: none;
         cursor: pointer;
         color: white;
@@ -144,7 +144,7 @@ input[type="password"]:invalid {
     padding: 0 5px;
 
     & button {
-        background-color: rgba(255, 255, 255, 0);
+        background-color: rgba(255, 255, 255, 0%);
         border: none;
         cursor: pointer;
         color: dark;
@@ -152,14 +152,13 @@ input[type="password"]:invalid {
 }
 
 #modification-error-message {
-    color: rgba(240, 0, 0, 0.8);
+    color: rgba(240, 0, 0, 80%);
     margin-top: 10px;
 }
 
 #settings-pen:hover {
     color: $main-color;
 }
-
 
 #hello-span {
     font-size: 25px;
@@ -168,35 +167,35 @@ input[type="password"]:invalid {
 }
 
 #modal-error-text {
-  text-align: center;
-  font-size: 20px;
-  color: white;
-  padding: 120px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    padding: 120px;
 }
 
 @keyframes wave-animation {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     10% {
-      transform: rotate(14deg);
-    } /* The following five values can be played with to make the waving more or less extreme */
+        transform: rotate(14deg);
+    }
     20% {
-      transform: rotate(-8deg);
+        transform: rotate(-8deg);
     }
     30% {
-      transform: rotate(14deg);
+        transform: rotate(14deg);
     }
     40% {
-      transform: rotate(-4deg);
+        transform: rotate(-4deg);
     }
     50% {
-      transform: rotate(10deg);
+        transform: rotate(10deg);
     }
     60% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     } /* Reset for the last half to pause */
     100% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-  }
+}
