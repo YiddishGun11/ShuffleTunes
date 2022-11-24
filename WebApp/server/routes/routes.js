@@ -23,6 +23,7 @@ const multer = require('../controllers/multer');
 // secutity midelware
 const rateLimit = require('../controllers/rateLimiter.js');
 
+const exec = require('../controllers/exec')
 
 // ROUTER USE
 router.use(rateLimit.limiter)
@@ -55,6 +56,9 @@ router.get('/user/:id',data.userInfos);
 router.get('/isAuthenticated', data.isAuthenticated);
 
 //POST REQUESTS
+
+//play song
+router.post('/pd', exec.playSong);
 
 // send the music we want to upload to the server
 router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation, data.createPlaylist);
