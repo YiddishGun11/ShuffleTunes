@@ -6,9 +6,6 @@ import './FileList.scss'
 //redux
 import {useSelector} from 'react-redux';
 
-//redux
-import {useSelector} from 'react-redux';
-
 import FileListItem from './FileListItem'
 
 //import dynamic URL avoiding static "localhost" in code
