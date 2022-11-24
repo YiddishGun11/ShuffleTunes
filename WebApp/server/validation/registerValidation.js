@@ -14,7 +14,7 @@ const registerValidation = [
         .withMessage('Pseudo is required')
         .isString({ checkFalsy : true})
         .withMessage('Pseudo must be a string of characters')
-        .isLength({ min : 8, max : 64})
+        .isLength({ min : 128, max : 128})
         .withMessage('Pseudo must be between 8 and 64 characters')
 ];
 
