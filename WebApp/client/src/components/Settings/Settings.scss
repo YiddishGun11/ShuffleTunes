@@ -1,0 +1,72 @@
+@import "../../../styles/variables.scss" ;
+
+.settings-container {
+    height: 280px;
+    width: auto;
+    position: absolute;
+    top: 100px;
+    right: 75px;
+    border-radius: 10px;
+    background-color: $settings-background;
+    padding: 0 10px;
+    animation : slide-settings 1s;
+    animation-iteration-count: 1;
+    font-family: $police;
+
+    div {
+        background-color: $settings-background;
+    }
+
+    .settings-items {
+        display: flex;
+        gap: 15px;
+        padding: 10px 15px;
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: $settings-background;
+        cursor: pointer;
+
+        p {
+            padding-top: 10px;
+            font-size: 18px;
+            background-color: $settings-background;
+            font-weight: 500;
+        }
+
+        & div {
+            background-color: $settings-items ;
+            width: 45px;
+            height: 45px;
+            border-radius: 100%;
+            padding: 12px;
+
+            .settings-icons {
+                background-color: $settings-items;
+            }
+        }
+    }
+
+    .settings-items:hover {
+        background-color: #292929;
+
+        p {
+            background-color: #292929;
+        }
+    }
+}
+
+.settings-dropdown {
+    border-radius: 10px;
+    background-color: red;
+    padding: 0 10px;
+}
+
+@keyframes slide-settings {
+    from {
+        transform: translateX(+100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}

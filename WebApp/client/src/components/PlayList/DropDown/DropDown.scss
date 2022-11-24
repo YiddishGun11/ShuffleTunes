@@ -29,7 +29,6 @@
             background-color: $main-background;
         }
     }
-
 }
 
 .dropdown-button {
@@ -106,4 +105,8 @@
     & .songs-items-icons {
         background-color: $main-background;
     }
+}
+
+.none {
+    display: none;
 }

@@ -23,6 +23,9 @@ function FileListItem({item,itemId}){
     //DB data
     const [data, setData] = useState([]);
 
+    //catching error into state to eventually display
+    const [error, setError] = useState([])
+
     //redux variables
     const dispatch = useDispatch();
 
@@ -46,33 +49,61 @@ function FileListItem({item,itemId}){
     }
 
     //sendata for creating new playlist
-    const sendData = () =>{
+    const playSong = (item) =>{
 
-        axios.post(URL + '/newsong', {
-            "musicId" : itemId,
-            "playlistId" : playlistId,
+        axios.post(URL + '/pd', {
+            "song" : item
             })
+            .then(function () {
+             console.log('enfoiré')
+            })
+
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    //sendata for creating new playlist
+    const sendData = () =>{
+        try{
+            axios.post(URL + '/newsong', {
+                "musicId" : itemId,
+                "playlistId" : playlistId,
+                })
             .then(function () {
                 dispatch(getDisplay(false));
             })
 
             .catch(function (error) {
-                console.log(error);
-            });  
+                setError(error);
+            });
+        }  
+        catch(error){
+            setError(error);
+        }
     }
 
 
     //get playlists names 
     const loadPlaylists = () =>{
-        axios.get(URL + '/playlists').then((response) =>{
-            setData(response.data[0]);
-        })
+        try{
+            axios.get(URL + '/playlists')
+                .then((response) =>{
+                    setData(response.data[0]);
+                })
+                .catch((error) =>{
+                    setError(error);
+                })
+        }
+        catch(error){
+            setError(error);
+        }
     }
 
     return(
         <div className='file-list-child'> 
             <div className='file-list-songs'>
-                <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item))}}>{item}</p>
+                <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item)); playSong(item)}}>{item}</p>
                 {listDisplay === item ?(
                     <button onClick={()=>{dispatch(miniListDisplay(item)); dropMenuDisplay(); dispatch(getDisplay(false))}}><BsArrowRightShort size={28} className="file-list-child-icon"/></button> 
                 ):(
@@ -92,11 +123,17 @@ function FileListItem({item,itemId}){
                                 </div>
                             </div>
                         ):(
-                            data.map((playlist) =>{
-                                return(
-                                    <p id={playlist.playlistId} key={playlist.playlistId} onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
-                                );
-                            })
+                            <React.Fragment>
+                                {error.length === 0 ?(
+                                    data.map((playlist) =>{
+                                        return(
+                                            <p id={playlist.playlistId} key={playlist.playlistId} className="playlist-items" onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
+                                        );
+                                    })
+                                ):(
+                                    <p>An error just occured...</p>
+                                )}
+                            </React.Fragment>
                         )}
                     </div>
                 ):(

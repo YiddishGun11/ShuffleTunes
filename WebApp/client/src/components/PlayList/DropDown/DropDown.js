@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import axios from 'axios'
 import {MdArrowDropDown} from 'react-icons/md'
 import {BsGear} from 'react-icons/bs'
@@ -12,17 +12,21 @@ import {URL} from '../../../scripts/url'
 
 import './DropDown.scss'
 
+function DropDownError(props){
+    return(
+        <React.Fragment>
+            {props.error === 'no-songs' ? (
+                <p>You don't have any songs in this playlist...</p>
+            ):(
+                <p>An error just occured...</p>
+            )}
+        </React.Fragment>
+    )
+}
 
-function DropDown({id, title}){
+function Song(props){
 
-    const [data, setData] = useState([]);
- 
-    //load songs by playlists
-    useEffect(() =>{
-        axios.get(URL + '/playlistsongs/' + id).then((response) =>{
-            setData(response.data[0])
-        })
-    });
+    const [display, setDisplay] = useState(true);
 
     const deleteSong = (songId) =>{
         axios.delete(URL + '/deletesongplaylist/' + songId)
@@ -31,6 +35,32 @@ function DropDown({id, title}){
             })
             .catch(()=>{
                 //à venir
+            })
+    }
+
+    return(
+        <div className={display ? 'songs-items' : 'none'} key={props.id}>
+            <button onClick={()=>{deleteSong(props.id); setDisplay(false)}} ><TiDelete size={24} className='songs-items-icons'/></button>
+            <p>{props.title}</p>
+        </div>
+    )
+}
+
+
+function DropDown({id, title}){
+
+    const [data, setData] = useState([]);
+    const [error, setError] = useState([]);
+ 
+    //load songs by playlists
+    const LoadSongs = () => {
+        axios.get(URL + '/playlistsongs/' + id)
+            .then((response) =>{
+                setData(response.data[0])
+            })
+            .catch((error) =>{
+                setError(error);
+                console.clear();
             })
     }
 
@@ -50,7 +80,7 @@ function DropDown({id, title}){
 
     return(
         <div className='dropdown'>
-            <div className='dropdown-menu' onClick={()=>{dispatch(playlistDisplay(id)); checkstate()}}>
+            <div className='dropdown-menu' onClick={()=>{dispatch(playlistDisplay(id)); checkstate(); LoadSongs()}}>
                 <p className='playlist-name'>{title}</p>
                 <div>
                     <button className='gear-button'><BsGear className='playlist-gear-icon' size={20}/></button>
@@ -58,25 +88,28 @@ function DropDown({id, title}){
                 </div>
             </div>
             <div className='dropdown-content'>
-                {playlistId === id?(
-                    <div className='dropdown-songs'>
-                        {data.length === 0? (
-                            <p>Aucune musique dans cette playlist...</p>
-                        ):(
-                            <div>
-                                {data.map((item)=>{
-                                    return(
-                                        <div className='songs-items' key={item.musicId}>
-                                            <button onClick={()=>deleteSong(item.musicId)} ><TiDelete size={24} className='songs-items-icons'/></button>
-                                            <p>{item.musicTitle}</p>
-                                        </div>
-                                    )
-                                })}
+                {error.length === 0?(
+                    <React.Fragment>
+                        {playlistId === id?(
+                            <div className='dropdown-songs'>
+                                {data.length === 0? (
+                                    <p>Aucune musique dans cette playlist...</p>
+                                ):(
+                                    <div>
+                                        {data.map((item)=>{
+                                            return(
+                                                <Song id={item.musicId} title={item.musicTitle} key={item.musicId}/>
+                                            )
+                                        })}
+                                    </div>
+                                )}
                             </div>
+                        ):(
+                            <div></div>
                         )}
-                    </div>
+                    </React.Fragment>
                 ):(
-                    <div></div>
+                    <DropDownError error={''} />
                 )}
             </div>
         </div>

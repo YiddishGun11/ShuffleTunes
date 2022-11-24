@@ -1,6 +1,5 @@
 'use strict'
 
-const { response } = require('express');
 const argon2 = require('./argon2id.js');
 const db = require('../database/database');
 const { validationResult } = require('express-validator');
@@ -50,17 +49,34 @@ const getSongs = (request, response) =>{
 
 //POST
 
-const createPlaylist = (request, response) =>{
+const createPlaylist = (request, response, next) =>{
     let data = request.body;
 
-    db.query("INSERT INTO tb_playlists SET ?", [data], (error,results)=>{
-        if(error){
-            response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
+    try {
+        const errors = validationResult(request)
+
+        if(!errors.isEmpty()){
+            return response.status(400).json({
+                success: false,
+                errors : errors.array()
+            });
         }
-        else{
-            response.status(200).json(results);
-        }
-    });
+
+        db.query("INSERT INTO tb_playlists SET ?", [data], (error,results)=>{
+            if(error){
+                response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
+            }
+            else{
+                response.status(200).json(results);
+            }
+        });
+        
+    }
+
+    catch(error){
+        response.status(400).json(error);
+        next(error);
+    }
 
 }
 
@@ -109,6 +125,22 @@ const register = (request, response, next) => {
     }
 }
 
+
+const userInfos = (request, response) => {
+
+    db.query("CALL get_user_id(?)", request.params.id,(error, results)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            response.status(200).json(results);
+        }
+    })
+
+}
+
+
+
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -155,5 +187,6 @@ module.exports = {
     insertSong,
     getSongsByPlaylist,
     getSongs,
-    register
+    register,
+    userInfos,
 }
