@@ -19,8 +19,8 @@ function DashBoard(){
 
     const[contentDisplay, setContentDisplay] = useState(0);
 
-    const display = useSelector((state)=>state.musicReducer.display);
-
+    //const display = useSelector((state)=>state.musicReducer.display);
+    const display = true;
     return(
         <div>
             <NavBar contentDisplay={contentDisplay} setContentDisplay={setContentDisplay} />

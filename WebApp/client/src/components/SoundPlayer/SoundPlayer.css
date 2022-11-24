@@ -10,3 +10,7 @@
     font-family: Poppins, sans-serif;
     background-color: #322c2c;
 }
+
+.rhap_progress-container {
+    pointer-events: none;
+}
