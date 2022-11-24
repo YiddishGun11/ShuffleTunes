@@ -1,11 +1,14 @@
 'use strict'
-
 const express = require('express');
+const path = require('path');
+const app = express();
 
 //initialiser le router express
 const router = express.Router();
 
+
 const exec = require('../controllers/exec')
+
 
 //importer les requetes POST & GET
 const data = require('../controllers/data');
@@ -21,14 +24,18 @@ const rateLimit = require('../controllers/rateLimiter.js');
 
 
 // ROUTER USE
+router.use(express.static(path.join(__dirname, '../../client/build')));
 router.use(rateLimit.limiter)
 
 //GET REQUESTS
 
-router.get('/', (req,res) =>
-{
-    res.json("hello bitches");
-});
+// router.get('/', (req,res) =>
+// {
+//     res.json("hello bitches");
+// });
+router.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+  });
 
 
 //get all playlists
