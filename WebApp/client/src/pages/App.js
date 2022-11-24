@@ -1,19 +1,24 @@
-import React from 'react'
+import React, {lazy, Suspense} from 'react'
 import {Routes, Route} from 'react-router-dom'
-import "./App.css"
-import Home from "../pages/Home/Home"
-import ConnexionPage from './Connexion/ConnexionPage'
-import DashBoard from './DashBoard/DashBoard'
+import "./App.scss"
+
+import ThemeContextProvider from '../components/Context/ThemeContext';
+
+const Home = lazy(()=> import ('./Home/Home'));
+const Login = lazy(()=> import('./Connexion/ConnexionPage'));
+const DashBoard = lazy(()=> import ('./DashBoard/DashBoard'));
 
 function App() {
     return (
-        <div className="App">
-            <Routes>
-                <Route path="/" element={ <Home /> } />
-                <Route path="/connexion" element={ <ConnexionPage/> } />
-                <Route path="/dashboard" element={<DashBoard />} />
-            </Routes>
-        </div>
+        <ThemeContextProvider>
+            <Suspense fallback={<div className='loading-message'><h1>Loading...</h1></div>}>
+                <Routes>
+                    <Route path="/" element={ <Home /> } />
+                    <Route path="/connexion" element={ <Login/> } />
+                    <Route path="/dashboard" element={<DashBoard />} />
+                </Routes>
+            </Suspense >
+        </ThemeContextProvider>
     )
 }
 

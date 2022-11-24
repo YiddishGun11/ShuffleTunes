@@ -23,6 +23,9 @@ function FileListItem({item,itemId}){
     //DB data
     const [data, setData] = useState([]);
 
+    //catching error into state to eventually display
+    const [error, setError] = useState([])
+
     //redux variables
     const dispatch = useDispatch();
 
@@ -47,26 +50,39 @@ function FileListItem({item,itemId}){
 
     //sendata for creating new playlist
     const sendData = () =>{
-
-        axios.post(URL + '/newsong', {
-            "musicId" : itemId,
-            "playlistId" : playlistId,
-            })
+        try{
+            axios.post(URL + '/newsong', {
+                "musicId" : itemId,
+                "playlistId" : playlistId,
+                })
             .then(function () {
                 dispatch(getDisplay(false));
             })
 
             .catch(function (error) {
-                console.log(error);
-            });  
+                setError(error);
+            });
+        }  
+        catch(error){
+            setError(error);
+        }
     }
 
 
     //get playlists names 
     const loadPlaylists = () =>{
-        axios.get(URL + '/playlists').then((response) =>{
-            setData(response.data[0]);
-        })
+        try{
+            axios.get(URL + '/playlists')
+                .then((response) =>{
+                    setData(response.data[0]);
+                })
+                .catch((error) =>{
+                    setError(error);
+                })
+        }
+        catch(error){
+            setError(error);
+        }
     }
 
     return(
@@ -92,11 +108,17 @@ function FileListItem({item,itemId}){
                                 </div>
                             </div>
                         ):(
-                            data.map((playlist) =>{
-                                return(
-                                    <p id={playlist.playlistId} key={playlist.playlistId} onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
-                                );
-                            })
+                            <React.Fragment>
+                                {error.length === 0 ?(
+                                    data.map((playlist) =>{
+                                        return(
+                                            <p id={playlist.playlistId} key={playlist.playlistId} className="playlist-items" onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
+                                        );
+                                    })
+                                ):(
+                                    <p>An error just occured...</p>
+                                )}
+                            </React.Fragment>
                         )}
                     </div>
                 ):(

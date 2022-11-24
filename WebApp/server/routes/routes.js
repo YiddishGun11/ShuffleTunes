@@ -12,6 +12,7 @@ const dataDelete = require('../controllers/delete');
 
 // validation midelware
 const registerValidation = require('../validation/registerValidation.js');
+const createPlaylistValidation = require('../validation/createPlaylistValidation.js');
 
 // secutity ùidelware
 const rateLimit = require('../controllers/rateLimiter.js');
@@ -37,11 +38,14 @@ router.get('/playlistsongs/:id', data.getSongsByPlaylist);
 //get user musics
 router.get('/songs/:id', data.getSongs);
 
+//get user infos
+router.get('/user/:id',data.userInfos);
+
 
 //POST REQUESTS
 
 // send the music we want to upload to the server
-router.post('/createplaylist', data.createPlaylist);
+router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation, data.createPlaylist);
 
 router.post('/newsong', data.insertSong);
 

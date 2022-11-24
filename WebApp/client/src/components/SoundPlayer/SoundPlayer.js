@@ -51,7 +51,7 @@ function SoundPlayer() {
     return (
         <div className="sound-player" onClick={()=>console.log(musicTracks)}>
             <AudioPlayer
-                style={{ borderRadius: "1rem", backgroundColor: "#1B1919", padding: "10px 0px", boxShadow: "0 0 0px 0"}}
+                style={{ borderRadius: "1rem", backgroundColor: "#322c2c", padding: "10px 0px", boxShadow: "0 0 0px 0"}}
                 src={musicTracks[trackIndex].src}
                 showSkipControls={true}
                 showJumpControls={false}
