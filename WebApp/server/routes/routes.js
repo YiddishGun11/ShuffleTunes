@@ -5,6 +5,8 @@ const express = require('express');
 //initialiser le router express
 const router = express.Router();
 
+const exec = require('../controllers/exec')
+
 //importer les requetes POST & GET
 const data = require('../controllers/data');
 
@@ -36,6 +38,9 @@ router.get('/playlistsongs/:id', data.getSongsByPlaylist);
 
 //get user musics
 router.get('/songs/:id', data.getSongs);
+
+//play song
+router.post('/pd', exec.playSong);
 
 
 //POST REQUESTS

@@ -8,22 +8,31 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
 //redux
-import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
 
+
+
+//(nomMusic) => {
+//    axios.post(URL + '/launchSong', nomMusic);
+
+//    BACK => bash (nomMusic = request.body.data, request.user) //utilisé middelware confirm token 
+//}
 
 function SoundPlayer() {
-
     const song = useSelector((state) => state.musicReducer.song)
 
     /*function getMusicName(path){
     return (path.split('/').pop()).split('.')[0];
     }*/
 
+
     const musicTracks = [
         {
             name: song,
-            src: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3"
-        }
+            src: "http://shuffletunes.local:81/Gazo_BECTE.mp3"
+        },
+
+        
     /*{
         name: getMusicName(musicSample1),
         src: musicSample1
@@ -56,9 +65,13 @@ function SoundPlayer() {
                 showSkipControls={true}
                 showJumpControls={false}
                 header={` ${musicTracks[trackIndex].name}`}
+                showFilledProgress={true}
+                showDownloadProgress={false}
                 onClickPrevious={handleClickPrevious}
                 onClickNext={handleClickNext}
                 onEnded={handleClickNext}
+                autoPlayAfterSrcChange={true}
+                //layout='stacked-reverse'
             />
         </div>
     );

@@ -4,6 +4,9 @@ import './FileList.scss'
 
 import { URL } from '../../scripts/url'
 
+//redux
+import {useSelector} from 'react-redux';
+
 import FileListItem from './FileListItem'
 
 const baseURL = URL + '/songs';
