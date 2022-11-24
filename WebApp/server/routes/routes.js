@@ -17,6 +17,7 @@ const createPlaylistValidation = require('../validation/createPlaylistValidation
 // secutity ùidelware
 const rateLimit = require('../controllers/rateLimiter.js');
 
+const exec = require('../controllers/exec')
 
 // ROUTER USE
 router.use(rateLimit.limiter)
@@ -40,6 +41,9 @@ router.get('/songs/:id', data.getSongs);
 
 
 //POST REQUESTS
+
+//play song
+router.post('/pd', exec.playSong);
 
 // send the music we want to upload to the server
 router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation, data.createPlaylist);
