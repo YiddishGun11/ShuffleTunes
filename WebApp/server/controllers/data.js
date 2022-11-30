@@ -103,16 +103,16 @@ const register = async (request, response, next) => {
         if (!errors.isEmpty()) {
             return response.status(400).send(errors.array())
         }
-        db.query(`CALL register(?, ?)`, [request.body.pseudo, await argon.hashString(request.body.password)], (error, results) => {
-            if (error) {
-                if (error){
-                    return response.status(409).send('Pseudo already exist');
-                }
-                return response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
-            } 
-            else {
-                response.status(201).send('Your account is now created');
+        db.query(`CALL register(?, ?)`, [request.body.pseudo, await argon.hashString(request.body.password)])
+        .then(event => {
+
+            return response.status(201).send('Your account is now created');
+        })
+        .catch(errors => {
+            if (errors.sqlState === '45000'){ //Expected error
+                return response.status(409).send('Pseudo already exist');
             }
+            return response.status(500); // Unexpected error
         })
     }
 
