@@ -1,77 +1,53 @@
 @import '../../../styles/variables.scss' ;
 
 .profil-container {
-    height: 350px;
-    width: 250px;
+    height: auto;
+    width: auto;
     position: absolute;
     top: 100px;
     right: 150px;
     border-radius: 10px;
     background-color: $settings-background;
-    padding: 10px;
+    padding: 50px 40px 45px;
     animation : slide-settings 1s;
     animation-iteration-count: 1;
     font-family: $police;
-
-    div {
-        background-color: $settings-background;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
 
     .profil-image {
         img {
             border-radius: 100%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
     }
 
-    .profil-name{
-        text-align: center;
-        margin-top: 30px;
-
-        p {
-            font-size: 25px;
-            background-color: $settings-background;
-            font-family: $police;
-        }
-    }
-
-    .profil-items {
-        display: flex;
-        gap: 15px;
-        padding: 10px 15px;
-        margin-top: 0px;
-        border-radius: 10px;
-        margin-left: 165px;
-        background-color: $settings-background;
+    .change-image-div {
+        font-size: 12px;
         cursor: pointer;
+        padding-bottom: 25px;
 
-        p {
-            padding-top: 50px;
-            font-size: 18px;
-            background-color: $settings-background;
-            font-weight: 500;
-        }
-
-        & div {
-            width: 45px;
-            height: 45px;
-            border-radius: 100%;
-            padding: 12px 12px;
-
-            .edit-icons {
-                background-color: $settings-background ;
-            }
+        p:hover {
+            color: $main-color;
         }
     }
 
-    .profil-items:hover {
-        background-color: #292929;
+    .profil-name {
+        cursor: pointer;
+        font-size: 28px;
+    }
 
-        p {
-            background-color: #292929;
+    .profil-error-message {
+        display: flex;
+        gap: 10px;
+
+        span {
+            padding: 3px 0;
         }
+    }
+    .error-icon {
+        color : orange
     }
 }
 
