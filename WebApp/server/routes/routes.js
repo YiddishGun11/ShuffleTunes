@@ -2,8 +2,13 @@
 
 const express = require('express');
 
+const path = require('path');
+const app = express();
+
 //initialiser le router express
 const router = express.Router();
+
+const exec = require('../controllers/exec')
 
 //importer les requetes POST & GET
 const data = require('../controllers/data');
@@ -17,16 +22,20 @@ const createPlaylistValidation = require('../validation/createPlaylistValidation
 // secutity ùidelware
 const rateLimit = require('../controllers/rateLimiter.js');
 
-const exec = require('../controllers/exec')
 
 // ROUTER USE
+router.use(express.static(path.join(__dirname, '../../client/build')));
 router.use(rateLimit.limiter)
 
 //GET REQUESTS
 
-router.get('/', (req,res) =>
-{
-    res.json("hello bitches");
+// router.get('/', (req,res) =>
+// {
+//     res.json("hello bitches");
+// });
+
+router.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
 });
 
 
@@ -39,11 +48,14 @@ router.get('/playlistsongs/:id', data.getSongsByPlaylist);
 //get user musics
 router.get('/songs/:id', data.getSongs);
 
-
-//POST REQUESTS
-
 //play song
 router.post('/pd', exec.playSong);
+
+//get user infos
+router.get('/user/:id',data.userInfos);
+
+
+//POST REQUESTS
 
 // send the music we want to upload to the server
 router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation, data.createPlaylist);
