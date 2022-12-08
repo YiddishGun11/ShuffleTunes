@@ -13,6 +13,7 @@ import Loading from '../components/Loading/Loading';
 const Home = lazy(()=> import ('./Home/Home'));
 const Login = lazy(()=> import('./Connexion/ConnexionPage'));
 const DashBoard = lazy(()=> import ('./DashBoard/DashBoard'));
+const NoPages = lazy(()=> import('./NoPages/NoPages'));
 
 function App() {
 
