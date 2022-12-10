@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import axios from 'axios';
 import {URL} from '../../scripts/url'
+import {sha512} from 'js-sha512'
+import {salt} from '../../scripts/salt'
 
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
@@ -41,48 +43,24 @@ function Inscription ({setDisplay}) {
         return event.target.setCustomValidity("Password and confirm password don't match");
     }
 
-    // Notification manager
-    function manageNotification (type, message, title=null, timeout=5000) {
-        switch (type) {
-            case 'succes' : 
-                NotificationManager.success(message, title, timeout);
-                break;
-                
-            case 'error' : 
-                NotificationManager.error(message,title, timeout);
-                break;
-            
-            default:
-                break;
-        }
-    }
-
     function onSubmit (event) {
         event.preventDefault();
-        
-        if(pseudo.length && password.length) {
+
+        if(pseudo.current.value && password.current.value) {
             const data = {
                 'pseudo' : pseudo.current.value,
-                'password' : password.current.value
+                'password' : sha512(`${password.current.value}${salt}`)
             }
             axios.post(`${URL}/register`, data)
             .then(event => {
-                if (event.data.errors) {
-                    return manageNotification('error', event.data.errors, 'A problem occured');
-                }
-                
-                if (event.data.success) {
-                    return manageNotification('succes', event.data.success);
-                }
+                return NotificationManager.success(event.data, 'Successfull register');
             })
-            .catch(event => {
-                console.log(event);
-                if (event.response.data) {
-                    event.response.data.errors.forEach(element => {
-                        return manageNotification('error', element.msg, 'A problem occured');
-                    });
+            .catch(error => {
+                if (error.response) {
+                    return NotificationManager.error(error.response.data,  'A problem occured');
                 }
-                return manageNotification('error', 'Something went wrong, try again later', 'Unexpected error');
+
+                return NotificationManager.error('Something went wrong, try again later', 'Unexpected error');
             })
         }
 
@@ -104,7 +82,7 @@ function Inscription ({setDisplay}) {
                     </form>
                     <div className='switch-connect'>
                         <p>already member ?</p>
-                        <p onClick={()=>setDisplay(true)}className="switch-connect-link">login</p>
+                        <button onClick={()=>setDisplay(true)}className="switch-connect-link">login</button>
                     </div>
                 </div>
             </div>

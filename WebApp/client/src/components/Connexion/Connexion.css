@@ -106,6 +106,19 @@ input[type="password"]:invalid {
     cursor: pointer;
 }
 
+.switch-connect button {
+    background-color: #322c2c;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline;
+    padding: 0 5px;
+    margin: 0;
+    width: 0;
+    height: 0;
+    font-size: 12px;
+}
+
 .switch-connect-link:hover {
     color: #10c6d3;
 }

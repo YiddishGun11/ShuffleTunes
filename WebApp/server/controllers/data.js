@@ -1,6 +1,6 @@
 'use strict'
 
-const argon2 = require('./argon2id.js');
+const argon = require('./argon2id')
 const db = require('../database/database');
 const { validationResult } = require('express-validator');
 const ESAPI = require('node-esapi');
@@ -94,27 +94,22 @@ const insertSong = (request, response) =>{
     });
 }
 
-const register = (request, response, next) => {
+const register = async (request, response, next) => {
     try {
         const errors = validationResult(request);
 
         if (!errors.isEmpty()) {
-            return response.status(400).json({
-                success : false,
-                errors : errors.array()
-            })
+            return response.status(400).send(errors.array())
         }
-
-        db.query(`CALL register(?, ?)`, [request.body.pseudo, argon2.hashSting(request.body.password)], (error, results) => {
+        db.query(`CALL register(?, ?)`, [request.body.pseudo, await argon.hashString(request.body.password)], (error, results) => {
             if (error) {
-                response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
+                if (error){
+                    return response.status(409).send('Pseudo already exist');
+                }
+                return response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
             } 
             else {
-                results.forEach(element => {
-                    if (element.constructor == Array){
-                        response.status(200).json(element[0]);
-                    }
-                })
+                response.status(201).send('Your account is now created');
             }
         })
     }

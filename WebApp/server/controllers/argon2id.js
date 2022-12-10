@@ -1,6 +1,6 @@
 const argon2  = require('argon2');
 
-async function hashSting (string) {
+async function hashString (string) {
 
     try {
         const hash = await argon2.hash(string);
@@ -23,6 +23,6 @@ async function verifyString (hashedString, stringToVerify) {
 }
 
 module.exports = {
-    hashSting,
+    hashString,
     verifyString
 }
