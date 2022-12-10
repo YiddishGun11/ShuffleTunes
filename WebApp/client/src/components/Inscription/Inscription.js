@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import axios from 'axios';
 import {URL} from '../../scripts/url'
 import {sha512} from 'js-sha512'
+import {salt} from '../../scripts/salt'
 
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
@@ -44,11 +45,11 @@ function Inscription ({setDisplay}) {
 
     function onSubmit (event) {
         event.preventDefault();
-        
+
         if(pseudo.current.value && password.current.value) {
             const data = {
                 'pseudo' : pseudo.current.value,
-                'password' : sha512(password.current.value)
+                'password' : sha512(`${password.current.value}${salt}`)
             }
             axios.post(`${URL}/register`, data)
             .then(event => {
