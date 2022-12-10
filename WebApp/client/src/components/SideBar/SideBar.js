@@ -20,7 +20,7 @@ function SideBar({setContentDisplay}){
             </div>
             <div className='sidebar-item2'>
                 <BsFolderPlus size={25} id="sidebar-icon"/>
-                <p>Upload new files</p>
+                <p onClick={() => setContentDisplay(3)}>Upload new files</p>
             </div>
             <div className='sidebar-item2'>
                 <MdOutlinePlaylistAdd size={25} id="sidebar-icon"/>

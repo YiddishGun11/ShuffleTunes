@@ -17,4 +17,4 @@ connexion.connect(function(err) {
     console.log('Connected to the MySQL server.');
 });
 
-module.exports = connexion;
+module.exports = connexion.promise();
