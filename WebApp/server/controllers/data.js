@@ -99,12 +99,24 @@ const insertSong = (request, response) =>{
 const register = async (request, response, next) => {
     try {
         const errors = validationResult(request);
+        const username = request.body.pseudo;
 
         if (!errors.isEmpty()) {
             return response.status(400).send(errors.array())
         }
-        db.query(`CALL register(?, ?)`, [request.body.pseudo, await argon.hashString(request.body.password)])
-        .then(event => {
+        db.query(`CALL register(?, ?)`, [username, await argon.hashString(request.body.password)])
+        .then(() => {
+            const sftp = new sftpClient();
+
+            sftp.connect(configFtp)
+            .then(async () => {
+                if (await sftp.exists(`/home/pi/Music/${username}`) === 'd'){ // Check si l'utilisateur a un dossier perso
+                    sftp.rmdir(`/home/pi/Music/${username}`, true); 
+                }
+                sftp.mkdir(`/home/pi/Music/${username}`)
+            })
+        })
+        .then(() => {
 
             return response.status(201).send('Your account is now created');
         })
