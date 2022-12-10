@@ -11,11 +11,11 @@ const registerValidation = [
 
     body('password')
         .exists({ checkFalsy : true})
-        .withMessage('Pseudo is required')
+        .withMessage('Password is required')
         .isString({ checkFalsy : true})
-        .withMessage('Pseudo must be a string of characters')
+        .withMessage('Password must be a string of characters')
         .isLength({ min : 128, max : 128})
-        .withMessage('Pseudo must be between 8 and 64 characters')
+        .withMessage('Password must be between 128 characters long')
 ];
 
 module.exports = {
