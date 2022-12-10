@@ -1,6 +1,7 @@
 'use strict'
 
-const argon = require('./argon2id')
+const axios = require('axios');
+const argon = require('./argon2id');
 const db = require('../database/database');
 const { validationResult } = require('express-validator');
 const ESAPI = require('node-esapi');
@@ -96,6 +97,15 @@ const insertSong = (request, response) =>{
     });
 }
 
+const isHuman = async (token) => {
+    const secret = process.env.CAPTCHA_SECRET;
+    const response = await axios.post(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`
+    );
+
+     return await response.data.success
+}
+
 const register = async (request, response, next) => {
     try {
         const errors = validationResult(request);
@@ -104,6 +114,12 @@ const register = async (request, response, next) => {
         if (!errors.isEmpty()) {
             return response.status(400).send(errors.array())
         }
+        
+        if (! isHuman(request.body.token)){ //if user fail captcha
+            console.log("hey")
+            return response.status(400).send("You have to be human to register !");
+        }
+
         db.query(`CALL register(?, ?)`, [username, await argon.hashString(request.body.password)])
         .then(() => {
             const sftp = new sftpClient();
