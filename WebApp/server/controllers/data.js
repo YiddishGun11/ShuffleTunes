@@ -66,7 +66,9 @@ const getSongs = (request, response) =>{
 //POST
 
 const createPlaylist = (request, response, next) =>{
-    let data = request.body;
+    const playlistTitle = request.body.playlistName;
+    const userId = request.body.userId;
+
 
     try {
         const errors = validationResult(request)
@@ -78,13 +80,16 @@ const createPlaylist = (request, response, next) =>{
             });
         }
 
-        db.query("INSERT INTO tb_playlists SET ?", [data])
+        db.query("CALL insert_playlist(?, ?)", [playlistTitle, userId])
             .then((results) => {
                 return response.status(200).send(results);
             })
     
-            .catch((error) => {
-                return response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
+            .catch(() => {
+                if (errors.sqlState === '45000'){ //Expected error
+                    return response.status(409).send('Playlist already exist');
+                }
+                return response.status(500);
             })
     }
 
