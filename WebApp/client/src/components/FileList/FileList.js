@@ -39,7 +39,7 @@ function FileList(){
             axios.get(baseURL + '/1')
 
                 .then((response) => {
-                    setData(response.data[0]);
+                    setData(response.data[0][0]);
                 })
                 .catch((error)=>{
                     setError(error)

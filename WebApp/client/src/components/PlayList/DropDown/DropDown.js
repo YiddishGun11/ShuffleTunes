@@ -56,7 +56,7 @@ function DropDown({id, title}){
     const LoadSongs = () => {
         axios.get(URL + '/playlistsongs/' + id)
             .then((response) =>{
-                setData(response.data[0])
+                setData(response.data[0][0])
             })
             .catch((error) =>{
                 setError(error);

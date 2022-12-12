@@ -72,9 +72,9 @@ function FileListItem({item,itemId}){
     //get playlists names 
     const loadPlaylists = () =>{
         try{
-            axios.get(URL + '/playlists')
+            axios.get(URL + '/playlists/1')
                 .then((response) =>{
-                    setData(response.data[0]);
+                    setData(response.data[0][0]);
                 })
                 .catch((error) =>{
                     setError(error);
