@@ -53,6 +53,7 @@ router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation
 router.post('/newsong', data.insertSong);
 
 router.post('/login',registerAndLoginValidation.registerAndLoginValidation, data.login);
+router.post('/logout', data.logout);
 
 router.post('/uploadMusic', multer, data.uploadMusic);
 

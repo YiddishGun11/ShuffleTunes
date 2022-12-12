@@ -5,15 +5,17 @@ import {URL} from '../../scripts/url'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import {sha512} from 'js-sha512'
 import {salt} from '../../scripts/salt'
+import { useNavigate } from 'react-router-dom';
 
 function Connexion({setDisplay}){
 
     const pseudo = useRef(null);
     const password = useRef(null);
+    const navigate = useNavigate();
 
     function onSubmit (event) {
         event.preventDefault();
-        
+
         if(pseudo.current.value && password.current.value) {
             const data = {
                 'pseudo' : pseudo.current.value,
@@ -23,6 +25,7 @@ function Connexion({setDisplay}){
                 withCredentials: true,
             })
             .then(() => {
+                navigate("/dashboard");
                 return NotificationManager.success('You are now logged in', 'Successfull login');
             })
             .catch(error => {

@@ -247,6 +247,26 @@ const login = async (request, response, next) => {
         next(error);
     }
 }
+
+const logout = async(request, response, next) => {
+    try {
+        if (await whoIsConnected(request.signedCookies)){
+            db.query(`CALL delete_session (?)`, [request.signedCookies.sessionId])
+            .then(() => {
+                return response.status(200).clearCookie('sessionId').send();
+            })
+            .catch(() => {
+                return response.status(500).send();
+            })
+        } else {
+            return response.status(403).send();
+        }
+
+    } catch (error) {
+        console.log(error)
+        next(error)
+    }
+}
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -296,5 +316,6 @@ module.exports = {
     register,
     login,
     userInfos,
-    uploadMusic
+    uploadMusic,
+    logout
 }
