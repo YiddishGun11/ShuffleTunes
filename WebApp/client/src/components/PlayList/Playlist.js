@@ -1,12 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react'
 import './Playlist.scss'
+
+import {useEffect, useRef, useState} from 'react'
 import axios from 'axios'
 
 import {RiAddFill, RiCloseFill} from 'react-icons/ri'
 
+//importing dynamic URL
 import {URL} from '../../scripts/url'
 
+//Dropdown component
 import DropDown from './DropDown/DropDown';
+
+//redux
+import { useDispatch } from 'react-redux'
+import { playlistDisplay } from '../../reducers/playlistReducer';
 
 //gestion des erreurs
 function PlaylistError(props){
@@ -30,6 +37,8 @@ function PlayList(){
     //catching errors
     const [error, setError] = useState([]);
 
+    const dispatch = useDispatch();
+
     //input for creating a new playlist
     const input = useRef(null);
 
@@ -40,6 +49,10 @@ function PlayList(){
 
     //load playlists
     useEffect(() =>{
+
+        //closing dropdown when swithcing between components
+        dispatch(playlistDisplay(0))
+
         try{
             axios.get(URL + '/playlists/1')
                 .then((response) =>{
@@ -53,7 +66,7 @@ function PlayList(){
             setError(error)
             console.clear();
         }
-    }, []);
+    }, [dispatch]);
 
     //sendata for creating new playlist
     const sendData = () =>{

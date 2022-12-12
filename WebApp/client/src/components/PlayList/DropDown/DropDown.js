@@ -1,5 +1,9 @@
-import React, {useState } from 'react'
+import './DropDown.scss'
+
+import {useState } from 'react'
 import axios from 'axios'
+
+//react-icons
 import {MdArrowDropDown} from 'react-icons/md'
 import {BsGear} from 'react-icons/bs'
 import {TiDelete} from 'react-icons/ti'
@@ -8,19 +12,18 @@ import {TiDelete} from 'react-icons/ti'
 import { useSelector, useDispatch } from 'react-redux';
 import { playlistDisplay } from '../../../reducers/playlistReducer';
 
+//importing dynamic URL
 import {URL} from '../../../scripts/url'
-
-import './DropDown.scss'
 
 function DropDownError(props){
     return(
-        <React.Fragment>
+        <>
             {props.error === 'no-songs' ? (
                 <p>You don't have any songs in this playlist...</p>
             ):(
                 <p>An error just occured...</p>
             )}
-        </React.Fragment>
+        </>
     )
 }
 
@@ -89,7 +92,7 @@ function DropDown({id, title}){
             </div>
             <div className='dropdown-content'>
                 {error.length === 0?(
-                    <React.Fragment>
+                    <>
                         {playlistId === id?(
                             <div className='dropdown-songs'>
                                 {data.length === 0? (
@@ -107,7 +110,7 @@ function DropDown({id, title}){
                         ):(
                             <div></div>
                         )}
-                    </React.Fragment>
+                    </>
                 ):(
                     <DropDownError error={''} />
                 )}

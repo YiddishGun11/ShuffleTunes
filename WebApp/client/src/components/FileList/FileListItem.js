@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { URL } from '../../scripts/url'
-
 import './FileList.scss'
+
+import { useState } from 'react'
+import axios from 'axios'
+
+//dynamic URL
+import { URL } from '../../scripts/url'
 
 //react-icons
 import {BiAddToQueue} from 'react-icons/bi'
@@ -108,7 +110,7 @@ function FileListItem({item,itemId}){
                                 </div>
                             </div>
                         ):(
-                            <React.Fragment>
+                            <>
                                 {error.length === 0 ?(
                                     data.map((playlist) =>{
                                         return(
@@ -118,7 +120,7 @@ function FileListItem({item,itemId}){
                                 ):(
                                     <p>An error just occured...</p>
                                 )}
-                            </React.Fragment>
+                            </>
                         )}
                     </div>
                 ):(

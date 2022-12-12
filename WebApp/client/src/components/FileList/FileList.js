@@ -1,16 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { URL } from '../../scripts/url'
 import './FileList.scss'
 
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
+//importing dynamic URL
+import { URL } from '../../scripts/url'
+
+//import FileListItem component
 import FileListItem from './FileListItem'
+
+//redux
+import { useDispatch } from 'react-redux'
+import {miniListDisplay} from '../../reducers/playlistReducer'
 
 //import dynamic URL avoiding static "localhost" in code
 const baseURL = URL + '/songs';
 
 function FileListError(props){
     return(
-        <React.Fragment>
+        <>
             {props.error === 'no-file' ?(
                 <div>
                     <h1>Your File List</h1>
@@ -22,19 +30,27 @@ function FileListError(props){
                     <p>An error just occured...</p>
                 </div>
             )}
-        </React.Fragment>
+        </>
     )
 }
 
 function FileList(){
 
+    //data from useEffect request
     const [data, setData] = useState([]);
+
+    //redux variables
+    const dispatch = useDispatch();
 
     //catching errors into state for error managing in UI
     const [error, setError] = useState([]);
 
     //get data on DOM loading
     useEffect(() => {
+
+        //closing list of playlists on switching between components
+        dispatch(miniListDisplay(0))
+
         try{
             axios.get(baseURL + '/1')
 
@@ -52,7 +68,7 @@ function FileList(){
             console.clear()
         }
 
-    }, []);
+    }, [dispatch]);
 
     return(
         <div>
