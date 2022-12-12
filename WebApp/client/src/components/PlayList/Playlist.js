@@ -85,7 +85,7 @@ function PlayList(){
 
 
     return(
-        <div className='playlists-container'>   
+        <div className='playlists-container' data-testid="playlist-component">   
             <div className='playlist-container-menu'>  
                 <h1>Your PlayLists</h1>
                 {createPlaylist ?(

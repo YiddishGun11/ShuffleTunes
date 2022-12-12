@@ -82,7 +82,7 @@ function DropDown({id, title}){
     }
 
     return(
-        <div className='dropdown'>
+        <div className='dropdown' data-testid="dropdown-component">
             <div className='dropdown-menu' onClick={()=>{dispatch(playlistDisplay(id)); checkstate(); LoadSongs()}}>
                 <p className='playlist-name'>{title}</p>
                 <div>
