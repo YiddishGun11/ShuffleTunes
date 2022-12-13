@@ -7,6 +7,8 @@ import {salt} from '../../scripts/salt'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 import { zxcvbn, zxcvbnOptions } from '@zxcvbn-ts/core'
 import zxcvbnCommonPackage from '@zxcvbn-ts/language-common'
 import zxcvbnEnPackage from '@zxcvbn-ts/language-en'
@@ -18,7 +20,10 @@ function Inscription ({setDisplay}) {
     const password = useRef(null);
     const confirmPassword = useRef(null);
     const [warningMessage, setWarningMessage] = useState(null);
+    const recaptchaRef = useRef(null);
 
+    const publicCaptchaKey = "6LckQG0jAAAAAG2GkOggnTpG0ZfKGJXWowpmFC9E";
+    
     // Setup password review
     const passwordReviewOptions = {
         translations: zxcvbnEnPackage.translations,
@@ -43,13 +48,18 @@ function Inscription ({setDisplay}) {
         return event.target.setCustomValidity("Password and confirm password don't match");
     }
 
-    function onSubmit (event) {
+    async function onSubmit (event) {
         event.preventDefault();
 
         if(pseudo.current.value && password.current.value) {
+
+            const token = await recaptchaRef.current.executeAsync();
+            recaptchaRef.current.reset();
+
             const data = {
                 'pseudo' : pseudo.current.value,
-                'password' : sha512(`${password.current.value}${salt}`)
+                'password' : sha512(`${password.current.value}${salt}`),
+                'token' : token
             }
             axios.post(`${URL}/register`, data)
             .then(event => {
@@ -78,6 +88,7 @@ function Inscription ({setDisplay}) {
                         <input type="password" placeholder='Password' ref={password} onChange={reviewPassword} required minLength={8} maxLength={64}></input>
                         <p className='passwordReview'>{warningMessage}</p>
                         <input type="password" placeholder='Confirm password' ref={confirmPassword} onChange={onConfirmPasswordInputChange} required minLength={8} maxLength={64}></input>
+                        <ReCAPTCHA ref={recaptchaRef} sitekey={publicCaptchaKey} size='invisible'/>
                         <button type='sumbit'>Register</button>
                     </form>
                     <div className='switch-connect'>
