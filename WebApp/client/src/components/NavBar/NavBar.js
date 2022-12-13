@@ -2,6 +2,9 @@ import React, {useState, useContext} from 'react';
 import './NavBar.scss';
 
 import { ThemeContext } from '../Context/ThemeContext';
+import axios from 'axios';
+import {URL} from '../../scripts/url'
+import { useNavigate } from 'react-router-dom';
 
 //react icons
 import {BsPersonLinesFill, BsGear} from 'react-icons/bs'
@@ -14,9 +17,19 @@ function NavBar({setContentDisplay}){
     const {theme} = useContext(ThemeContext);
 
     const [display, setDisplay] = useState(false);
+    const navigate = useNavigate();
 
     const handleDisplay = () =>{
         display ? setDisplay(false) : setDisplay(true);
+    }
+
+    const logout = () => {
+        axios.post(`${URL}/logout`, (null) , {
+            withCredentials: true,
+        })
+        .then(() => {
+            navigate("/");
+        })
     }
 
     return(
@@ -37,7 +50,7 @@ function NavBar({setContentDisplay}){
                     )}
                 </div>
                 <div className='navbar-section-icons-childs'>
-                    <BiLogOut size={20} id="navbar-icon"/>
+                    <BiLogOut size={20} onClick={logout} id="navbar-icon"/>
                 </div>
             </div>
         </div>
