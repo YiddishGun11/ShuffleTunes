@@ -1,6 +1,6 @@
 const {body} = require('express-validator');
 
-const registerValidation = [
+const registerAndLoginValidation = [
     body('pseudo')
         .exists({ checkFalsy : true})
         .withMessage('Pseudo is required')
@@ -19,5 +19,5 @@ const registerValidation = [
 ];
 
 module.exports = {
-    registerValidation
+    registerAndLoginValidation
 }
