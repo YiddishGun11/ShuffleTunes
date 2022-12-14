@@ -181,10 +181,12 @@ const userInfos = (request, response) => {
 
 
 const uploadMusic = async (request, response) => {
-    // Array which contain all the music
-    const userName = 'ChaosArnhug' //request.user ; //DOIT ETRE DYNAMIQUE EN FONCTION DU USER CONNECTE CF token login
 
     try {
+        if (! request.files){
+            return response.status(400).send('You must send autorized file(s)');
+        }
+        
         const userName = await whoIsConnected(request.signedCookies)
         if (! userName){
             return response.status(403).send('You have to be connected');
