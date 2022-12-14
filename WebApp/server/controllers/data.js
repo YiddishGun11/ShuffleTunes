@@ -74,10 +74,7 @@ const createPlaylist = (request, response, next) =>{
         const errors = validationResult(request)
 
         if(!errors.isEmpty()){
-            return response.status(400).json({
-                success: false,
-                errors : errors.array()
-            });
+            return response.status(400).send(errors.array())
         }
 
         db.query("CALL insert_playlist(?, ?)", [playlistTitle, userId])
