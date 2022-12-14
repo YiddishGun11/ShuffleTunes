@@ -55,7 +55,10 @@ function UploadMusic () {
                 data.append('musicFile', musicFile)
             }
             NotificationManager.info("Please wait", "You've send the music", 5000);
-            axios.post(`${URL}/uploadMusic`, data, {headers: {"Content-Type": "multipart/form-data"}})
+            axios.post(`${URL}/uploadMusic`, data, {
+                headers: {"Content-Type": "multipart/form-data"},
+                withCredentials : true
+            })
                 .then(() => {
                     NotificationManager.success('You are now free to use what you\'ve uploaded', 'Upload succes', 5000);
                 })

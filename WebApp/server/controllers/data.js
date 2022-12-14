@@ -183,6 +183,11 @@ const uploadMusic = async (request, response) => {
     const userName = 'ChaosArnhug' //request.user ; //DOIT ETRE DYNAMIQUE EN FONCTION DU USER CONNECTE CF token login
 
     try {
+        const userName = await whoIsConnected(request.signedCookies)
+        if (! userName){
+            return response.status(403).send('You have to be connected');
+        }
+
         const sftp = new sftpClient();
 
         sftp.connect(configFtp)
