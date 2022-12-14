@@ -6,7 +6,7 @@ const playSong = (request, response) => {
     let data = request.body;
     let song = data.song;
 
-    exec("/home/pi/play /home/pi/Music/Gazo_BECTE.wav 107.9", (error, stdout, stderr) => {
+    exec(`/home/pi/play /home/pi/Music/${song}.wav`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
