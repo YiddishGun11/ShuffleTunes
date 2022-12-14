@@ -62,6 +62,8 @@ router.post('/uploadMusic', multer, data.uploadMusic);
 
 //DELETE 
 
+router.delete('/playlist/:id', dataDelete.deletePlaylist);
+
 router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 
 // register

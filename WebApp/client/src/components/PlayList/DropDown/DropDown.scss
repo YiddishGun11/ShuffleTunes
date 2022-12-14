@@ -44,17 +44,15 @@
 
 .gear-button {
     @extend .dropdown-button;
-
-    &:hover {
-        transform: rotate(360deg);
-        transition-duration: 3s;
-    }
+    
 }
 
 .playlist-gear-icon {
     padding-bottom: 5px;
     background-color: $main-background;
+    cursor: pointer;
 }
+
 
 .dropdown-menu-icon {
     background-color: $main-background;

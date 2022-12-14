@@ -5,8 +5,9 @@ import axios from 'axios'
 
 //react-icons
 import {MdArrowDropDown} from 'react-icons/md'
-import {BsGear} from 'react-icons/bs'
+import {BsTrash} from 'react-icons/bs'
 import {TiDelete} from 'react-icons/ti'
+
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -54,6 +55,8 @@ function DropDown({id, title}){
 
     const [data, setData] = useState([]);
     const [error, setError] = useState([]);
+
+    const [display, setDisplay] = useState(true);
  
     //load songs by playlists
     const LoadSongs = () => {
@@ -64,6 +67,16 @@ function DropDown({id, title}){
             .catch((error) =>{
                 setError(error);
                 console.clear();
+            })
+    }
+
+    const deletePlaylist = (id) =>{
+        axios.delete(URL + '/playlist/' + id)
+            .then(()=>{
+                //à venir
+            })
+            .catch(()=>{
+                //à venir
             })
     }
 
@@ -82,11 +95,11 @@ function DropDown({id, title}){
     }
 
     return(
-        <div className='dropdown' data-testid="dropdown-component">
+        <div className={display ? 'dropdown' : 'none'} data-testid="dropdown-component">
             <div className='dropdown-menu' onClick={()=>{dispatch(playlistDisplay(id)); checkstate(); LoadSongs()}}>
                 <p className='playlist-name'>{title}</p>
                 <div>
-                    <button className='gear-button'><BsGear className='playlist-gear-icon' size={20}/></button>
+                    <button className='gear-button' onClick={()=>{deletePlaylist(id); setDisplay(false)}}><BsTrash className='playlist-gear-icon' size={20}/></button>
                     <button className='dropdown-button'onClick={()=>{dispatch(playlistDisplay(id)); checkstate()}}><MdArrowDropDown className='dropdown-menu-icon' size={28} /></button>
                 </div>
             </div>
