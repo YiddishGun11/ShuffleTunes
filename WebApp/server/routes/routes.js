@@ -33,7 +33,7 @@ router.get('/', (req,res) =>
 
 
 //get all playlists
-router.get('/playlists', data.getPlaylists);
+router.get('/playlists/:id', data.getPlaylists);
 
 //get songs by playlists
 router.get('/playlistsongs/:id', data.getSongsByPlaylist);
@@ -61,6 +61,8 @@ router.post('/uploadMusic', multer, data.uploadMusic);
 
 
 //DELETE 
+
+router.delete('/playlist/:id', dataDelete.deletePlaylist);
 
 router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 

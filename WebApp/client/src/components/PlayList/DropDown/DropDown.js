@@ -1,26 +1,30 @@
-import React, {useState } from 'react'
+import './DropDown.scss'
+
+import {useState } from 'react'
 import axios from 'axios'
+
+//react-icons
 import {MdArrowDropDown} from 'react-icons/md'
-import {BsGear} from 'react-icons/bs'
+import {BsTrash} from 'react-icons/bs'
 import {TiDelete} from 'react-icons/ti'
+
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
 import { playlistDisplay } from '../../../reducers/playlistReducer';
 
+//importing dynamic URL
 import {URL} from '../../../scripts/url'
-
-import './DropDown.scss'
 
 function DropDownError(props){
     return(
-        <React.Fragment>
+        <>
             {props.error === 'no-songs' ? (
                 <p>You don't have any songs in this playlist...</p>
             ):(
                 <p>An error just occured...</p>
             )}
-        </React.Fragment>
+        </>
     )
 }
 
@@ -51,16 +55,28 @@ function DropDown({id, title}){
 
     const [data, setData] = useState([]);
     const [error, setError] = useState([]);
+
+    const [display, setDisplay] = useState(true);
  
     //load songs by playlists
     const LoadSongs = () => {
         axios.get(URL + '/playlistsongs/' + id)
             .then((response) =>{
-                setData(response.data[0])
+                setData(response.data[0][0])
             })
             .catch((error) =>{
                 setError(error);
                 console.clear();
+            })
+    }
+
+    const deletePlaylist = (id) =>{
+        axios.delete(URL + '/playlist/' + id)
+            .then(()=>{
+                //à venir
+            })
+            .catch(()=>{
+                //à venir
             })
     }
 
@@ -79,17 +95,17 @@ function DropDown({id, title}){
     }
 
     return(
-        <div className='dropdown'>
+        <div className={display ? 'dropdown' : 'none'} data-testid="dropdown-component">
             <div className='dropdown-menu' onClick={()=>{dispatch(playlistDisplay(id)); checkstate(); LoadSongs()}}>
                 <p className='playlist-name'>{title}</p>
                 <div>
-                    <button className='gear-button'><BsGear className='playlist-gear-icon' size={20}/></button>
+                    <button className='gear-button' onClick={()=>{deletePlaylist(id); setDisplay(false)}}><BsTrash className='playlist-gear-icon' size={20}/></button>
                     <button className='dropdown-button'onClick={()=>{dispatch(playlistDisplay(id)); checkstate()}}><MdArrowDropDown className='dropdown-menu-icon' size={28} /></button>
                 </div>
             </div>
             <div className='dropdown-content'>
                 {error.length === 0?(
-                    <React.Fragment>
+                    <>
                         {playlistId === id?(
                             <div className='dropdown-songs'>
                                 {data.length === 0? (
@@ -107,7 +123,7 @@ function DropDown({id, title}){
                         ):(
                             <div></div>
                         )}
-                    </React.Fragment>
+                    </>
                 ):(
                     <DropDownError error={''} />
                 )}

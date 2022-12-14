@@ -23,41 +23,42 @@ const whoIsConnected = async (cookie) => {
 }
 
 const getPlaylists = (request, response) =>{
-    db.query('CALL get_playlists_list', (error, results)=>{
-        if(error){
-            console.log(error);
-        }
-        else{
-            response.status(200).json(results)
-        }
-    })
+    db.query('CALL get_playlists_list(?)', request.params.id)
+        .then((results) => {
+            return response.status(200).send(results);
+        })
+
+        .catch((error) => {
+            return response.status(400);
+        })
 }
 
 const getSongsByPlaylist = (request, response) =>{
 
     let sql = "CALL get_songs_by_playlistId(?)"
 
-    db.query(sql, request.params.id, (error, results)=>{
-        if(error){
-            throw error
-        }
-        else{
-            response.status(200).json(results)
-        }
-    })
+    db.query(sql, request.params.id,)
+        .then((results) => {
+            return response.status(200).send(results);
+        })
+
+        .catch((error) => {
+            return response.status(400);
+        })
 }
 
 
 const getSongs = (request, response) =>{
     
-    db.query("CALL get_songs_user(?)", request.params.id, (error, results)=>{
-        if(error){
-            throw error;
-        }
-        else{
-            response.status(200).json(results);
-        }
-    })
+    db.query("CALL get_songs_user(?)", request.params.id)
+        .then((results) => {
+            return response.status(200).send(results);
+        })
+
+        .catch((error) => {
+            return response.status(400);
+        })
+
 }
 
 
@@ -65,27 +66,28 @@ const getSongs = (request, response) =>{
 //POST
 
 const createPlaylist = (request, response, next) =>{
-    let data = request.body;
+    const playlistTitle = request.body.playlistName;
+    const userId = request.body.userId;
+
 
     try {
         const errors = validationResult(request)
 
         if(!errors.isEmpty()){
-            return response.status(400).json({
-                success: false,
-                errors : errors.array()
-            });
+            return response.status(400).send(errors.array())
         }
 
-        db.query("INSERT INTO tb_playlists SET ?", [data], (error,results)=>{
-            if(error){
-                response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
-            }
-            else{
-                response.status(200).json(results);
-            }
-        });
-        
+        db.query("CALL insert_playlist(?, ?)", [playlistTitle, userId])
+            .then((results) => {
+                return response.status(200).send(results);
+            })
+    
+            .catch(() => {
+                if (errors.sqlState === '45000'){ //Expected error
+                    return response.status(409).send('Playlist already exist');
+                }
+                return response.status(500);
+            })
     }
 
     catch(error){
@@ -99,14 +101,14 @@ const createPlaylist = (request, response, next) =>{
 const insertSong = (request, response) =>{
     let data = request.body;
 
-    db.query("INSERT INTO tb_musics_playlists SET ?", [data], (error,results)=>{
-        if(error){
-            response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
-        }
-        else{
-            response.status(200).json(results);
-        }
-    });
+    db.query("INSERT INTO tb_musics_playlists SET ?", [data])
+        .then((results) => {
+            return response.status(200).send(results);
+        })
+
+        .catch((error) => {
+            return response.send(ESAPI.encoder().encodeForJavascript(ESAPI.encoder().encodeForHTML(error)));
+        })
 }
 
 const isHuman = async (token) => {
@@ -165,14 +167,14 @@ const register = async (request, response, next) => {
 
 const userInfos = (request, response) => {
 
-    db.query("CALL get_user_id(?)", request.params.id,(error, results)=>{
-        if(error){
-            throw error;
-        }
-        else{
-            response.status(200).json(results);
-        }
-    })
+    db.query("CALL get_user_id(?)", request.params.id)
+        .then((results) => {
+            return response.status(200).send(results);
+        })
+
+        .catch((error) => {
+            return response.status(400);
+        })
 
 }
 

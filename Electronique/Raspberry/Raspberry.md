@@ -1,1 +1,0 @@
-# Ce dossier reprend les schéma du module Raspberry
