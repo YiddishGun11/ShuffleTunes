@@ -283,6 +283,19 @@ const logout = async(request, response, next) => {
         next(error)
     }
 }
+
+const isAuthenticated = async (request, response, next) => {
+    try {
+        if (await whoIsConnected(request.signedCookies)){
+            return response.status(200).send(true);
+        }
+        return response.status(200).send(false);
+
+    } catch (error) {
+        console.log(error)
+        next(error)
+    }
+}
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -333,5 +346,6 @@ module.exports = {
     login,
     userInfos,
     uploadMusic,
-    logout
+    logout,
+    isAuthenticated
 }
