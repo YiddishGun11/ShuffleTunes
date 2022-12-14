@@ -1,0 +1,28 @@
+name: Testing-front
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version}}
+          cache: 'npm'
+          cache-dependency-path: 'WebApp/client/package.json'
+        
+      - name: Install npm dependencies
+        working-directory: 'WebApp/client'
+        run: 'npm install'
+        
+      - name: Run Jest
+        working-directory: 'WebApp/client'
+        run: npm run test
