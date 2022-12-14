@@ -44,6 +44,8 @@ router.get('/songs/:id', data.getSongs);
 //get user infos
 router.get('/user/:id',data.userInfos);
 
+//is user authenticated
+router.get('/isAuthenticated', data.isAuthenticated);
 
 //POST REQUESTS
 
