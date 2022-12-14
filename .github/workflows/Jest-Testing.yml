@@ -1,4 +1,4 @@
-name: Jest-Testing
+name: Jest-Testing-Backend
 
 on: [push, pull_request]
 
