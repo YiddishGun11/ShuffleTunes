@@ -23,7 +23,6 @@ const multer = require('../controllers/multer');
 // secutity midelware
 const rateLimit = require('../controllers/rateLimiter.js');
 
-const exec = require('../controllers/exec')
 
 // ROUTER USE
 router.use(rateLimit.limiter)

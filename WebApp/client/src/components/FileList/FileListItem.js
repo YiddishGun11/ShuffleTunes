@@ -65,20 +65,6 @@ function FileListItem({item,itemId}){
             });
     }
 
-    //sendata for creating new playlist
-    const playSong = (item) =>{
-
-        axios.post(URL + '/pd', {
-            "song" : item
-            })
-            .then(function () {
-             console.log('enfoiré')
-            })
-
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
 
     //sendata for creating new playlist
     const sendData = () =>{
