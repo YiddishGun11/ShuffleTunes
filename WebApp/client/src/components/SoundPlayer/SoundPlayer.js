@@ -25,7 +25,7 @@ function SoundPlayer() {
     const song = useSelector((state) => state.musicReducer.song)
 
     //sendata for creating new playlist
-    const stopSong = (item) =>{
+    const stopSong = () =>{
 
         axios.post(URL + '/stopsong')
             .then(function () {
@@ -38,7 +38,7 @@ function SoundPlayer() {
     }
 
     return (
-        <div className="sound-player">
+        <div className="sound-player" data-testid="soundplayer-test">
             <div>
                 {song === "" ? (
                     <button className="button-play"><BsFillPlayFill size={45} id="play-icon"/></button>
@@ -46,7 +46,7 @@ function SoundPlayer() {
                     <button onClick={()=>{dispatch(closeSong()); stopSong()}} className="button-play"><BsStopFill size={45} id="play-icon"/></button>
                 )}
             </div>
-            <div class="messagedefilant">
+            <div className="messagedefilant">
                 <div>
                     <marquee>{song}</marquee>
                 </div>

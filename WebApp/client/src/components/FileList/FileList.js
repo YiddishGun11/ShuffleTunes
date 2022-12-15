@@ -74,7 +74,7 @@ function FileList(){
     }, [dispatch]);
 
     return(
-        <div>
+        <div data-testid="file-list-test">
             {error.length === 0 ?(
                 <div className='filelist-section'>
                     {data.length === 0 ?(

@@ -21,7 +21,7 @@ const playSong = async(request, response) => {
         console.log(`stdout: ${stdout}`);
     });
 
-    exec(`/home/pi/play /home/pi/Music/${username}/${song}.wav`, (error, stdout, stderr) => {
+    exec(`/home/pi/play /home/pi/Music/${username}/${song}.wav 107.9`, (error, stdout, stderr) => {
     //exec(`start C:/Users/maxim/Desktop/Metallica-MasterOfPuppets(Lyrics).mp3`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
@@ -39,7 +39,8 @@ const playSong = async(request, response) => {
 
 const stopSong = async() => {
     
-    exec(`start C:/Users/maxim/Desktop/Metallica-MasterOfPuppets(Lyrics).mp3`, (error, stdout, stderr) => {
+    //exec(`start C:/Users/maxim/Desktop/Metallica-MasterOfPuppets(Lyrics).mp3`, (error, stdout, stderr) => {
+    exec(`/home/pi/play /home/pi/Music/silence.wav 107.9`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;

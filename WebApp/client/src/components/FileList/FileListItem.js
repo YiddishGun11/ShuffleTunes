@@ -106,7 +106,7 @@ function FileListItem({item,itemId}){
     }
 
     return(
-        <div className='file-list-child'> 
+        <div className='file-list-child' data-testid="fileListItems-test"> 
             <div className='file-list-songs'>
                 <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item)); playSong(item)}}>{item}</p>
                 {listDisplay === item ?(
