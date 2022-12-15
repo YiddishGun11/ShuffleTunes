@@ -6,6 +6,10 @@ import { useState } from "react";
 import {BsFillPlayFill} from 'react-icons/bs'
 import {BsStopFill} from 'react-icons/bs'
 
+import axios from 'axios'
+
+import { URL } from '../../scripts/url'
+
 import {closeSong} from '../../reducers/musicReducer'
 
 //redux
@@ -20,19 +24,26 @@ function SoundPlayer() {
     const dispatch = useDispatch();
     const song = useSelector((state) => state.musicReducer.song)
 
-    const musicTracks = [
-        {
-            name: song,
-        },
-    ];
+    //sendata for creating new playlist
+    const stopSong = (item) =>{
+
+        axios.post(URL + '/stopsong')
+            .then(function () {
+                console.log('ok!')
+            })
+            
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     return (
-        <div className="sound-player" onClick={()=>console.log(musicTracks)}>
+        <div className="sound-player">
             <div>
                 {song === "" ? (
                     <button className="button-play"><BsFillPlayFill size={45} id="play-icon"/></button>
                 ):(
-                    <button onClick={()=>dispatch(closeSong())} className="button-play"><BsStopFill size={45} id="play-icon"/></button>
+                    <button onClick={()=>{dispatch(closeSong()); stopSong()}} className="button-play"><BsStopFill size={45} id="play-icon"/></button>
                 )}
             </div>
             <div class="messagedefilant">

@@ -13,6 +13,9 @@
     background-color: #322c2c;
     display: flex;
     gap: 30px;
+    animation: from-bottom 2s;
+    animation-iteration-count: 1;
+    
     
 }
 
@@ -47,3 +50,12 @@
     
   }
    
+  @keyframes from-bottom {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}

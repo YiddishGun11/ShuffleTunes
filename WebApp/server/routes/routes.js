@@ -45,9 +45,6 @@ router.get('/playlistsongs/:id', data.getSongsByPlaylist);
 router.get('/songs', data.getSongs);
 
 
-//play song
-router.post('/pd', exec.playSong);
-
 //get user infos
 router.get('/user/:id',data.userInfos);
 
@@ -58,6 +55,9 @@ router.get('/isAuthenticated', data.isAuthenticated);
 
 //play song
 router.post('/pd', exec.playSong);
+
+//stop song
+router.post('/stopsong', exec.stopSong);
 
 // send the music we want to upload to the server
 router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation, data.createPlaylist);
