@@ -406,4 +406,5 @@ module.exports = {
     uploadMusic,
     logout,
     isAuthenticated,
+    whoIsConnected
 }

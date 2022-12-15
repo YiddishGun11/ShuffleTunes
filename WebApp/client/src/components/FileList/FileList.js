@@ -5,6 +5,9 @@ import axios from 'axios'
 
 //importing dynamic URL
 import { URL } from '../../scripts/url'
+import './FileList.scss'
+//redux
+import {useSelector} from 'react-redux';
 
 //import FileListItem component
 import FileListItem from './FileListItem'
@@ -71,7 +74,7 @@ function FileList(){
     }, [dispatch]);
 
     return(
-        <div>
+        <div data-testid="file-list-test">
             {error.length === 0 ?(
                 <div className='filelist-section'>
                     {data.length === 0 ?(

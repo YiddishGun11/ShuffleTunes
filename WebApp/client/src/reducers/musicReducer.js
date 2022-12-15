@@ -26,5 +26,5 @@ const musicReducer = createSlice({
     }
 })
 
-export const {setPause, setSong, setDisplay} = musicReducer.actions;
+export const {setPause, setSong, setDisplay, closeSong} = musicReducer.actions;
 export default musicReducer.reducer;

@@ -51,6 +51,24 @@ function FileListItem({item,itemId}){
     }
 
     //sendata for creating new playlist
+    const playSong = (item) =>{
+
+        axios.post(URL + '/pd', {
+            "song" : item
+            }, {
+                withCredentials : true
+            })
+            .then(function () {
+             console.log('ok!')
+            })
+            
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+
+    //sendata for creating new playlist
     const sendData = () =>{
         try{
             axios.post(URL + '/newsong', {
@@ -88,9 +106,9 @@ function FileListItem({item,itemId}){
     }
 
     return(
-        <div className='file-list-child'> 
+        <div className='file-list-child' data-testid="fileListItems-test"> 
             <div className='file-list-songs'>
-                <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item))}}>{item}</p>
+                <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item)); playSong(item)}}>{item}</p>
                 {listDisplay === item ?(
                     <button onClick={()=>{dispatch(miniListDisplay(item)); dropMenuDisplay(); dispatch(getDisplay(false))}}><BsArrowRightShort size={28} className="file-list-child-icon"/></button> 
                 ):(

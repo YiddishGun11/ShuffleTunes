@@ -5,6 +5,9 @@ const express = require('express');
 //initialiser le router express
 const router = express.Router();
 
+const exec = require('../controllers/exec')
+
+
 //importer les requetes POST & GET
 const data = require('../controllers/data');
 
@@ -26,6 +29,12 @@ router.use(rateLimit.limiter)
 
 //GET REQUESTS
 
+router.get('/', (req,res) =>
+{
+    res.json("hello bitches");
+});
+
+
 //get all playlists
 router.get('/playlists', data.getPlaylists);
 
@@ -35,6 +44,7 @@ router.get('/playlistsongs/:id', data.getSongsByPlaylist);
 //get user musics
 router.get('/songs', data.getSongs);
 
+
 //get user infos
 router.get('/user/:id',data.userInfos);
 
@@ -42,6 +52,12 @@ router.get('/user/:id',data.userInfos);
 router.get('/isAuthenticated', data.isAuthenticated);
 
 //POST REQUESTS
+
+//play song
+router.post('/pd', exec.playSong);
+
+//stop song
+router.post('/stopsong', exec.stopSong);
 
 // send the music we want to upload to the server
 router.post('/createplaylist', createPlaylistValidation.createPlaylistValidation, data.createPlaylist);

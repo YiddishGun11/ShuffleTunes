@@ -2,64 +2,55 @@ import "./SoundPlayer.css";
 
 //import musicSample1 from "link";
 //import musicSample2 from "link";
-
 import { useState } from "react";
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
+import {BsFillPlayFill} from 'react-icons/bs'
+import {BsStopFill} from 'react-icons/bs'
+
+import axios from 'axios'
+
+import { URL } from '../../scripts/url'
+
+import {closeSong} from '../../reducers/musicReducer'
 
 //redux
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
 
+function pressed() {
+    alert('Select a music to play !');
+}
+  
 
 function SoundPlayer() {
-
+    const dispatch = useDispatch();
     const song = useSelector((state) => state.musicReducer.song)
 
-    /*function getMusicName(path){
-    return (path.split('/').pop()).split('.')[0];
-    }*/
+    //sendata for creating new playlist
+    const stopSong = () =>{
 
-    const musicTracks = [
-        {
-            name: song,
-            src: "https://samplelib.com/lib/preview/mp3/sample-15s.mp3"
-        }
-    /*{
-        name: getMusicName(musicSample1),
-        src: musicSample1
-    },
-    {
-        name: getMusicName(musicSample2),
-        src: musicSample2
-    },*/
-    ];
-
-    const [trackIndex, setTrackIndex] = useState(0);
-
-    const handleClickPrevious = () => {
-        setTrackIndex((currentTrack) =>
-            currentTrack === 0 ? musicTracks.length - 1 : currentTrack - 1
-        );
-    };
-
-    const handleClickNext = () => {
-        setTrackIndex((currentTrack) =>
-            currentTrack < musicTracks.length - 1 ? currentTrack + 1 : 0
-        );
-    };
+        axios.post(URL + '/stopsong')
+            .then(function () {
+                console.log('ok!')
+            })
+            
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     return (
-        <div className="sound-player" onClick={()=>console.log(musicTracks)}>
-            <AudioPlayer
-                style={{ borderRadius: "1rem", backgroundColor: "#322c2c", padding: "10px 0px", boxShadow: "0 0 0px 0"}}
-                src={musicTracks[trackIndex].src}
-                showSkipControls={true}
-                showJumpControls={false}
-                header={` ${musicTracks[trackIndex].name}`}
-                onClickPrevious={handleClickPrevious}
-                onClickNext={handleClickNext}
-                onEnded={handleClickNext}
-            />
+        <div className="sound-player" data-testid="soundplayer-test">
+            <div>
+                {song === "" ? (
+                    <button className="button-play"><BsFillPlayFill size={45} id="play-icon"/></button>
+                ):(
+                    <button onClick={()=>{dispatch(closeSong()); stopSong()}} className="button-play"><BsStopFill size={45} id="play-icon"/></button>
+                )}
+            </div>
+            <div className="messagedefilant">
+                <div>
+                    <marquee>{song}</marquee>
+                </div>
+            </div>
         </div>
     );
 }

@@ -13,13 +13,14 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        animation: slidein 2s;
-        animation-iteration-count: 1;
+
 
         .main-content {
             background-color: #1b1919;
             color: white;
             font-family: $police;
+            animation: slidein 2s;
+            animation-iteration-count: 1;
 
             .dashboard-main-component {
                 margin: 50px 20%;
