@@ -2,7 +2,6 @@ import "./SoundPlayer.css";
 
 //import musicSample1 from "link";
 //import musicSample2 from "link";
-
 import { useState } from "react";
 import {BsFillPlayFill} from 'react-icons/bs'
 import {BsStopFill} from 'react-icons/bs'
@@ -24,7 +23,6 @@ function SoundPlayer() {
     const musicTracks = [
         {
             name: song,
-            src: "http://shuffletunes.local:81/Gazo_BECTE.mp3"
         },
     ];
 
