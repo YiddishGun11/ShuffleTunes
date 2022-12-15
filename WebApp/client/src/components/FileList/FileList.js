@@ -52,7 +52,7 @@ function FileList(){
         dispatch(miniListDisplay(0))
 
         try{
-            axios.get(baseURL + '/1')
+            axios.get(baseURL, {withCredentials: true})
 
                 .then((response) => {
                     setData(response.data[0][0]);

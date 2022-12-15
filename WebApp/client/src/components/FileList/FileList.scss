@@ -1,7 +1,7 @@
 @import "../../../styles/variables.scss" ;
 
 .filelist-section {
-    margin: 20px 15%;
+    margin: 20px 10%;
     background-color: $main-background;
     border-radius: 15px;
     padding: 30px 80px;
@@ -48,7 +48,7 @@
 
     .file-list-songs {
         display: flex;
-        gap: 20px;
+        gap: 10px;
 
         .file-list-child-icon {
             background-color: $main-background;
@@ -83,7 +83,6 @@
 
 .music-list-items {
     margin-top: 20px;
-    margin-left: 20px;
     overflow-y: scroll;
     height: 280px;
 }

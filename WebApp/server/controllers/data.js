@@ -8,6 +8,7 @@ const ESAPI = require('node-esapi');
 const sftpClient = require('ssh2-sftp-client');
 const configFtp = require('../ftp/ftp');
 const crypto = require('crypto');
+const { username } = require('../ftp/ftp');
 //GET 
 
 const whoIsConnected = async (cookie) => {
@@ -22,15 +23,43 @@ const whoIsConnected = async (cookie) => {
         
 }
 
-const getPlaylists = (request, response) =>{
-    db.query('CALL get_playlists_list(?)', request.params.id)
-        .then((results) => {
-            return response.status(200).send(results);
-        })
+const userIdCookie = async (cookie, response) => {
+    if (Object.keys(cookie).length === 0){    //cookie is empty
+        return false
+    }
+    const results = await db.query(`CALL who_is_sessionUser (?)`, [cookie.sessionId])
+    if (results[0][0][0].pseudo === null){
+            return false
+        }
+    return results[0][0][0].userId;
+}
 
-        .catch((error) => {
+
+const getPlaylists = async (request, response) =>{
+
+    try {
+        const userId = await userIdCookie(request.signedCookies);
+
+        if (!userId) {
             return response.status(400);
-        })
+        }
+
+        else {
+            
+            db.query('CALL get_playlists_list(?)', userId)
+            .then((results) => {
+                return response.status(200).send(results);
+            })
+
+            .catch((error) => {
+                return response.status(400);
+            })
+        }
+    }
+
+    catch(error) {
+        return response.status(400);
+    }
 }
 
 const getSongsByPlaylist = (request, response) =>{
@@ -48,16 +77,31 @@ const getSongsByPlaylist = (request, response) =>{
 }
 
 
-const getSongs = (request, response) =>{
-    
-    db.query("CALL get_songs_user(?)", request.params.id)
-        .then((results) => {
-            return response.status(200).send(results);
-        })
+const getSongs = async (request, response) =>{
 
-        .catch((error) => {
-            return response.status(400);
-        })
+    try {
+        
+        const userId = await userIdCookie(request.signedCookies);
+
+        if(!userId) {
+            return response.status(400)
+        }
+
+        else {
+            db.query("CALL get_songs_user(?)", userId)
+            .then((results) => {
+                return response.status(200).send(results);
+            })
+    
+            .catch((error) => {
+                return response.status(400);
+            })
+        }
+    }
+
+    catch(error) {
+        return response.status(400);
+    }
 
 }
 
@@ -65,15 +109,20 @@ const getSongs = (request, response) =>{
 
 //POST
 
-const createPlaylist = (request, response, next) =>{
+const createPlaylist = async (request, response, next) =>{
     const playlistTitle = request.body.playlistName;
-    const userId = request.body.userId;
 
 
     try {
+        const userId = await userIdCookie(request.signedCookies)
+
         const errors = validationResult(request)
 
-        if(!errors.isEmpty()){
+        if (!userId) {
+            return response.status(400);
+        }
+
+        else if(!errors.isEmpty()){
             return response.status(400).send(errors.array())
         }
 
@@ -356,5 +405,5 @@ module.exports = {
     userInfos,
     uploadMusic,
     logout,
-    isAuthenticated
+    isAuthenticated,
 }
