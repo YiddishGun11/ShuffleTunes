@@ -5,13 +5,11 @@ import {URL} from '../../scripts/url'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import {sha512} from 'js-sha512'
 import {salt} from '../../scripts/salt'
-import { useNavigate } from 'react-router-dom';
 
 function Connexion({setDisplay}){
 
     const pseudo = useRef(null);
     const password = useRef(null);
-    const navigate = useNavigate();
 
     function onSubmit (event) {
         event.preventDefault();
@@ -25,14 +23,14 @@ function Connexion({setDisplay}){
                 withCredentials: true,
             })
             .then(() => {
-                navigate("/dashboard");
-                return NotificationManager.success('You are now logged in', 'Successfull login');
+                NotificationManager.success('You are now logged in', 'Successfull login');
+                return window.location = "/dashboard";
             })
             .catch(error => {
                 if (error.response) {
                     return NotificationManager.error(error.response.data,  'A problem occured');
                 }
-
+                console.log(error)
                 return NotificationManager.error('Something went wrong, try again later', 'Unexpected error');
             })
         }

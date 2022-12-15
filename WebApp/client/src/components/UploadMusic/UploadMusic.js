@@ -72,7 +72,7 @@ function UploadMusic () {
         <div data-testid="uploadMusic-component">
             <NotificationContainer/>
             <form onSubmit={onSubmit}>
-                <input type={'file'} multiple={true} accept={'.mp3, .wav'} id={'musicFileInput'} className='music-file-input' onChange={onInputChange} data-testid=""/>
+                <input type={'file'} multiple={true} accept={'.mp3, .wav'} id={'musicFileInput'} className='music-file-input' onChange={onInputChange} data-testid="form-input"/>
                 <label htmlFor='musicFileInput'>
                     <div className='music-file-input-content'>
                         {
