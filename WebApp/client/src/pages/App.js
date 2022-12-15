@@ -33,7 +33,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={ <Home /> } />
                     <Route path="/connexion" element={requireAuth() === true ? <Navigate to="/dashboard" replace={true} /> : <Login/> } />
-                    <Route path="/dashboard" element={requireAuth() === true ? <DashBoard /> : <Navigate to="/connexion" replace={true} />}/> 
+                    <Route path="/dashboard" element={ true ? <DashBoard /> : <Navigate to="/connexion" replace={true} />}/> 
                 </Routes>
             </Suspense >
         </ThemeContextProvider>

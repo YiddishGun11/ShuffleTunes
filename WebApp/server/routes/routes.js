@@ -26,20 +26,14 @@ router.use(rateLimit.limiter)
 
 //GET REQUESTS
 
-router.get('/', (req,res) =>
-{
-    res.json("hello bitches");
-});
-
-
 //get all playlists
-router.get('/playlists/:id', data.getPlaylists);
+router.get('/playlists', data.getPlaylists);
 
 //get songs by playlists
 router.get('/playlistsongs/:id', data.getSongsByPlaylist);
 
 //get user musics
-router.get('/songs/:id', data.getSongs);
+router.get('/songs', data.getSongs);
 
 //get user infos
 router.get('/user/:id',data.userInfos);

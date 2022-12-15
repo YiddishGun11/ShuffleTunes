@@ -54,7 +54,7 @@ function PlayList(){
         dispatch(playlistDisplay(0))
 
         try{
-            axios.get(URL + '/playlists/1')
+            axios.get(URL + '/playlists', {withCredentials : true})
                 .then((response) =>{
                     setData(response.data[0][0])
                 })
@@ -71,9 +71,8 @@ function PlayList(){
     //sendata for creating new playlist
     const sendData = () =>{
         axios.post(URL + '/createplaylist', {
-            "playlistName" : input.current.value,
-            "userId" : 1
-        })
+            "playlistName" : input.current.value
+        }, {withCredentials : true})
             .then(()=>{
             //à définir
             })
