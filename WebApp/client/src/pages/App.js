@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from 'react'
+import React, {lazy, Suspense, useEffect, useState} from 'react'
 import {Routes, Route} from 'react-router-dom'
 import "./App.scss"
 
@@ -16,15 +16,16 @@ const DashBoard = lazy(()=> import ('./DashBoard/DashBoard'));
 
 function App() {
 
-    async function requireAuth () {
-        axios.get(`${URL}/isAuthenticated`, { withCredentials: true })
-        .then((response) => {            
-            return response.data
-        })
-        .catch(() => {
-            return false
-        })
-    }
+    const [isConnected, setIsConnected] = useState(false);
+   
+    useEffect(() => {
+        async function requireAuth () {
+            const response = await axios.get(`${URL}/isAuthenticated`, { withCredentials: true })
+            setIsConnected(response.data);
+        }
+
+        requireAuth()
+    });
 
 
     return (
@@ -32,8 +33,9 @@ function App() {
             <Suspense fallback={<Loading />}>
                 <Routes>
                     <Route path="/" element={ <Home /> } />
-                    <Route path="/connexion" element={requireAuth() === true ? <Navigate to="/dashboard" replace={true} /> : <Login/> } />
-                    <Route path="/dashboard" element={ true ? <DashBoard /> : <Navigate to="/connexion" replace={true} />}/> 
+                    <Route path="/connexion" element={isConnected ? <Navigate to="/dashboard" replace={true} /> : <Login/> } />
+                    <Route path="/dashboard" element={isConnected ? <DashBoard /> : <Navigate to="/connexion" replace={true} />}/> 
+
                 </Routes>
             </Suspense >
         </ThemeContextProvider>

@@ -4,7 +4,6 @@ import './NavBar.scss';
 import { ThemeContext } from '../Context/ThemeContext';
 import axios from 'axios';
 import {URL} from '../../scripts/url'
-import { useNavigate } from 'react-router-dom';
 
 //react icons
 import {BsPersonLinesFill, BsGear} from 'react-icons/bs'
@@ -17,7 +16,6 @@ function NavBar({setContentDisplay}){
     const {theme} = useContext(ThemeContext);
 
     const [display, setDisplay] = useState(false);
-    const navigate = useNavigate();
 
     const handleDisplay = () =>{
         display ? setDisplay(false) : setDisplay(true);
@@ -28,7 +26,7 @@ function NavBar({setContentDisplay}){
             withCredentials: true,
         })
         .then(() => {
-            navigate("/");
+            window.location = "/";
         })
     }
 
