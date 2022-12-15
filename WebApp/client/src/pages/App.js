@@ -7,6 +7,9 @@ import axios from 'axios';
 import {URL} from '../scripts/url';
 import { Navigate } from 'react-router-dom';
 
+//import loading component
+import Loading from '../components/Loading/Loading';
+
 const Home = lazy(()=> import ('./Home/Home'));
 const Login = lazy(()=> import('./Connexion/ConnexionPage'));
 const DashBoard = lazy(()=> import ('./DashBoard/DashBoard'));
@@ -26,7 +29,7 @@ function App() {
 
     return (
         <ThemeContextProvider>
-            <Suspense fallback={<div className='loading-message'><h1>Loading...</h1></div>}>
+            <Suspense fallback={<Loading />}>
                 <Routes>
                     <Route path="/" element={ <Home /> } />
                     <Route path="/connexion" element={requireAuth() === true ? <Navigate to="/dashboard" replace={true} /> : <Login/> } />

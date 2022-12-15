@@ -1,0 +1,31 @@
+@import "../../../styles/variables.scss";
+
+.loading-main-div {
+    height: 100vh;
+    padding: 180px 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: $main-background;
+    font-family: $police;
+
+    h1 {
+        text-align: center;
+        color: white;
+        font-size: 32px;
+    }
+
+    .loading-animation {
+        margin: auto;
+        border: 10px solid #EAF0F6;
+        border-radius: 50%;
+        border-top: 10px solid $main-color;
+        width: 100px;
+        height: 100px;
+        animation: spinner 2s linear infinite;
+    }
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

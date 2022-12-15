@@ -51,7 +51,7 @@ function Connexion({setDisplay}){
                     <button type='submit'>Login</button>
                 </form>
                 <div className='switch-connect'>
-                    <p>already member ?</p>
+                    <p>new member ?</p>
                     <button onClick={()=>setDisplay(false)} className="switch-connect-link">register</button>
                 </div>
             </div>
