@@ -21,13 +21,13 @@ function DropSettings({setDropdown}){
                         <div>
                             <HiArrowLeft size={22} className="settings-icons"/>
                         </div>
-                        <p>Go Back</p>
+                        <button>Go Back</button>
                     </div>
                     <div className='drop-settings-items' onClick={()=>setModal(true)}>
                         <div>
                             <BsPersonLinesFill size={22} className="settings-icons"/>
                         </div>
-                        <p>Profile settings</p>
+                        <button>Profile settings</button>
                     </div>
                     <div className='drop-settings-items'>
                         <div>

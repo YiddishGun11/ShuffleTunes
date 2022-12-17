@@ -38,12 +38,10 @@
     }
 
     & button {
-        color: white;
+        background-color: #322c2c;
         border: none;
-        background-color: $main-background;
-        height: 30px;
-        width: 30px;
-        padding-top: 2px;
+        color: white;
+        font-size: 20px;
     }
 
     .file-list-songs {

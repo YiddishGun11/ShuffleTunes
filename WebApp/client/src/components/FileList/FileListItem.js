@@ -108,7 +108,7 @@ function FileListItem({item,itemId}){
     return(
         <div className='file-list-child' data-testid="fileListItems-test"> 
             <div className='file-list-songs'>
-                <p onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item)); playSong(item)}}>{item}</p>
+                <button onClick={()=>{dispatch(setDisplay('open')); dispatch(setSong(item)); playSong(item)}}>{item}</button>
                 {listDisplay === item ?(
                     <button onClick={()=>{dispatch(miniListDisplay(item)); dropMenuDisplay(); dispatch(getDisplay(false))}}><BsArrowRightShort size={28} className="file-list-child-icon"/></button> 
                 ):(
@@ -132,7 +132,7 @@ function FileListItem({item,itemId}){
                                 {error.length === 0 ?(
                                     data.map((playlist) =>{
                                         return(
-                                            <p id={playlist.playlistId} key={playlist.playlistId} className="playlist-items" onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</p>
+                                            <button id={playlist.playlistId} key={playlist.playlistId} className="playlist-items" onClick={()=>{dispatch(getDisplay(true));  dispatch(setPlaylistId(playlist.playlistId))}}>{playlist.playlistName}</button>
                                         );
                                     })
                                 ):(

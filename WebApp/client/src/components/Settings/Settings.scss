@@ -44,6 +44,15 @@
                 background-color: $settings-items;
             }
         }
+
+        & button {
+            background-color: $settings-background;
+            cursor: pointer;
+            display: inline;
+            color: white;
+            font-size: 18px;
+            font-family: $police;
+        }
     }
 
     .settings-items:hover {
@@ -51,6 +60,10 @@
 
         p {
             background-color: #292929;
+        }
+
+        & button {
+            background-color: #292929;  
         }
     }
 }
