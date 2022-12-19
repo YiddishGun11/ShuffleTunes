@@ -18,14 +18,14 @@ const displayState = {display: 0};
 function reducer(state, action) {
   switch (action.type) {
     case 'settings':
-        if(state.display == 1) {
+        if(state.display === 1) {
             return {display: 0}
           }
           else {
             return {display : 1}
           }
     case 'profile':
-        if(state.display == 2) {
+        if(state.display === 2) {
             return {display: 0}
         }
         else {

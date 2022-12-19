@@ -1,13 +1,10 @@
 import './FileList.scss'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import axios from 'axios'
 
 //importing dynamic URL
 import { URL } from '../../scripts/url'
-import './FileList.scss'
-//redux
-import {useSelector} from 'react-redux';
 
 //import FileListItem component
 import FileListItem from './FileListItem'
@@ -100,4 +97,4 @@ function FileList(){
 
 
 
-export default FileList;
+export default memo (FileList);
