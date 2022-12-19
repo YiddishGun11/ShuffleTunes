@@ -1,0 +1,79 @@
+@import "../../../styles/variables.scss" ;
+
+.home-menu {
+    font-family: $police;
+    background-color: #1b1919;
+    color: white;
+
+    & h1 {
+        text-align: center;
+        margin-bottom: 2em;
+        text-decoration: underline;
+    }
+    & a {
+        color: #10c6d3 ;
+    }
+    
+    & p {
+        margin-left: 1.5em     
+    }
+}
+
+.interpretation-definition {
+    & h1 {
+        margin-top: 1.5em;
+    }
+
+    & h2 {
+        margin-left: 1.5em;
+        margin-bottom: 1em;
+        margin-top: 0.5em;
+    }
+
+    & p {
+        margin-left: 5em;
+    }
+    & ul {
+        margin-left: 2em;
+        list-style:none
+    }
+    & li {
+        margin-top: 0.5em;
+    }
+}
+
+.using-personal {
+    & h1 {
+        margin-top: 1.5em;
+    }
+    & h2 {
+        margin-left: 1.5em;
+        margin-bottom: 1em;
+        margin-top: 0.5em;
+    }
+
+    & h3 {
+        margin-top: 0.5em;
+        margin-left: 3em;
+        margin-bottom: 1em;
+    }
+
+    & p {
+        margin-top: 1em;
+        margin-left: 5em;
+    }
+    & li {
+        margin-left: 10em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+}
+
+.other {
+    & h1 {
+        margin-top: 1.5em;
+    }
+    & li {
+        margin-left: 5em;
+    }
+}
