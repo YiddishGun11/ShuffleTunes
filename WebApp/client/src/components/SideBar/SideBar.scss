@@ -8,51 +8,44 @@
     animation: slidein-bar 2s;
     animation-iteration-count: 1;
     background-color: #1b1919;
+    padding-top: 25px;
 
     .sidebar-item1 {
+        font-family: $police;
         display: flex;
         height: 50px;
         padding: 10px 60px;
-        margin-top: 50px;
-
-        &:hover {
-            color: #10c6d3;
-            cursor: pointer;
-            transform: translateX(15px);
-            transition-duration: 0.5s;
-        }
-
-        & p {
-            display: inline;
-            font-size: 18px;
-            padding-left: 10px;
-        }
-    }
-
-    .sidebar-item2 {
-        display: flex;
-        height: 50px;
-        padding: 10px 60px;
-        margin: 15px 0;
-
-        & p {
-            display: inline;
-            font-size: 18px;
-            padding-left: 10px;
-        }
-
-        &:hover {
-            color: #10c6d3;
-            cursor: pointer;
-            transform: translateX(15px);
-            transition-duration: 0.5s;
-        }
-    }
-    button {
-        background-color: #1b1919;
-        color: white;
-        border: none;
+        margin-top: 20px;
         cursor: pointer;
+
+        &:hover {
+            color: #10c6d3;
+            cursor: pointer;
+            transform: translateX(15px);
+            transition-duration: 0.5s;
+            button {
+                p{
+                    color: $main-color;
+                    transition-duration: 0.5s;
+                }
+            }
+        }
+
+        button {
+            background-color: #1b1919;
+            border: none;
+
+            p {
+                display: inline;
+                font-size: 18px;
+                color: white;
+                padding-left: 10px;
+            }
+            
+            #sidebar-icon {
+                margin-top: 5px;
+            }
+        }
     }
 }
 
@@ -85,33 +78,6 @@
             padding-left: 10px;
             background-color: $light-background;
         }
-    }
-
-    .sidebar-item2 {
-        display: flex;
-        height: 50px;
-        padding: 10px 60px;
-        margin: 15px 0;
-        color: black;
-        background-color: $light-background;
-
-        &:hover {
-            color: #10c6d3;
-            cursor: pointer;
-            transform: translateX(15px);
-            transition-duration: 0.5s;
-        }
-
-        & p {
-            padding-left: 10px;
-            background-color: $light-background;
-        }
-    }
-    button {
-        background-color:$light-background;
-        color: black;
-        border: none;
-        cursor: pointer;
     }
 }
 
