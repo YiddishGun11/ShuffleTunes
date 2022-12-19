@@ -18,9 +18,19 @@ const displayState = {display: 0};
 function reducer(state, action) {
   switch (action.type) {
     case 'settings':
-      return {display: 1};
+        if(state.display == 1) {
+            return {display: 0}
+          }
+          else {
+            return {display : 1}
+          }
     case 'profile':
-      return {display: 2};
+        if(state.display == 2) {
+            return {display: 0}
+        }
+        else {
+            return {display : 2}
+        }
     default:
       return {display: 0}
   }
@@ -33,11 +43,6 @@ function NavBar({setContentDisplay}){
 
     const {theme} = useContext(ThemeContext);
 
-    const [display, setDisplay] = useState(false);
-
-    const handleDisplay = () =>{
-        display ? setDisplay(false) : setDisplay(true);
-    }
 
     const logout = () => {
         axios.post(`${URL}/logout`, (null) , {
