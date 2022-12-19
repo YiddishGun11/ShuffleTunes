@@ -24,9 +24,7 @@ const deletePlaylist = (request, response) =>{
     })
 }
 
-
-
 module.exports = {
     deleteSongPlaylist,
-    deletePlaylist
+    deletePlaylist,
 }

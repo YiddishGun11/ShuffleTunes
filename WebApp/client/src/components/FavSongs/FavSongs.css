@@ -40,3 +40,23 @@
     margin: 26px 0;
     font-size: 20px;
 }
+
+.fav-songs-list-items {
+    display: flex;
+    gap: 25px;
+    background-color: #322c2c;
+}
+
+.fav-songs-list-items button {
+    background-color: #322c2c;
+    border: none;
+    color: white;
+}
+
+.favsongs-icons {
+    background-color: #322c2c;    
+}
+
+.fav-songs-list-items p {
+    margin: 10px 0;
+}
