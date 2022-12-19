@@ -13,6 +13,7 @@ import Loading from '../components/Loading/Loading';
 const Home = lazy(()=> import ('./Home/Home'));
 const Login = lazy(()=> import('./Connexion/ConnexionPage'));
 const DashBoard = lazy(()=> import ('./DashBoard/DashBoard'));
+const NoPages = lazy(()=> import('./NoPages/NoPages'));
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
                     <Route path="/" element={ <Home /> } />
                     <Route path="/connexion" element={isConnected ? <Navigate to="/dashboard" replace={true} /> : <Login/> } />
                     <Route path="/dashboard" element={isConnected ? <DashBoard /> : <Navigate to="/connexion" replace={true} />}/> 
-
+                    <Route path="*" element={ <NoPages /> } />
                 </Routes>
             </Suspense >
         </ThemeContextProvider>
