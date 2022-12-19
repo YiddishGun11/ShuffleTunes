@@ -18,7 +18,7 @@
 
         & h1 {
             cursor: pointer;
-        }
+        }   
 
         & p {
             padding-top: 18px;
@@ -27,6 +27,18 @@
             &:hover {
                 text-decoration: underline;
             }
+        }
+        & button {
+            background-color: #322c2c;
+            border: none;
+            cursor: pointer;
+            display: inline;
+            padding: 0 5px;
+            margin: 0;
+            width: 0;
+            height: 0;
+            font-size: 15px;
+            color: white;
         }
     }
 
@@ -48,6 +60,11 @@
                 cursor: pointer;
             }
         }
+    }
+    .navbar-section-icons-childs button {
+        background-color: #1b1919;
+        border: none
+            
     }
 }
 
@@ -76,6 +93,18 @@
                 text-decoration: underline;
             }
         }
+
+        & button {
+            background-color: #322c2c;
+            border: none;
+            cursor: pointer;
+            display: inline;
+            padding: 0 5px;
+            margin: 0;
+            width: 0;
+            height: 0;
+            font-size: 15px;
+        }
     }
     
     .navbar-section-icons {
@@ -99,6 +128,12 @@
                 cursor: pointer;
             }
         }
+    }
+
+    .navbar-section-icons-childs button {
+        background-color: $light-background;
+        border: none
+            
     }
 }
 

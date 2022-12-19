@@ -56,19 +56,23 @@ function NavBar({setContentDisplay}){
     return(
         <div className={theme ? 'navbar-section-dark': 'navbar-section-light'}>
             <div className='navbar-section-items'>
-                <h1 onClick={()=>setContentDisplay(0)}  >ShuffleTunes</h1>
+                <button onClick={()=>setContentDisplay(0)}><h1>ShuffleTunes</h1></button>
             </div>
             <div className='navbar-section-icons'>
                 <div className='navbar-section-icons-childs'>
-                    <BsPersonLinesFill size={20}  onClick={()=>dispatch({type: "profile"})} id="navbar-icon"/>
+                    <button onClick={()=>dispatch({type: "profile"})}>
+                        <BsPersonLinesFill size={20} id="navbar-icon"/>
+                    </button>
                     {state.display === 2 ?(
                         <Profil />
                     ):(
                         <div></div>
                     )}
                 </div>
-                <div className='navbar-section-icons-childs'>      
-                    <BsGear size={20} onClick={()=>dispatch({type: "settings"})} id="navbar-icon"/>
+                <div className='navbar-section-icons-childs'> 
+                    <button onClick={()=>dispatch({type: "settings"})}>
+                        <BsGear size={20} id="navbar-icon"/>
+                    </button>
                     {state.display === 1 ?(
                         <Settings/>
                     ):(
@@ -76,7 +80,7 @@ function NavBar({setContentDisplay}){
                     )}
                 </div>
                 <div className='navbar-section-icons-childs'>
-                    <BiLogOut size={20} onClick={logout} id="navbar-icon"/>
+                    <button onClick={logout}><BiLogOut size={20} id="navbar-icon"/></button>
                 </div>
             </div>
         </div>

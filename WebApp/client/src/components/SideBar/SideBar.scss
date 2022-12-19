@@ -23,6 +23,8 @@
         }
 
         & p {
+            display: inline;
+            font-size: 18px;
             padding-left: 10px;
         }
     }
@@ -34,6 +36,8 @@
         margin: 15px 0;
 
         & p {
+            display: inline;
+            font-size: 18px;
             padding-left: 10px;
         }
 
@@ -43,6 +47,12 @@
             transform: translateX(15px);
             transition-duration: 0.5s;
         }
+    }
+    button {
+        background-color: #1b1919;
+        color: white;
+        border: none;
+        cursor: pointer;
     }
 }
 
@@ -96,6 +106,12 @@
             padding-left: 10px;
             background-color: $light-background;
         }
+    }
+    button {
+        background-color:$light-background;
+        color: black;
+        border: none;
+        cursor: pointer;
     }
 }
 

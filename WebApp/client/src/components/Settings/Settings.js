@@ -18,14 +18,14 @@ function Switch(){
                     <div>
                         <BsFillSunFill size={22} className="settings-icons"/>
                     </div>
-                    <p>LIGHT THEME</p>
+                    <button>LIGHT THEME</button>
                 </div>
             ):(
                 <div className='settings-items' onClick={toggleTheme}>
                     <div>
                         <BsFillMoonFill size={22} className="settings-icons"/>
                     </div>
-                    <p>DARK THEME</p>
+                    <button>DARK THEME</button>
                 </div>
             )}
         </div>
@@ -44,14 +44,14 @@ function Settings(){
                         <div>
                             <BsFillGearFill size={22} className="settings-icons"/>
                         </div>
-                        <p>Settings</p>
+                        <button>Settings</button>
                     </div>
                     <Switch />
                     <div className='settings-items'>
                         <div>
                             <FaInfo size={22} className="settings-icons"/>
                         </div>
-                        <p>Informations</p>
+                        <button>Informations</button>
                     </div>
                 </div>
             ):(
