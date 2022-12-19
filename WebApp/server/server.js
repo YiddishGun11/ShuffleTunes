@@ -10,16 +10,23 @@ db.connect();
 
 const app = express();
 
+app.use(cors({
+    origin: "http://127.0.0.1:5000", 
+    methods:'GET,POST,DELETE',
+    allowedHeaders: 'Content-Type, X-Requested-With',
+    credentials: true
+}));
+
 app.use(express.json());
 
 app.use(cookieParser(secret=
     process.env.COOKIE_SECRET
 ))
-app.use(cors({origin: "http://127.0.0.1:3000", credentials: true}));
 //utiliser le router nodejs
 app.use('/',Route);
 
 //port serveur nodejs
 app.listen(5000, ()=>{console.log("server running on port 5000")})
 
+module.exports = app
 module.exports = app

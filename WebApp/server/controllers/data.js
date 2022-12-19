@@ -8,7 +8,6 @@ const ESAPI = require('node-esapi');
 const sftpClient = require('ssh2-sftp-client');
 const configFtp = require('../ftp/ftp');
 const crypto = require('crypto');
-const { username } = require('../ftp/ftp');
 //GET 
 
 const whoIsConnected = async (cookie) => {

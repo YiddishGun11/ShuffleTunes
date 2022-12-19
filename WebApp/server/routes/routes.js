@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 const exec = require('../controllers/exec')
-
+const path = require('path');
 
 //importer les requetes POST & GET
 const data = require('../controllers/data');
@@ -26,13 +26,10 @@ const rateLimit = require('../controllers/rateLimiter.js');
 
 // ROUTER USE
 router.use(rateLimit.limiter)
-
+router.use(express.static(path.join(__dirname, 'build')));
 //GET REQUESTS
 
-router.get('/', (req,res) =>
-{
-    res.json("hello bitches");
-});
+
 
 
 //get all playlists
@@ -79,6 +76,9 @@ router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 // register
 router.post('/register',registerAndLoginValidation.registerAndLoginValidation, data.register);
 
+router.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 
 
