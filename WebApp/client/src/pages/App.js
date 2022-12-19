@@ -14,6 +14,7 @@ const Home = lazy(()=> import ('./Home/Home'));
 const Login = lazy(()=> import('./Connexion/ConnexionPage'));
 const DashBoard = lazy(()=> import ('./DashBoard/DashBoard'));
 const NoPages = lazy(()=> import('./NoPages/NoPages'));
+const PrivacyPolicy = lazy(() => import('./PrivacyPolicy/PrivacyPolicy'));
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
                     <Route path="/connexion" element={isConnected ? <Navigate to="/dashboard" replace={true} /> : <Login/> } />
                     <Route path="/dashboard" element={isConnected ? <DashBoard /> : <Navigate to="/connexion" replace={true} />}/> 
                     <Route path="*" element={ <NoPages /> } />
+                    <Route path='/privacypolicy' element={<PrivacyPolicy/>} />
                 </Routes>
             </Suspense >
         </ThemeContextProvider>
