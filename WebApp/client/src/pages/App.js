@@ -36,7 +36,7 @@ function App() {
                     <Route path="/" element={ <Home /> } />
                     <Route path="/connexion" element={isConnected ? <Navigate to="/dashboard" replace={true} /> : <Login/> } />
                     <Route path="/dashboard" element={isConnected ? <DashBoard /> : <Navigate to="/connexion" replace={true} />}/> 
-
+                    <Route path="*" element={ <NoPages /> } />
                 </Routes>
             </Suspense >
         </ThemeContextProvider>
