@@ -354,6 +354,57 @@ const isAuthenticated = async (request, response, next) => {
         next(error)
     }
 }
+
+const getFavSongs = async (request, response) => {
+
+    try {
+
+        //get userId for request
+        const idUser = await userIdCookie(request.signedCookies);
+
+        //user not connected
+        if (!idUser) {
+            return response.status(400);
+        }
+
+        else {
+            
+            db.query('CALL get_favoris_list(?)', idUser)
+            .then((results) => {
+                return response.status(200).send(results);
+            })
+
+            .catch((error) => {
+                return response.status(400);
+            })
+        }
+    }
+
+    catch(error) {
+        return response.status(400);
+    }
+}
+
+const deleteFavSong = async(request, response) =>{
+
+    //EN DUR POUR L'INSTANT
+   /* const idUser = await userIdCookie(request.signedCookies);
+    
+    //console.log(idUser);
+    //user not connected
+    if (!idUser) {
+        return response.status(400);
+    }*/
+    let sql = `CALL delete_favsong(${17}, ${request.params.id})`
+
+    db.query(sql)
+    .then((results) => {
+        return response.status(200).json(results);
+    })
+    .catch(() => {
+        return response.status(400);
+    })
+}
 /*
 EXEMPLE DE REQUETE FINALE avec express validator
 
@@ -406,5 +457,7 @@ module.exports = {
     uploadMusic,
     logout,
     isAuthenticated,
-    whoIsConnected
+    whoIsConnected,
+    getFavSongs,
+    deleteFavSong
 }

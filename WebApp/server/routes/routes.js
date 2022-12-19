@@ -13,8 +13,6 @@ const data = require('../controllers/data');
 
 const dataDelete = require('../controllers/delete');
 
-const dataDelete = require('../controllers/delete');
-
 // validation midelware
 const registerAndLoginValidation = require('../validation/registerAndLoginValidation.js');
 const createPlaylistValidation = require('../validation/createPlaylistValidation.js');
@@ -40,7 +38,7 @@ router.get('/', (req,res) =>
 //router.get('/userFiles', files.getFiles);
 
 //get all user favorites musics
-router.get('/favsongs/:id', data.getFavSongs);
+router.get('/favsongs', data.getFavSongs);
 
 //get all playlists
 router.get('/playlists', data.getPlaylists);
@@ -83,11 +81,13 @@ router.delete('/playlist/:id', dataDelete.deletePlaylist);
 
 router.delete('/deletesongplaylist/:id', dataDelete.deleteSongPlaylist);
 
+router.delete('/deletefavsong/:id', data.deleteFavSong);
+
 // register
 router.post('/register',registerAndLoginValidation.registerAndLoginValidation, data.register);
 
 //DELETE REQUESTS
-router.delete('/deletesong/:userid/:musicid', dataDelete.deleteSongById);
+//router.delete('/deletesong/:userid/:musicid', dataDelete.deleteSongById);
 
 
 module.exports = router;
