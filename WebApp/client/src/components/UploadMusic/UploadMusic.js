@@ -1,9 +1,14 @@
 import './UploadMusic.css'
-import React, { useRef, useState } from 'react';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
-import {ImCross} from 'react-icons/im'
+
+import { useRef, useState, memo } from 'react';
 import axios from 'axios';
 
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+
+//react-icons
+import {ImCross} from 'react-icons/im'
+
+//importing dynamic url
 import {URL} from '../../scripts/url'
 
 const MAX_MUSIC = 20;
@@ -100,4 +105,4 @@ function UploadMusic () {
     )
 }
 
-export default UploadMusic
+export default memo (UploadMusic);

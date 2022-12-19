@@ -1,6 +1,6 @@
 import './FileList.scss'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import axios from 'axios'
 
 //importing dynamic URL
@@ -97,4 +97,4 @@ function FileList(){
 
 
 
-export default FileList;
+export default memo (FileList);

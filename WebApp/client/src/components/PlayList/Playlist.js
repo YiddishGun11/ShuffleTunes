@@ -1,6 +1,6 @@
 import './Playlist.scss'
 
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useRef, useState, memo} from 'react'
 import axios from 'axios'
 
 import {RiAddFill, RiCloseFill} from 'react-icons/ri'
@@ -84,7 +84,7 @@ function PlayList(){
 
 
     return(
-        <div className='playlists-container' data-testid="playlist-component">   
+        <div className='playlists-container' data-testid="playlist-component"> 
             <div className='playlist-container-menu'>  
                 <h1>Your PlayLists</h1>
                 {createPlaylist ?(
@@ -126,4 +126,4 @@ function PlayList(){
     );
 }
 
-export default PlayList;
+export default memo (PlayList);
