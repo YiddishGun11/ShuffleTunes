@@ -9,7 +9,7 @@ const playSong = async(request, response) => {
     let song = data.song;
     const username = await getUser.whoIsConnected(request.signedCookies);
 
-    exec(`/home/pi/Music/${username}/ mpg123 -w ${song}.wav ${song}.mp3`, (error, stdout, stderr) => {
+    exec(`/home/pi/Music/${username}/ mpg123 -w ${song}.wav ${song}`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;

@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 const exec = require('../controllers/exec')
-
+const path = require('path');
 
 //importer les requetes POST & GET
 const data = require('../controllers/data');
@@ -26,6 +26,7 @@ const rateLimit = require('../controllers/rateLimiter.js');
 
 // ROUTER USE
 router.use(rateLimit.limiter)
+router.use(express.static(path.join(__dirname, 'build')));
 
 //GET REQUESTS
 
@@ -89,5 +90,8 @@ router.post('/register',registerAndLoginValidation.registerAndLoginValidation, d
 //DELETE REQUESTS
 //router.delete('/deletesong/:userid/:musicid', dataDelete.deleteSongById);
 
+router.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 module.exports = router;

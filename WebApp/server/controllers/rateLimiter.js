@@ -10,7 +10,7 @@ const limiter = rateLimit({
         if (whiteList.includes(request.ip)){
             return 999
         }
-        return 12
+        return 120
     }, 
 });
 
